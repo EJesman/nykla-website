@@ -7,7 +7,9 @@ const API_KEY = process.env.YOUTUBE_API_KEY;
 const CHANNEL_ID = 'UCqXBQZy_jJ-o8-xTaYiB12g';
 const UPLOADS_PLAYLIST_ID = 'UU' + CHANNEL_ID.slice(2);
 const VIDEO_REFRESH_HOURS = 23;
-const MAX_VIDEOS = 3;
+const MAX_VIDEOS_FETCH = 20;
+const MAX_VIDEOS_DISPLAY = 3;
+const MIN_VIDEO_DURATION_SECONDS = 180; // Filter ut YouTube Shorts (≤ 3 min)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_FILE = path.resolve(__dirname, '..', 'rost-data.json');
@@ -33,26 +35,58 @@ async function fetchStats() {
   };
 }
 
+function parseISO8601Duration(iso) {
+  const m = iso.match(/^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/);
+  if (!m) return 0;
+  return (
+    parseInt(m[1] || '0', 10) * 3600 +
+    parseInt(m[2] || '0', 10) * 60 +
+    parseInt(m[3] || '0', 10)
+  );
+}
+
 async function fetchVideos() {
-  const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${UPLOADS_PLAYLIST_ID}&maxResults=${MAX_VIDEOS}&key=${API_KEY}`;
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`Videos fetch failed: ${r.status} ${await r.text()}`);
+  const playlistUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${UPLOADS_PLAYLIST_ID}&maxResults=${MAX_VIDEOS_FETCH}&key=${API_KEY}`;
+  const r = await fetch(playlistUrl);
+  if (!r.ok) throw new Error(`Playlist fetch failed: ${r.status} ${await r.text()}`);
   const d = await r.json();
-  return (d.items || []).map((it) => {
-    const sn = it.snippet;
-    return {
-      videoId: sn.resourceId.videoId,
-      title: sn.title,
-      publishedAt: sn.publishedAt,
-      thumbnail:
-        sn.thumbnails?.maxres?.url ||
-        sn.thumbnails?.standard?.url ||
-        sn.thumbnails?.high?.url ||
-        sn.thumbnails?.medium?.url ||
-        sn.thumbnails?.default?.url ||
-        '',
-    };
-  });
+  const items = d.items || [];
+  if (items.length === 0) return [];
+
+  const ids = items.map((it) => it.snippet.resourceId.videoId).join(',');
+  const detailsUrl = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${ids}&key=${API_KEY}`;
+  const dr = await fetch(detailsUrl);
+  if (!dr.ok) throw new Error(`Video details fetch failed: ${dr.status} ${await dr.text()}`);
+  const dd = await dr.json();
+  const durationMap = {};
+  for (const v of dd.items || []) {
+    durationMap[v.id] = parseISO8601Duration(v.contentDetails.duration);
+  }
+
+  return items
+    .filter(
+      (it) =>
+        (durationMap[it.snippet.resourceId.videoId] || 0) >=
+        MIN_VIDEO_DURATION_SECONDS
+    )
+    .slice(0, MAX_VIDEOS_DISPLAY)
+    .map((it) => {
+      const sn = it.snippet;
+      const id = sn.resourceId.videoId;
+      return {
+        videoId: id,
+        title: sn.title,
+        publishedAt: sn.publishedAt,
+        durationSeconds: durationMap[id] || 0,
+        thumbnail:
+          sn.thumbnails?.maxres?.url ||
+          sn.thumbnails?.standard?.url ||
+          sn.thumbnails?.high?.url ||
+          sn.thumbnails?.medium?.url ||
+          sn.thumbnails?.default?.url ||
+          '',
+      };
+    });
 }
 
 async function main() {

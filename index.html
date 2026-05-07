@@ -437,14 +437,104 @@ section.light{background:var(--white);color:var(--black)}
 .flow-h{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(2.5rem,5vw,5rem);
-  color:var(--orange);
+  color:var(--white);
   line-height:0.92;margin-bottom:1.5rem;
   max-width:18ch;
 }
+.flow-h .o{color:var(--orange)}
 .flow-intro{
   color:rgba(255,255,255,0.7);
   font-size:1rem;line-height:1.6;
-  max-width:560px;margin-bottom:4rem;
+  max-width:560px;margin-bottom:2rem;
+}
+
+/* Platform pills */
+.flow-platforms{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  margin-bottom:5rem;
+}
+.flow-platform-pill{
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.85);
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:999px;
+  padding:0.55rem 1.1rem;
+  background:rgba(255,255,255,0.03);
+  transition:border-color .25s, color .25s, background .25s;
+}
+.flow-platform-pill:hover{
+  border-color:var(--orange);
+  color:var(--orange);
+  background:rgba(255,98,0,0.06);
+}
+
+/* Top toggle (− 15 +) */
+.flow-toggle{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.6rem;
+  margin-bottom:4rem;
+  padding:1.6rem 2rem;
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  background:rgba(255,98,0,0.04);
+  max-width:440px;
+}
+.flow-toggle-row{
+  display:flex;
+  align-items:center;
+  gap:1.4rem;
+}
+.flow-toggle-btn{
+  width:44px;height:44px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.22);
+  color:var(--white);
+  background:rgba(255,255,255,0.03);
+  font-size:1.4rem;font-weight:300;line-height:1;
+  display:grid;place-items:center;
+  cursor:pointer;
+  transition:border-color .2s, background .2s, color .2s, opacity .2s;
+}
+.flow-toggle-btn:hover:not(:disabled){
+  border-color:var(--orange);
+  background:rgba(255,98,0,0.12);
+  color:var(--orange);
+}
+.flow-toggle-btn:disabled{
+  opacity:0.25;
+  cursor:default;
+}
+.flow-toggle-display{
+  text-align:center;
+  min-width:130px;
+}
+.flow-toggle-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.6rem;
+  color:var(--orange);
+  line-height:0.9;
+  letter-spacing:0.02em;
+  transition:opacity .2s;
+}
+.flow-toggle-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+  margin-top:0.3rem;
+}
+.flow-toggle-meta{
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.1em;
+  color:rgba(255,255,255,0.55);
+  text-transform:uppercase;
+  text-align:center;
 }
 
 /* Two-column layout */
@@ -646,18 +736,14 @@ section.light{background:var(--white);color:var(--black)}
 .flow-cycle.activated .flow-connector{opacity:1}
 .flow-connector svg{width:100%;height:auto;display:block}
 
-/* Monthly loop container — vertical now */
+/* Monthly loop container — horizontal grid */
 .flow-loop{
   position:relative;
-  border:1px dashed rgba(255,98,0,0.4);
+  border:1px dashed rgba(255,98,0,0.35);
   border-radius:8px;
-  padding:2rem 1.5rem 4rem;
+  padding:2rem 1.2rem 1.4rem;
   background:rgba(255,98,0,0.02);
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .6s .5s, transform .6s .5s cubic-bezier(0.16,1,0.3,1);
 }
-.flow-cycle.activated .flow-loop{opacity:1;transform:translateY(0)}
 
 .flow-loop-label{
   position:absolute;
@@ -672,127 +758,65 @@ section.light{background:var(--white);color:var(--black)}
 }
 .flow-loop-icon{width:14px;height:14px;color:var(--orange)}
 
-/* Vertical loop track */
 .flow-loop-track{
-  display:flex;
-  flex-direction:column;
+  display:grid;
+  grid-template-columns:repeat(6, 1fr);
   gap:0.5rem;
-  position:relative;
-}
-/* Vertical line down the left side connecting steps */
-.flow-loop-track::before{
-  content:'';
-  position:absolute;
-  left:28px;top:28px;bottom:28px;
-  width:1px;
-  background:linear-gradient(to bottom,
-    rgba(255,98,0,0.4) 0%,
-    rgba(255,98,0,0.4) 100%);
-  z-index:0;
 }
 
 .flow-loop-step{
   display:flex;
-  align-items:flex-start;
-  gap:1rem;
-  padding:0.6rem 0.6rem;
-  background:none;
-  border:none;
+  flex-direction:column;
+  gap:0.6rem;
+  padding:1rem 0.9rem;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:6px;
   color:var(--white);
   font-family:inherit;
   text-align:left;
-  cursor:pointer;
-  border-radius:6px;
-  position:relative;
-  z-index:1;
-  transition:background .25s;
-  /* Stagger entrance */
-  opacity:0;
-  transform:translateX(-15px);
+  transition:border-color .25s, background .25s;
 }
-.flow-cycle.activated .flow-loop-step{
-  opacity:1;
-  transform:translateX(0);
-  transition:opacity .5s, transform .5s cubic-bezier(0.16,1,0.3,1), background .25s;
-}
-.flow-cycle.activated .flow-loop-step:nth-of-type(1){transition-delay:.7s, .7s, 0s}
-.flow-cycle.activated .flow-loop-step:nth-of-type(2){transition-delay:.78s, .78s, 0s}
-.flow-cycle.activated .flow-loop-step:nth-of-type(3){transition-delay:.86s, .86s, 0s}
-.flow-cycle.activated .flow-loop-step:nth-of-type(4){transition-delay:.94s, .94s, 0s}
-.flow-cycle.activated .flow-loop-step:nth-of-type(5){transition-delay:1.02s, 1.02s, 0s}
-.flow-cycle.activated .flow-loop-step:nth-of-type(6){transition-delay:1.10s, 1.10s, 0s}
-
 .flow-loop-step:hover{
-  background:rgba(255,255,255,0.03);
-}
-.flow-loop-step.active{
-  background:rgba(255,98,0,0.06);
-}
-.flow-loop-step.active .flow-step-dot{
-  background:var(--orange);
-  border-color:var(--orange);
-  color:var(--black);
-}
-.flow-loop-step.active .flow-step-name{color:var(--orange)}
-.flow-loop-step.active .flow-step-desc{
-  max-height:200px;
-  opacity:1;
-  margin-top:0.4rem;
+  border-color:rgba(255,98,0,0.35);
+  background:rgba(255,98,0,0.04);
 }
 
 .flow-step-dot{
-  width:42px;height:42px;border-radius:50%;
+  width:34px;height:34px;border-radius:50%;
   background:var(--black);
-  border:1.5px solid rgba(255,255,255,0.25);
+  border:1.5px solid var(--orange);
   flex-shrink:0;
   display:grid;place-items:center;
   font-family:'Bebas Neue',sans-serif;
-  font-size:1rem;color:var(--white);
-  position:relative;z-index:2;
-  transition:all .35s cubic-bezier(0.34,1.56,0.64,1);
-  margin-top:0.1rem;
+  font-size:0.85rem;color:var(--orange);
 }
-.flow-loop-step:hover .flow-step-dot{border-color:var(--orange)}
 
-.flow-step-info{flex:1;padding-top:0.5rem;min-width:0}
+.flow-step-info{min-width:0}
 .flow-step-name{
   font-family:'Space Mono',monospace;
-  font-size:0.7rem;letter-spacing:0.12em;
+  font-size:0.6rem;letter-spacing:0.12em;
   text-transform:uppercase;
-  color:rgba(255,255,255,0.85);
-  line-height:1.4;
-  transition:color .25s;
+  color:rgba(255,255,255,0.9);
+  line-height:1.3;
+  margin-bottom:0.5rem;
 }
 .flow-step-desc{
-  font-size:0.85rem;line-height:1.55;
-  color:rgba(255,255,255,0.6);
+  font-size:0.78rem;line-height:1.5;
+  color:rgba(255,255,255,0.55);
   font-weight:300;
-  max-height:0;
-  overflow:hidden;
-  opacity:0;
-  transition:max-height .4s ease, opacity .3s, margin-top .3s;
 }
 
-/* Loop-back curved arrow at bottom */
+/* "Gjentas hver måned" footer */
 .flow-loop-back{
-  position:absolute;
-  bottom:0.8rem;left:0;right:0;
-  display:flex;flex-direction:column;
-  align-items:center;
-  color:rgba(255,98,0,0.5);
-  pointer-events:none;
-}
-.flow-loop-back svg{
-  width:90%;
-  max-width:400px;
-  height:24px;
-}
-.flow-loop-back span{
-  font-family:'Space Mono',monospace;
-  font-size:0.5rem;letter-spacing:0.2em;
-  text-transform:uppercase;
+  display:flex;
+  align-items:center;justify-content:center;
+  gap:0.5rem;
+  margin-top:1rem;
   color:rgba(255,98,0,0.7);
-  margin-top:0.2rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.18em;
+  text-transform:uppercase;
 }
 
 /* ════════════════════════════════════
@@ -1016,6 +1040,15 @@ section.light{background:var(--white);color:var(--black)}
   transition:transform .4s cubic-bezier(0.34,1.56,0.64,1);
 }
 .member:hover .member-placeholder{transform:translateY(-6px) rotate(-1deg)}
+.member-photo{
+  width:100%;aspect-ratio:3/4;
+  object-fit:cover;
+  display:block;
+  background:#141414;
+  margin-bottom:1.4rem;
+  transition:transform .4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.member:hover .member-photo{transform:translateY(-6px) rotate(-1deg)}
 .member-name{
   font-family:'Space Mono',monospace;
   font-size:0.7rem;color:var(--orange);
@@ -1081,51 +1114,151 @@ footer{
 .rost-back:hover{color:var(--orange)}
 .rost-back::before{content:'←'}
 .rost-brand-mini{display:flex;align-items:center;gap:0.6rem}
-.rost-brand-mini img{height:18px;width:auto}
+.rost-brand-mini .rost-brand-logo{height:16px;width:auto;display:block}
 .rost-brand-mini .x{
   font-family:'Space Mono',monospace;font-size:0.6rem;
   color:var(--gray);letter-spacing:0.12em;
 }
 .rost-brand-mini svg{height:14px;width:auto;fill:var(--black)}
 
-.rost-body{padding:5rem 2.5rem 4rem;max-width:1400px;margin:0 auto}
+.rost-body{padding:0 0 4rem;max-width:1400px;margin:0 auto}
+.rost-body-inner{padding:0 2.5rem}
 
-.rost-hero-row{
-  display:grid;grid-template-columns:2fr 1fr;
-  gap:3rem;align-items:end;margin-bottom:5rem;
+/* Marquee — full bleed, slowly scrolling logo */
+.rost-marquee{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:2.4rem 0;
+  margin-bottom:3rem;
 }
-.rost-logo-img{
-  width:min(70vw,800px);
-  display:block;
+.rost-marquee-track{
+  display:flex;
+  align-items:center;
+  gap:3.5rem;
+  width:max-content;
+  animation:rost-marquee-scroll 38s linear infinite;
 }
-.rost-tagline-block{text-align:right}
-.rost-tagline{
+.rost-marquee:hover .rost-marquee-track{animation-play-state:paused}
+.rost-marquee-item{
+  display:flex;align-items:center;
+  flex-shrink:0;height:54px;
+}
+.rost-marquee-item img{
+  height:54px;width:auto;display:block;opacity:0.95;
+}
+.rost-marquee-dot{
+  width:8px;height:8px;background:var(--orange);
+  border-radius:50%;flex-shrink:0;
+}
+@keyframes rost-marquee-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* Archive label */
+.rost-archive{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.9rem;
   font-family:'Space Mono',monospace;
-  font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
-  color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:1.5rem;
+  font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.45);
+  margin-bottom:5rem;
 }
+.rost-archive .sep{color:rgba(255,255,255,0.18)}
+.rost-archive .live-mark{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  color:var(--orange);
+}
+.rost-archive .live-mark::before{
+  content:'';width:6px;height:6px;background:var(--orange);
+  border-radius:50%;
+  animation:rost-pulse 2s ease-in-out infinite;
+}
+@keyframes rost-pulse{
+  0%,100%{opacity:1}
+  50%{opacity:0.3}
+}
+
+/* Refresh button */
 .rost-refresh{
   font-family:'Space Mono',monospace;
   font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;
-  border:1px solid rgba(255,255,255,0.3);
-  border-radius:999px;padding:0.5rem 1.1rem;
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:999px;padding:0.55rem 1.1rem;
   background:none;color:rgba(255,255,255,0.7);
   transition:all .2s;
+  cursor:pointer;
 }
 .rost-refresh:hover{background:var(--white);color:var(--blue);border-color:var(--white)}
 
+/* Stats hero — typography-driven */
 .rost-stats{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:2px;margin-bottom:1rem;
-  background:rgba(255,255,255,0.08);
+  display:flex;
+  flex-direction:column;
+  margin-bottom:1.5rem;
+  background:none;
 }
-.stat-card{background:var(--blue);padding:3rem;transition:background .3s}
-.stat-card:hover{background:#1414cc}
-.stat-label{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1rem}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,9vw,9rem);line-height:0.9;color:var(--white);font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
-.stat-meta{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:rgba(255,255,255,0.3);margin-top:0.8rem}
+.stat-card{
+  background:none;
+  padding:2.6rem 0 2rem;
+  border-top:1px solid rgba(255,255,255,0.1);
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:0.4rem 1rem;
+  transition:none;
+}
+.stat-card:last-of-type{border-bottom:1px solid rgba(255,255,255,0.1)}
+.stat-card:hover{background:none}
+.stat-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4.5rem,11vw,10rem);
+  line-height:0.85;
+  color:var(--white);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-0.03em;
+  grid-column:1 / -1;
+  margin-bottom:0.3rem;
+}
+.stat-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.65);
+  grid-column:1;grid-row:2;
+  margin-bottom:0;
+}
+.stat-meta{
+  font-family:'Space Mono',monospace;
+  font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+  display:flex;align-items:center;gap:0.45rem;
+  grid-column:2;grid-row:2;
+  margin-top:0;
+}
+.stat-meta::before{
+  content:'';width:6px;height:6px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:50%;
+  flex-shrink:0;
+}
+.stat-meta.live::before{
+  background:var(--orange);
+  border-color:var(--orange);
+  animation:rost-pulse 2s ease-in-out infinite;
+}
 
-.rost-updated{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:5rem}
+.rost-updated{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);
+  margin-bottom:5rem;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
 .rost-intro{
   font-size:1.05rem;line-height:1.7;
   color:rgba(255,255,255,0.85);
@@ -1173,24 +1306,23 @@ footer{
   .reasons-grid{grid-template-columns:1fr}
   .reason-portal{grid-column:auto}
   .reason-portal-features{flex-direction:column;align-items:flex-start}
-  .flow-layout{grid-template-columns:1fr;gap:2.5rem}
-  .flow-side{position:static}
-  .flow-empty{min-height:240px;padding:3rem 1.5rem}
-  .flow-empty-icon{transform:rotate(90deg);animation:nudgeDown 1.8s ease-in-out infinite}
-  @keyframes nudgeDown{
-    0%,100%{transform:rotate(90deg) translateX(0)}
-    50%{transform:rotate(90deg) translateX(-8px)}
-  }
-  .flow-loop{padding:2rem 1rem 4rem}
-  .flow-loop-back svg{width:95%}
+  .flow-loop-track{grid-template-columns:repeat(2, 1fr)}
+  .flow-loop{padding:2rem 1rem 1.4rem}
+  .flow-toggle{max-width:100%}
+  .flow-toggle-num{font-size:3rem}
   .team-grid{grid-template-columns:1fr;gap:2rem}
   #contact{grid-template-columns:1fr}
   .contact-cols{grid-template-columns:1fr}
   .services-top{flex-direction:column;align-items:flex-start}
   .services-desc{text-align:left;max-width:100%}
-  .rost-body{padding:3rem 1.2rem}
-  .rost-hero-row{grid-template-columns:1fr;gap:1.5rem}
-  .rost-tagline-block{text-align:left}
+  .rost-body{padding:0 0 3rem}
+  .rost-body-inner{padding:0 1.2rem}
+  .rost-marquee{padding:1.6rem 0;margin-bottom:2rem}
+  .rost-marquee-item,.rost-marquee-item img{height:38px}
+  .rost-archive{margin-bottom:3rem}
+  .stat-card{padding:2rem 0 1.6rem}
+  .rost-updated{flex-direction:column;align-items:flex-start;gap:0.6rem;margin-bottom:3.5rem}
+  .rost-hero-row{gap:1.2rem}
   .rost-stats{grid-template-columns:1fr}
   .videos-grid{grid-template-columns:1fr}
   footer{flex-direction:column;gap:1rem;padding:1.5rem 1.2rem;align-items:flex-start}
@@ -1315,52 +1447,34 @@ footer{
 <section id="flow">
   <div class="reveal">
     <div class="section-label" style="color:rgba(255,255,255,0.5)">02 — Slik jobber vi</div>
-    <h2 class="flow-h">Hvor mange filmer<br>vil du ha i måneden?</h2>
+    <h2 class="flow-h">Vi tar over dine<br>sosiale medier<span class="o">.</span></h2>
     <p class="flow-intro">
-      Velg pakken som passer deg, så viser vi deg syklusen vi går gjennom — hver måned, så lenge samarbeidet varer.
+      Fra idé til daglig publisering — vi håndterer hele prosessen på dine plattformer, hver måned, så lenge samarbeidet varer.
     </p>
-  </div>
-
-  <!-- Two-column layout: choices left, cycle right -->
-  <div class="flow-layout">
-
-    <!-- LEFT: Compact choice buttons -->
-    <div class="flow-side reveal">
-      <div class="flow-side-label">Velg pakke</div>
-
-      <button class="flow-choice-card" data-pkg="15">
-        <div class="flow-choice-row">
-          <div class="flow-choice-num">15</div>
-          <div class="flow-choice-text">
-            <div class="flow-choice-label">filmer / mnd</div>
-            <div class="flow-choice-detail">Posting nesten annenhver dag</div>
-          </div>
-        </div>
-        <div class="flow-choice-meta">1 INNSPILLINGSDAG</div>
-      </button>
-
-      <button class="flow-choice-card" data-pkg="30">
-        <div class="flow-choice-row">
-          <div class="flow-choice-num">30</div>
-          <div class="flow-choice-text">
-            <div class="flow-choice-label">filmer / mnd</div>
-            <div class="flow-choice-detail">Posting hver dag</div>
-          </div>
-        </div>
-        <div class="flow-choice-meta">2 INNSPILLINGSDAGER</div>
-      </button>
-
-      <a href="#contact" class="flow-side-cta">Ta kontakt for tilbud →</a>
+    <div class="flow-platforms">
+      <span class="flow-platform-pill">Instagram</span>
+      <span class="flow-platform-pill">TikTok</span>
+      <span class="flow-platform-pill">YouTube</span>
+      <span class="flow-platform-pill">LinkedIn</span>
+      <span class="flow-platform-pill">Snapchat</span>
     </div>
 
-    <!-- RIGHT: Cyclical flowchart (hidden until choice is made) -->
-    <div class="flow-cycle" id="flow-cycle">
-
-      <!-- Empty state -->
-      <div class="flow-empty" id="flow-empty">
-        <div class="flow-empty-icon">←</div>
-        <div class="flow-empty-text">Velg en pakke for å se prosessen</div>
+    <!-- Volume toggle -->
+    <div class="flow-toggle">
+      <div class="flow-toggle-row">
+        <button class="flow-toggle-btn" id="pkg-down" aria-label="Færre filmer">−</button>
+        <div class="flow-toggle-display">
+          <div class="flow-toggle-num" id="pkg-num">15</div>
+          <div class="flow-toggle-label">filmer / mnd</div>
+        </div>
+        <button class="flow-toggle-btn" id="pkg-up" aria-label="Flere filmer">+</button>
       </div>
+      <div class="flow-toggle-meta" id="pkg-meta">1 innspillingsdag · posting annenhver dag</div>
+    </div>
+  </div>
+
+  <!-- Cyclical flowchart, always visible -->
+  <div class="flow-cycle activated reveal" id="flow-cycle">
 
       <!-- Workshop one-time entry -->
       <div class="flow-once" data-step="workshop">
@@ -1384,60 +1498,58 @@ footer{
         </div>
 
         <div class="flow-loop-track" id="flow-loop-track">
-          <button class="flow-loop-step" data-step="0">
+          <div class="flow-loop-step">
             <div class="flow-step-dot">01</div>
             <div class="flow-step-info">
               <div class="flow-step-name">Konseptplan</div>
               <div class="flow-step-desc" id="desc-0"></div>
             </div>
-          </button>
-          <button class="flow-loop-step" data-step="1">
+          </div>
+          <div class="flow-loop-step">
             <div class="flow-step-dot">02</div>
             <div class="flow-step-info">
               <div class="flow-step-name">Dagsplan</div>
               <div class="flow-step-desc" id="desc-1"></div>
             </div>
-          </button>
-          <button class="flow-loop-step" data-step="2">
+          </div>
+          <div class="flow-loop-step">
             <div class="flow-step-dot">03</div>
             <div class="flow-step-info">
               <div class="flow-step-name">Innspilling</div>
               <div class="flow-step-desc" id="desc-2"></div>
             </div>
-          </button>
-          <button class="flow-loop-step" data-step="3">
+          </div>
+          <div class="flow-loop-step">
             <div class="flow-step-dot">04</div>
             <div class="flow-step-info">
               <div class="flow-step-name">Redigering</div>
               <div class="flow-step-desc" id="desc-3"></div>
             </div>
-          </button>
-          <button class="flow-loop-step" data-step="4">
+          </div>
+          <div class="flow-loop-step">
             <div class="flow-step-dot">05</div>
             <div class="flow-step-info">
               <div class="flow-step-name">Publisering</div>
               <div class="flow-step-desc" id="desc-4"></div>
             </div>
-          </button>
-          <button class="flow-loop-step" data-step="5">
+          </div>
+          <div class="flow-loop-step">
             <div class="flow-step-dot">06</div>
             <div class="flow-step-info">
               <div class="flow-step-name">Evaluering</div>
               <div class="flow-step-desc" id="desc-5"></div>
             </div>
-          </button>
+          </div>
         </div>
 
         <div class="flow-loop-back">
-          <svg viewBox="0 0 200 30" fill="none" preserveAspectRatio="none">
-            <path d="M195 5 Q 195 25, 100 25 Q 5 25, 5 5" stroke="currentColor" stroke-width="1" fill="none" stroke-dasharray="3 3"/>
-            <path d="M5 5L1 11M5 5L9 11" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-          </svg>
-          <span>Gjentas hver måned</span>
+          <span>↻ Gjentas hver måned</span>
         </div>
       </div>
-    </div>
+  </div>
 
+  <div style="text-align:center;margin-top:3rem">
+    <a href="#contact" class="flow-side-cta">Ta kontakt for tilbud →</a>
   </div>
 </section>
 
@@ -1497,17 +1609,17 @@ footer{
   <div class="team-grid reveal">
     <div class="team-stripe"></div>
     <div class="member">
-      <div class="member-placeholder">EJS</div>
+      <img class="member-photo" src="team-emil.gif" alt="Emil Jesman Sunde"/>
       <div class="member-name">Emil Jesman Sunde</div>
       <div class="member-detail">Dobbel Mocca Latte<br>Stavanger</div>
     </div>
     <div class="member">
-      <div class="member-placeholder">MS</div>
+      <img class="member-photo" src="team-stavdal.gif" alt="Mathias Stavdal"/>
       <div class="member-name">Mathias Stavdal</div>
       <div class="member-detail">Svart kaffe & Mocca Latte<br>Tromsø</div>
     </div>
     <div class="member">
-      <div class="member-placeholder">MS</div>
+      <img class="member-photo" src="team-skarbo.gif" alt="Mathias Skarbø"/>
       <div class="member-name">Mathias Skarbø</div>
       <div class="member-detail">Svart kaffe og bare det!<br>Ålesund</div>
     </div>
@@ -1579,66 +1691,115 @@ footer{
         <path d="M1411.88,696.7l108.82-380.88h103.38l108.28,380.88h-60.4l-25.03-89.78h-149.09l-25.03,89.78h-60.94ZM1512.54,552.51h119.71l-55.5-200.23h-8.71l-55.5,200.23Z"/>
       </svg>
       <span class="x">×</span>
-      <strong style="font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--blue)">RØST</strong>
+      <img class="rost-brand-logo" src="ROSTLOGO-BLAA.png" alt="RØST"/>
     </div>
     <div style="width:130px"></div>
   </nav>
 
   <div class="rost-body">
 
-    <div class="rost-hero-row">
-      <img src="rost-logo.png" alt="RØST" class="rost-logo-img"/>
-      <div class="rost-tagline-block">
-        <div class="rost-tagline">Et internprosjekt<br>YouTube-kanal</div>
+    <!-- Marquee — slow scrolling RØST logo -->
+    <div class="rost-marquee">
+      <div class="rost-marquee-track" aria-hidden="true">
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <!-- duplicate for seamless loop -->
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
+        <span class="rost-marquee-dot"></span>
+      </div>
+    </div>
+
+    <div class="rost-body-inner">
+
+      <!-- Archive metadata -->
+      <div class="rost-archive">
+        <span>Archive Nº 04</span>
+        <span class="sep">/</span>
+        <span>Oslo</span>
+        <span class="sep">/</span>
+        <span id="archive-year">2026</span>
+        <span class="sep">/</span>
+        <span class="live-mark">LIVE FRA YOUTUBE</span>
+      </div>
+
+      <!-- Stats hero — views first -->
+      <div class="rost-stats">
+        <div class="stat-card">
+          <div class="stat-num" id="view-count">—</div>
+          <div class="stat-label">Totale visninger</div>
+          <div class="stat-meta" id="view-meta">venter på data</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="sub-count">—</div>
+          <div class="stat-label">Abonnenter</div>
+          <div class="stat-meta" id="sub-meta">venter på data</div>
+        </div>
+      </div>
+
+      <!-- Updated + refresh -->
+      <div class="rost-updated">
+        <span id="last-updated">Ikke hentet ennå</span>
         <button class="rost-refresh" id="rost-refresh">↺ Oppdater</button>
       </div>
-    </div>
 
-    <p class="rost-intro">
-      RØST er en YouTube-kanal drevet av folkene bak Nykla — vårt eget internprosjekt der vi tester konsepter, hjelper merkevarer og lager innhold på vår egen måte.
-    </p>
+      <p class="rost-intro">
+        Et internprosjekt drevet av folkene bak Nykla — vi tester konsepter, hjelper merkevarer og lager innhold på vår egen måte.
+      </p>
 
-    <div class="rost-config" id="rost-config">
-      <strong style="color:rgba(255,255,255,0.7)">Datakilde mangler.</strong> Sett <code>ROST_DATA_URL</code> i scriptet til ditt GitHub raw-URL, f.eks.<br>
-      <code>https://raw.githubusercontent.com/&lt;bruker&gt;/&lt;repo&gt;/main/rost-data.json</code>
-    </div>
-
-    <div class="rost-stats">
-      <div class="stat-card">
-        <div class="stat-label">Abonnenter</div>
-        <div class="stat-num" id="sub-count">—</div>
-        <div class="stat-meta" id="sub-meta">VENTER PÅ DATA</div>
+      <div class="rost-config" id="rost-config" style="display:none">
+        <strong style="color:rgba(255,255,255,0.7)">Datakilde mangler.</strong> Sett <code>ROST_DATA_URL</code> i scriptet til ditt GitHub raw-URL.
       </div>
-      <div class="stat-card">
-        <div class="stat-label">Totale visninger</div>
-        <div class="stat-num" id="view-count">—</div>
-        <div class="stat-meta" id="view-meta">VENTER PÅ DATA</div>
-      </div>
-    </div>
 
-    <div class="rost-updated" id="last-updated">Ikke hentet ennå</div>
-
-    <h3 class="videos-h">Siste videoer.</h3>
-    <div class="videos-grid" id="videos-grid">
-      <div class="video-card">
-        <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
-        <div class="video-info">
-          <div class="video-title" style="color:rgba(255,255,255,0.3)">Konfigurer YouTube API for å laste videoer</div>
-          <div class="video-meta">— — —</div>
+      <h3 class="videos-h">Siste videoer.</h3>
+      <div class="videos-grid" id="videos-grid">
+        <div class="video-card">
+          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
+          <div class="video-info">
+            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
+            <div class="video-meta">— — —</div>
+          </div>
         </div>
-      </div>
-      <div class="video-card">
-        <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
-        <div class="video-info">
-          <div class="video-title" style="color:rgba(255,255,255,0.3)">Konfigurer YouTube API for å laste videoer</div>
-          <div class="video-meta">— — —</div>
+        <div class="video-card">
+          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
+          <div class="video-info">
+            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
+            <div class="video-meta">— — —</div>
+          </div>
         </div>
-      </div>
-      <div class="video-card">
-        <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
-        <div class="video-info">
-          <div class="video-title" style="color:rgba(255,255,255,0.3)">Konfigurer YouTube API for å laste videoer</div>
-          <div class="video-meta">— — —</div>
+        <div class="video-card">
+          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
+          <div class="video-info">
+            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
+            <div class="video-meta">— — —</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1667,7 +1828,7 @@ function loop(){
   requestAnimationFrame(loop);
 }
 loop();
-document.querySelectorAll('a,button,.pakke,.svc-row,.video-card,.rost-tab,.member,.social-pill,.flow-choice-card,.flow-loop-step,.logo-item').forEach(el=>{
+document.querySelectorAll('a,button,.pakke,.svc-row,.video-card,.rost-tab,.member,.social-pill,.flow-platform-pill,.logo-item').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
 });
@@ -1728,67 +1889,56 @@ document.querySelectorAll('.logo-item').forEach(el=>{
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
 });
 
-/* ─── INTERACTIVE FLOW ─── */
+/* ─── FLOW: package toggle (15 ↔ 30) ─── */
 const FLOW_DATA = {
   '15': [
-    'Vi sender en plan med 15 konsepter — idé, lokasjon og publiseringsdato. Du gir tilbakemelding 7 dager før innspilling.',
-    'Sendes 2 dager før innspilling. Tidsestimat per person, rekkefølge på konsepter og oppmøtetidspunkt.',
-    'Alle 15 filmer spilles inn på 1 dag. Vi setter av tid til komfort foran kameraet — det skal være gøy.',
-    'Redigert i 9x16 FullHD med tekst, musikk og animasjon. Filer deles via Frame.io for full kvalitet.',
-    'Vi henter godkjennelse fra deg og publiserer 15 filmer fordelt over måneden via Metricool.',
-    '7–10 dager før neste innspilling: hva presterte, hva fungerte ikke. Vi planlegger neste runde basert på faktiske tall.'
+    '15 konsepter sendes, godkjennes 7 dager før innspilling.',
+    'Tidsestimat og rekkefølge sendes 2 dager før.',
+    '1 innspillingsdag — alle 15 filmer.',
+    '9x16 FullHD med tekst, musikk og animasjon.',
+    'Annenhver dag via Metricool.',
+    'Hva fungerte? Justerer før neste runde.'
   ],
   '30': [
-    'Vi sender en plan med 30 konsepter — idé, lokasjon og publiseringsdato. Med daglig posting trengs en bredere idébase.',
-    'Sendes 2 dager før hver innspillingsdag. Tidsestimat per person og rekkefølge på begge dagene.',
-    'Alle 30 filmer spilles inn over 2 dager. Mer tid betyr flere takes på «hooks» og en jevnere flyt.',
-    '30 filmer redigeres i 9x16 FullHD med tekst, musikk og animasjon. Frame.io for fildeling i full kvalitet.',
-    'Godkjennelse hentes og 30 filmer publiseres daglig via Metricool — på tvers av Instagram, TikTok, YouTube og LinkedIn.',
-    '7–10 dager før neste innspilling: dobbelt så mye data gir tydeligere signal på hva som faktisk fungerer.'
+    '30 konsepter for daglig posting — bredere idébase.',
+    'Tidsestimat for begge innspillingsdager 2 dager før.',
+    '2 innspillingsdager — alle 30 filmer.',
+    '9x16 FullHD med tekst, musikk og animasjon.',
+    'Daglig via Metricool — alle plattformer.',
+    'Dobbelt data, tydeligere signal til neste runde.'
   ]
 };
 
-const choiceCards = document.querySelectorAll('.flow-choice-card');
-const flowCycle   = document.getElementById('flow-cycle');
-const flowSteps   = document.querySelectorAll('.flow-loop-step');
-let activePackage = null;
+const PKG_META = {
+  '15': '1 innspillingsdag · posting annenhver dag',
+  '30': '2 innspillingsdager · daglig posting'
+};
 
-function setPackage(pkg){
-  activePackage = pkg;
-  choiceCards.forEach(c=>{
-    c.classList.toggle('active', c.dataset.pkg===pkg);
-  });
-  // Reveal cycle
-  flowCycle.classList.add('activated');
-  // Populate descriptions for each step
+const PKG_VALUES = ['15','30'];
+const pkgNumEl  = document.getElementById('pkg-num');
+const pkgMetaEl = document.getElementById('pkg-meta');
+const pkgUpBtn  = document.getElementById('pkg-up');
+const pkgDownBtn= document.getElementById('pkg-down');
+let pkgIdx = 0;
+
+function renderPackage(){
+  const pkg = PKG_VALUES[pkgIdx];
+  pkgNumEl.textContent = pkg;
+  pkgMetaEl.textContent = PKG_META[pkg];
   FLOW_DATA[pkg].forEach((text,i)=>{
     const el=document.getElementById('desc-'+i);
     if(el)el.textContent=text;
   });
-  // Auto-activate first step after a moment
-  setTimeout(()=>setStep(0), 1400);
-  // Smooth scroll to cycle on first activation
-  setTimeout(()=>{
-    flowCycle.scrollIntoView({behavior:'smooth', block:'center'});
-  }, 200);
+  pkgDownBtn.disabled = pkgIdx===0;
+  pkgUpBtn.disabled   = pkgIdx===PKG_VALUES.length-1;
 }
-
-function setStep(idx){
-  if(!activePackage)return;
-  flowSteps.forEach((s,i)=>{
-    s.classList.toggle('active', i===idx);
-  });
-}
-
-choiceCards.forEach(c=>{
-  c.addEventListener('click',()=>setPackage(c.dataset.pkg));
+pkgUpBtn.addEventListener('click',()=>{
+  if(pkgIdx<PKG_VALUES.length-1){pkgIdx++;renderPackage();}
 });
-flowSteps.forEach((s,i)=>{
-  s.addEventListener('click',()=>{
-    if(!activePackage)return;
-    setStep(i);
-  });
+pkgDownBtn.addEventListener('click',()=>{
+  if(pkgIdx>0){pkgIdx--;renderPackage();}
 });
+renderPackage();
 
 /* ─── PAGE ROUTING ─── */
 const main=document.getElementById('main-page');
@@ -1886,24 +2036,33 @@ async function fetchYT(){
     document.getElementById('last-updated').textContent='DATAKILDE IKKE KONFIGURERT';
     return;
   }
-  document.getElementById('rost-config').style.display='none';
+  const cfg=document.getElementById('rost-config');
+  if(cfg)cfg.style.display='none';
+  const subMeta=document.getElementById('sub-meta');
+  const viewMeta=document.getElementById('view-meta');
   try{
     const r=await fetch(ROST_DATA_URL,{cache:'no-cache'});
     if(!r.ok)throw new Error('HTTP '+r.status);
     const d=await r.json();
     countUp(document.getElementById('sub-count'),d.stats?.subscribers||0);
     countUp(document.getElementById('view-count'),d.stats?.views||0);
-    document.getElementById('sub-meta').textContent='LIVE FRA YOUTUBE';
-    document.getElementById('view-meta').textContent='LIVE FRA YOUTUBE';
+    subMeta.textContent='live fra youtube';
+    subMeta.classList.add('live');
+    viewMeta.textContent='live fra youtube';
+    viewMeta.classList.add('live');
     if(d.stats_updated_at){
       const u=new Date(d.stats_updated_at);
       const pad=v=>String(v).padStart(2,'0');
       document.getElementById('last-updated').textContent=
-        'SIST OPPDATERT '+pad(u.getHours())+':'+pad(u.getMinutes());
+        'Sist oppdatert '+pad(u.getHours())+':'+pad(u.getMinutes());
+      const yearEl=document.getElementById('archive-year');
+      if(yearEl)yearEl.textContent=u.getFullYear();
     }
     renderVideos(d.videos);
   }catch(e){
-    document.getElementById('last-updated').textContent='FEIL VED HENTING';
+    document.getElementById('last-updated').textContent='Feil ved henting';
+    subMeta.classList.remove('live');
+    viewMeta.classList.remove('live');
     console.error(e);
   }
 }
