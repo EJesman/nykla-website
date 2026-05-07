@@ -1,9 +1,28 @@
 {
   "stats": {
-    "subscribers": 0,
-    "views": 0
+    "subscribers": 10100,
+    "views": 418198
   },
-  "videos": [],
-  "stats_updated_at": null,
-  "videos_updated_at": null
+  "videos": [
+    {
+      "videoId": "W5ueaOX-Vek",
+      "title": "Hva er et parallelt univers?",
+      "publishedAt": "2026-05-07T11:03:45Z",
+      "thumbnail": "https://i.ytimg.com/vi/W5ueaOX-Vek/maxresdefault.jpg"
+    },
+    {
+      "videoId": "wVlY0Yudwpk",
+      "title": "Hva er det skumleste i verdensrommet?",
+      "publishedAt": "2026-05-06T12:06:04Z",
+      "thumbnail": "https://i.ytimg.com/vi/wVlY0Yudwpk/maxresdefault.jpg"
+    },
+    {
+      "videoId": "2gj5gAJ85VA",
+      "title": "Hvordan vil universet avslutte? BIG RIP!?",
+      "publishedAt": "2026-05-05T12:06:16Z",
+      "thumbnail": "https://i.ytimg.com/vi/2gj5gAJ85VA/maxresdefault.jpg"
+    }
+  ],
+  "stats_updated_at": "2026-05-07T13:44:25.498Z",
+  "videos_updated_at": "2026-05-07T13:41:34.526Z"
 }
