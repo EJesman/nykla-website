@@ -1095,7 +1095,14 @@ footer{
 /* ════════════════════════════════════
    RØST PAGE
 ════════════════════════════════════ */
-#rost-page{background:var(--blue);color:var(--white);min-height:100vh}
+#rost-page{
+  background:
+    radial-gradient(ellipse 90% 70% at 15% 0%, rgba(120,120,255,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 80% at 90% 100%, rgba(0,0,40,0.35) 0%, transparent 65%),
+    var(--blue);
+  color:var(--white);
+  min-height:100vh;
+}
 #rost-page nav.rost-nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:1.4rem 2.5rem;
@@ -1121,57 +1128,42 @@ footer{
 }
 .rost-brand-mini svg{height:14px;width:auto;fill:var(--black)}
 
-.rost-body{padding:0 0 4rem;max-width:1400px;margin:0 auto}
-.rost-body-inner{padding:0 2.5rem}
+.rost-body{padding:5rem 2.5rem 4rem;max-width:1400px;margin:0 auto}
 
-/* Marquee — full bleed, slowly scrolling logo */
-.rost-marquee{
-  position:relative;
-  overflow:hidden;
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  padding:2.4rem 0;
-  margin-bottom:3rem;
-}
-.rost-marquee-track{
-  display:flex;
+/* Split hero: logo left, stats right */
+.rost-hero-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
   align-items:center;
-  gap:3.5rem;
-  width:max-content;
-  animation:rost-marquee-scroll 38s linear infinite;
+  padding-bottom:5rem;
+  margin-bottom:5rem;
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
-.rost-marquee:hover .rost-marquee-track{animation-play-state:paused}
-.rost-marquee-item{
-  display:flex;align-items:center;
-  flex-shrink:0;height:54px;
+.rost-hero-logo-col{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:2rem;
 }
-.rost-marquee-item img{
-  height:54px;width:auto;display:block;opacity:0.95;
+.rost-hero-logo-img{
+  width:min(100%,340px);
+  display:block;
 }
-.rost-marquee-dot{
-  width:8px;height:8px;background:var(--orange);
-  border-radius:50%;flex-shrink:0;
-}
-@keyframes rost-marquee-scroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-
-/* Archive label */
-.rost-archive{
+.rost-hero-meta{
   display:flex;
   flex-wrap:wrap;
   gap:0.9rem;
   font-family:'Space Mono',monospace;
   font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:rgba(255,255,255,0.45);
-  margin-bottom:5rem;
+  color:rgba(255,255,255,0.5);
 }
-.rost-archive .sep{color:rgba(255,255,255,0.18)}
-.rost-archive .live-mark{
+.rost-hero-meta .sep{color:rgba(255,255,255,0.2)}
+.rost-hero-meta .live-mark{
   display:inline-flex;align-items:center;gap:0.4rem;
   color:var(--orange);
 }
-.rost-archive .live-mark::before{
+.rost-hero-meta .live-mark::before{
   content:'';width:6px;height:6px;background:var(--orange);
   border-radius:50%;
   animation:rost-pulse 2s ease-in-out infinite;
@@ -1179,6 +1171,18 @@ footer{
 @keyframes rost-pulse{
   0%,100%{opacity:1}
   50%{opacity:0.3}
+}
+.rost-hero-tagline{
+  font-size:0.95rem;line-height:1.7;
+  color:rgba(255,255,255,0.75);
+  font-weight:300;
+  max-width:46ch;
+  margin:0;
+}
+.rost-hero-stats-col{
+  display:flex;
+  flex-direction:column;
+  gap:0;
 }
 
 /* Refresh button */
@@ -1193,29 +1197,23 @@ footer{
 }
 .rost-refresh:hover{background:var(--white);color:var(--blue);border-color:var(--white)}
 
-/* Stats hero — typography-driven */
-.rost-stats{
-  display:flex;
-  flex-direction:column;
-  margin-bottom:1.5rem;
-  background:none;
-}
+/* Stats — typography-driven, lives inside split hero stats column */
 .stat-card{
   background:none;
-  padding:2.6rem 0 2rem;
-  border-top:1px solid rgba(255,255,255,0.1);
+  padding:1.8rem 0 1.6rem;
+  border-top:1px solid rgba(255,255,255,0.12);
   display:grid;
   grid-template-columns:1fr auto;
   align-items:end;
   gap:0.4rem 1rem;
   transition:none;
 }
-.stat-card:last-of-type{border-bottom:1px solid rgba(255,255,255,0.1)}
+.stat-card:last-of-type{border-bottom:1px solid rgba(255,255,255,0.12)}
 .stat-card:hover{background:none}
 .stat-num{
   font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(4.5rem,11vw,10rem);
-  line-height:0.85;
+  font-size:clamp(3.6rem,7vw,6.5rem);
+  line-height:0.88;
   color:var(--white);
   font-variant-numeric:tabular-nums;
   letter-spacing:-0.03em;
@@ -1253,10 +1251,11 @@ footer{
 .rost-updated{
   font-family:'Space Mono',monospace;
   font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;
-  color:rgba(255,255,255,0.3);
-  margin-bottom:5rem;
+  color:rgba(255,255,255,0.4);
+  margin-top:1.5rem;
   display:flex;
   align-items:center;
+  justify-content:space-between;
   gap:1rem;
 }
 .rost-intro{
@@ -1315,13 +1314,16 @@ footer{
   .contact-cols{grid-template-columns:1fr}
   .services-top{flex-direction:column;align-items:flex-start}
   .services-desc{text-align:left;max-width:100%}
-  .rost-body{padding:0 0 3rem}
-  .rost-body-inner{padding:0 1.2rem}
-  .rost-marquee{padding:1.6rem 0;margin-bottom:2rem}
-  .rost-marquee-item,.rost-marquee-item img{height:38px}
-  .rost-archive{margin-bottom:3rem}
-  .stat-card{padding:2rem 0 1.6rem}
-  .rost-updated{flex-direction:column;align-items:flex-start;gap:0.6rem;margin-bottom:3.5rem}
+  .rost-body{padding:3rem 1.2rem}
+  .rost-hero-split{
+    grid-template-columns:1fr;
+    gap:3rem;
+    padding-bottom:3rem;
+    margin-bottom:3rem;
+  }
+  .rost-hero-logo-img{width:min(70vw,240px)}
+  .stat-card{padding:1.6rem 0 1.4rem}
+  .rost-updated{flex-direction:column;align-items:flex-start;gap:0.8rem}
   .rost-hero-row{gap:1.2rem}
   .rost-stats{grid-template-columns:1fr}
   .videos-grid{grid-template-columns:1fr}
@@ -1698,60 +1700,25 @@ footer{
 
   <div class="rost-body">
 
-    <!-- Marquee — slow scrolling RØST logo -->
-    <div class="rost-marquee">
-      <div class="rost-marquee-track" aria-hidden="true">
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <!-- duplicate for seamless loop -->
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-        <span class="rost-marquee-item"><img src="ROSTLOGO-HVIT.png" alt=""/></span>
-        <span class="rost-marquee-dot"></span>
-      </div>
-    </div>
-
-    <div class="rost-body-inner">
-
-      <!-- Archive metadata -->
-      <div class="rost-archive">
-        <span>Archive Nº 04</span>
-        <span class="sep">/</span>
-        <span>Oslo</span>
-        <span class="sep">/</span>
-        <span id="archive-year">2026</span>
-        <span class="sep">/</span>
-        <span class="live-mark">LIVE FRA YOUTUBE</span>
+    <!-- Split hero: logo + tagline left, stats right -->
+    <div class="rost-hero-split">
+      <div class="rost-hero-logo-col">
+        <img src="ROSTLOGO-HVIT.png" alt="RØST" class="rost-hero-logo-img"/>
+        <div class="rost-hero-meta">
+          <span>Archive Nº 04</span>
+          <span class="sep">/</span>
+          <span>Oslo</span>
+          <span class="sep">/</span>
+          <span id="archive-year">2026</span>
+          <span class="sep">/</span>
+          <span class="live-mark">LIVE FRA YOUTUBE</span>
+        </div>
+        <p class="rost-hero-tagline">
+          Et internprosjekt drevet av folkene bak Nykla — vi tester konsepter, hjelper merkevarer og lager innhold på vår egen måte.
+        </p>
       </div>
 
-      <!-- Stats hero — views first -->
-      <div class="rost-stats">
+      <div class="rost-hero-stats-col">
         <div class="stat-card">
           <div class="stat-num" id="view-count">—</div>
           <div class="stat-label">Totale visninger</div>
@@ -1762,47 +1729,41 @@ footer{
           <div class="stat-label">Abonnenter</div>
           <div class="stat-meta" id="sub-meta">venter på data</div>
         </div>
-      </div>
-
-      <!-- Updated + refresh -->
-      <div class="rost-updated">
-        <span id="last-updated">Ikke hentet ennå</span>
-        <button class="rost-refresh" id="rost-refresh">↺ Oppdater</button>
-      </div>
-
-      <p class="rost-intro">
-        Et internprosjekt drevet av folkene bak Nykla — vi tester konsepter, hjelper merkevarer og lager innhold på vår egen måte.
-      </p>
-
-      <div class="rost-config" id="rost-config" style="display:none">
-        <strong style="color:rgba(255,255,255,0.7)">Datakilde mangler.</strong> Sett <code>ROST_DATA_URL</code> i scriptet til ditt GitHub raw-URL.
-      </div>
-
-      <h3 class="videos-h">Siste videoer.</h3>
-      <div class="videos-grid" id="videos-grid">
-        <div class="video-card">
-          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
-          <div class="video-info">
-            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
-            <div class="video-meta">— — —</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
-          <div class="video-info">
-            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
-            <div class="video-meta">— — —</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
-          <div class="video-info">
-            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
-            <div class="video-meta">— — —</div>
-          </div>
+        <div class="rost-updated">
+          <span id="last-updated">Ikke hentet ennå</span>
+          <button class="rost-refresh" id="rost-refresh">↺ Oppdater</button>
         </div>
       </div>
     </div>
+
+    <div class="rost-config" id="rost-config" style="display:none">
+      <strong style="color:rgba(255,255,255,0.7)">Datakilde mangler.</strong> Sett <code>ROST_DATA_URL</code> i scriptet til ditt GitHub raw-URL.
+    </div>
+
+    <h3 class="videos-h">Siste videoer.</h3>
+    <div class="videos-grid" id="videos-grid">
+        <div class="video-card">
+          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
+          <div class="video-info">
+            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
+            <div class="video-meta">— — —</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
+          <div class="video-info">
+            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
+            <div class="video-meta">— — —</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-placeholder"><div class="video-placeholder-icon">▶</div></div>
+          <div class="video-info">
+            <div class="video-title" style="color:rgba(255,255,255,0.3)">Henter videoer…</div>
+            <div class="video-meta">— — —</div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
 
