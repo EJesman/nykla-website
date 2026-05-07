@@ -1,0 +1,44 @@
+name: Update RØST data
+
+on:
+  schedule:
+    # Hver 15. minutt. GitHub kan utsette cron 5–30 min ved høy last —
+    # det er ok, vi sparer uansett kvote ved å ikke gå oftere.
+    - cron: '*/15 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-rost
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch RØST data
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: node scripts/update-rost-data.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain rost-data.json)" ]]; then
+            git add rost-data.json
+            git commit -m "chore: update RØST data"
+            git push
+          else
+            echo "No changes to commit"
+          fi
