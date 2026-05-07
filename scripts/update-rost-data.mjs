@@ -102,8 +102,9 @@ async function main() {
   const ageHours = videosUpdatedAt
     ? (now - new Date(videosUpdatedAt)) / (1000 * 60 * 60)
     : Infinity;
+  const missingDuration = videos?.some((v) => v.durationSeconds === undefined);
 
-  if (!videos || videos.length === 0 || ageHours >= VIDEO_REFRESH_HOURS) {
+  if (!videos || videos.length === 0 || ageHours >= VIDEO_REFRESH_HOURS || missingDuration) {
     videos = await fetchVideos();
     videosUpdatedAt = now.toISOString();
   }
