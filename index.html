@@ -63,7 +63,9 @@ body.hovering #cursor-ring{opacity:0}
 .hero{
   position:relative;
   min-height:100vh;
-  background:var(--white);
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255,98,0,0.05), transparent 60%),
+    var(--white);
   color:var(--black);
   display:grid;
   grid-template-rows:auto 1fr auto;
@@ -296,6 +298,8 @@ body.hovering #cursor-ring{opacity:0}
   color:var(--black);
 }
 .hb-base-value .accent{color:var(--orange)}
+.hb-base-value a,.contact-address a{color:inherit;text-decoration:none;transition:opacity .2s, color .2s}
+.hb-base-value a:hover,.contact-address a:hover{color:var(--orange)}
 .hb-right{
   display:flex;justify-content:flex-end;align-items:center;gap:1rem;
   font-family:'Space Mono',monospace;
@@ -397,8 +401,11 @@ body.hovering #cursor-ring{opacity:0}
   width:max-content;
   align-items:center;
   margin-top:0.8rem;
+  --logo-base:48px;
 }
-.logos-track:hover{animation-play-state:paused}
+@media (hover:hover){
+  .logos-track:hover{animation-play-state:paused}
+}
 @keyframes slideLogos{
   from{transform:translateX(0)}
   to{transform:translateX(-50%)}
@@ -434,6 +441,80 @@ body.hovering #cursor-ring{opacity:0}
 .logo-item:hover .logo-item-text{opacity:1}
 
 /* ════════════════════════════════════
+   FRAMES STRIP — vertical stills, auto-scrolling track
+════════════════════════════════════ */
+.frames-strip{
+  background:var(--black);
+  padding:2.6rem 0 0.8rem;
+  border-top:1px solid rgba(255,255,255,0.08);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  position:relative;
+  overflow:hidden;
+}
+.frames-strip-label{
+  position:absolute;top:0.9rem;left:1.2rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  z-index:2;
+}
+.frames-row{
+  display:flex;
+  gap:0;
+  width:max-content;
+  animation:slideFrames 80s linear infinite;
+  --frame-w:160px;
+}
+@media (hover:hover){
+  .frames-row:hover{animation-play-state:paused}
+}
+@keyframes slideFrames{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.frame-item{
+  flex:0 0 auto;
+  width:var(--frame-w);
+  aspect-ratio:9/16;
+  overflow:hidden;
+  background:rgba(255,255,255,0.04);
+  border:none;
+  border-radius:0;
+  transition:opacity .35s ease;
+  position:relative;
+}
+.frame-item:hover{
+  opacity:0.85;
+}
+.frame-item img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+@media (max-width:780px){
+  .frames-strip{
+    padding:2.2rem 0 0.6rem;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .frames-strip::-webkit-scrollbar{display:none}
+  .frames-strip-label{left:1rem}
+  .frames-row{
+    animation:none;
+    --frame-w:176px;
+    padding:0 1rem 0.4rem;
+    gap:0.5rem;
+    scroll-snap-type:x mandatory;
+  }
+  .frame-item{
+    border-radius:8px;
+    scroll-snap-align:start;
+  }
+  .frame-item:nth-child(n+12){display:none}
+}
+
+/* ════════════════════════════════════
    SECTIONS
 ════════════════════════════════════ */
 section{padding:7rem 2.5rem;position:relative}
@@ -452,6 +533,8 @@ section.light{background:var(--white);color:var(--black)}
 #about{
   display:grid;grid-template-columns:1fr 1fr;
   gap:6rem;align-items:start;
+  max-width:1200px;
+  margin:0 auto;
 }
 .about-l{
   /* Top of headline aligns with top of body text */
@@ -472,6 +555,12 @@ section.light{background:var(--white);color:var(--black)}
 }
 .about-body p:first-child{margin-top:0.4rem}
 .about-body p+p{margin-top:1.5rem}
+.about-body .highlight{
+  background:linear-gradient(transparent 70%, rgba(255,98,0,0.28) 70%);
+  padding:0 0.1em;
+  font-weight:600;
+  white-space:nowrap;
+}
 
 /* ════════════════════════════════════
    SLIK JOBBER VI — kickoff, journey, output
@@ -496,151 +585,176 @@ section.light{background:var(--white);color:var(--black)}
   max-width:620px;margin-bottom:4rem;
 }
 
-/* — Workshop kickoff — */
-.flow-kickoff{
-  max-width:760px;
-  margin-bottom:1.5rem;
+/* — Heading aside | compact timeline — */
+.flow-grid{
+  display:grid;
+  grid-template-columns:minmax(280px,360px) 1fr;
+  gap:5rem;
+  align-items:center;
+  max-width:1200px;
+  margin:0 auto 5rem;
 }
-.kickoff-tag{
-  display:inline-block;
-  font-family:'Space Mono',monospace;
-  font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--orange);
-  border:1px solid var(--orange);
+.flow-aside{position:relative}
+.flow-loop-hint{
+  display:inline-flex;align-items:center;gap:0.55rem;
+  padding:0.5rem 0.85rem;
+  border:1px dashed rgba(255,98,0,0.4);
   border-radius:999px;
-  padding:0.3rem 0.8rem;
-  margin-bottom:1rem;
-}
-.kickoff-card{
-  display:flex;align-items:flex-start;gap:1.6rem;
-  border-left:2px solid var(--orange);
-  padding:1.2rem 1.6rem;
-  background:rgba(255,255,255,0.03);
-  border-radius:0 4px 4px 0;
-}
-.kickoff-num{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2.6rem;line-height:0.9;
-  color:rgba(255,255,255,0.25);
-  flex-shrink:0;
-}
-.kickoff-body{flex:1;min-width:0}
-.kickoff-name{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.8rem;letter-spacing:0.04em;
-  color:var(--white);
-  margin-bottom:0.4rem;
-}
-.kickoff-desc{
-  font-size:0.95rem;line-height:1.55;
-  color:rgba(255,255,255,0.65);
-}
-.kickoff-down{
-  width:20px;
-  margin:0.8rem 0 1.4rem 1.5rem;
-  color:rgba(255,255,255,0.3);
-}
-.kickoff-down svg{width:100%;height:auto;display:block}
-
-/* — Monthly journey — */
-.flow-journey{
-  position:relative;
-  border:1px dashed rgba(255,98,0,0.35);
-  border-radius:8px;
-  padding:2.2rem 1.4rem 1.6rem;
-  background:rgba(255,98,0,0.02);
-  margin-bottom:5rem;
-}
-.journey-header{
-  position:absolute;
-  top:-14px;left:1.5rem;
-  background:var(--black);
-  padding:0.3rem 0.9rem;
-}
-.journey-label{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  font-family:'Space Mono',monospace;
-  font-size:0.6rem;letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--orange);
-}
-.journey-loop-icon{width:14px;height:14px;color:var(--orange)}
-
-.journey-track{
-  display:flex;
-  align-items:stretch;
-  gap:0.5rem;
-}
-.journey-step{
-  flex:1 1 0;
-  min-width:0;
-  display:flex;flex-direction:column;
-  gap:0.6rem;
-  padding:1rem 0.9rem;
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:6px;
-  transition:border-color .25s, background .25s;
-}
-.journey-step:hover{
-  border-color:rgba(255,98,0,0.35);
-  background:rgba(255,98,0,0.04);
-}
-.journey-step.optional{
-  border-style:dashed;
-  background:transparent;
-}
-.step-num{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.4rem;color:var(--orange);
-  line-height:1;
-}
-.step-name{
-  font-family:'Space Mono',monospace;
-  font-size:0.62rem;letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.92);
-  line-height:1.35;
-}
-.step-name-meta{
-  display:block;
-  font-size:0.5rem;letter-spacing:0.14em;
-  color:rgba(255,255,255,0.45);
-  margin-top:0.25rem;
-  font-weight:400;
-}
-.step-desc{
-  font-size:0.76rem;line-height:1.5;
-  color:rgba(255,255,255,0.55);
-  font-weight:300;
-}
-.journey-arrow{
-  flex:0 0 auto;
-  align-self:center;
-  width:18px;
-  color:rgba(255,98,0,0.55);
-}
-.journey-arrow svg{width:100%;height:auto;display:block}
-
-.journey-loop-back{
-  display:flex;align-items:center;justify-content:center;
-  gap:0.5rem;
-  margin-top:1.2rem;
-  color:rgba(255,98,0,0.75);
   font-family:'Space Mono',monospace;
   font-size:0.55rem;letter-spacing:0.18em;
   text-transform:uppercase;
+  color:rgba(255,98,0,0.85);
+  background:rgba(255,98,0,0.04);
+  margin-top:1.2rem;
 }
-.journey-loop-back svg{width:11px;height:11px}
+.journey-loop-icon{width:13px;height:13px;color:var(--orange);flex-shrink:0}
 
-/* — Volume + platforms — */
-.flow-output{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:3rem;
-  margin-bottom:3rem;
+/* — 3 phase cards — */
+.flow-cards-wrap{
+  display:flex;flex-direction:column;
+  gap:1rem;
 }
-.output-block{display:flex;flex-direction:column;gap:1rem}
+.flow-cards-wrap .flow-loop-hint{
+  align-self:flex-start;
+  margin-top:0;
+}
+.flow-cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.2rem;
+}
+.phase-card{
+  position:relative;
+  display:flex;flex-direction:column;
+  gap:0.8rem;
+  padding:1.6rem 1.4rem 1.5rem;
+  background:rgba(255,255,255,0.025);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px;
+  transition:border-color .25s, background .25s, transform .25s;
+}
+.phase-card:hover{
+  border-color:rgba(255,98,0,0.45);
+  background:rgba(255,98,0,0.04);
+  transform:translateY(-3px);
+}
+.phase-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;
+}
+.phase-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.6rem;
+  color:var(--orange);
+  line-height:0.9;
+  letter-spacing:0.02em;
+}
+.phase-arrow{
+  width:28px;
+  color:rgba(255,98,0,0.55);
+  flex-shrink:0;
+}
+.phase-arrow svg{width:100%;height:auto;display:block}
+.phase-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.5rem;
+  letter-spacing:0.03em;
+  line-height:1;
+  color:var(--white);
+  margin:0;
+}
+.phase-desc{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.88rem;
+  line-height:1.55;
+  color:rgba(255,255,255,0.65);
+  margin:0;
+}
+.phase-list{
+  list-style:none;
+  display:flex;flex-direction:column;
+  gap:0.45rem;
+  margin-top:0.4rem;
+  padding:0;
+}
+.phase-list li{
+  position:relative;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.78);
+  padding-left:1rem;
+}
+.phase-list li::before{
+  content:'';
+  position:absolute;
+  left:0;top:0.5em;
+  width:6px;height:1px;
+  background:var(--orange);
+}
+.phase-list-meta{
+  color:rgba(255,255,255,0.4);
+  font-weight:400;
+}
+.detail-tag{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:0.5rem;
+  min-height:0.7rem;
+}
+.detail-row{
+  display:flex;
+  align-items:baseline;
+  gap:1rem;
+  margin-bottom:0.6rem;
+}
+.detail-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;
+  color:var(--orange);
+  line-height:1;
+  letter-spacing:0.02em;
+}
+.detail-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.7rem;
+  color:var(--white);
+  line-height:1;
+  margin:0;
+  letter-spacing:0.02em;
+}
+.detail-desc{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.92rem;
+  line-height:1.55;
+  color:rgba(255,255,255,0.78);
+  margin:0 0 0.8rem;
+}
+.detail-hint{
+  font-family:'Space Mono',monospace;
+  font-size:0.5rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.35);
+}
+
+/* — Calendar & volume row — */
+.flow-output-row{
+  display:grid;
+  grid-template-columns:1fr minmax(280px,360px);
+  gap:5rem;
+  align-items:center;
+  max-width:1200px;
+  margin:0 auto 4rem;
+}
+.flow-output-head{
+  display:flex;flex-direction:column;
+  gap:1rem;
+  align-items:flex-start;
+}
 .output-label{
   font-family:'Space Mono',monospace;
   font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;
@@ -648,53 +762,179 @@ section.light{background:var(--white);color:var(--black)}
   display:flex;align-items:center;gap:0.7rem;
 }
 .output-label::before{content:'';width:24px;height:1px;background:var(--orange)}
-
-.volume-toggle{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0.6rem;
-}
-.volume-btn{
-  display:flex;flex-direction:column;
-  align-items:flex-start;gap:0.3rem;
-  padding:1.4rem 1.4rem 1.2rem;
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:8px;
-  background:rgba(255,255,255,0.02);
-  color:var(--white);
-  font-family:inherit;
-  cursor:pointer;
-  text-align:left;
-  transition:border-color .25s, background .25s, transform .25s;
-}
-.volume-btn:hover{
-  border-color:rgba(255,98,0,0.6);
-  background:rgba(255,98,0,0.05);
-}
-.volume-btn.active{
-  border-color:var(--orange);
-  background:rgba(255,98,0,0.1);
-}
-.vol-num{
+.output-title{
   font-family:'Bebas Neue',sans-serif;
-  font-size:3.4rem;line-height:0.9;
-  color:var(--orange);
+  font-size:clamp(1.8rem,2.8vw,2.6rem);
   letter-spacing:0.02em;
+  line-height:1;
+  color:var(--white);
+  margin:0;
 }
-.vol-label{
-  font-family:'Space Mono',monospace;
-  font-size:0.55rem;letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.75);
-  margin-top:0.2rem;
+.output-title .o{color:var(--orange)}
+.output-desc{
+  color:rgba(255,255,255,0.65);
+  font-size:0.92rem;line-height:1.55;
+  margin:0 0 0.5rem;
+  max-width:38ch;
 }
-.vol-meta{
-  font-family:'DM Sans',sans-serif;
-  font-size:0.85rem;
+
+/* — Segmented volume control (pill toggle) — */
+.vol-segmented{
+  display:inline-flex;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:999px;
+  padding:4px;
+  gap:0;
+}
+.vol-seg{
+  display:inline-flex;align-items:baseline;gap:0.4rem;
+  background:transparent;
+  border:none;
+  border-radius:999px;
   color:rgba(255,255,255,0.55);
-  margin-top:0.4rem;
+  cursor:pointer;
+  font-family:inherit;
+  padding:0.55rem 1.2rem;
+  transition:color .25s, background .25s, transform .25s;
 }
-.volume-btn.active .vol-meta{color:rgba(255,255,255,0.85)}
+.vol-seg:hover{color:rgba(255,255,255,0.9)}
+.vol-seg.active{
+  background:var(--orange);
+  color:var(--black);
+}
+.vol-seg.active .seg-suffix{color:rgba(0,0,0,0.7)}
+.seg-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.5rem;
+  letter-spacing:0.02em;
+  line-height:1;
+}
+.seg-suffix{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+}
+.vol-cadence{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+}
+.cadence-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--orange);
+  box-shadow:0 0 0 4px rgba(255,98,0,0.18);
+  animation:cadencePulse 2s ease-in-out infinite;
+}
+@keyframes cadencePulse{
+  0%,100%{box-shadow:0 0 0 4px rgba(255,98,0,0.18)}
+  50%{box-shadow:0 0 0 7px rgba(255,98,0,0.05)}
+}
+.output-platforms{
+  display:flex;flex-wrap:wrap;gap:0.4rem;
+  margin-top:0.5rem;
+}
+
+/* — Calendar (clean light card) — */
+.flow-calendar{
+  width:100%;
+  max-width:520px;
+  justify-self:start;
+}
+.cal-card{
+  background:var(--white);
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:14px;
+  padding:1.5rem 1.5rem 1.6rem;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,0.55), 0 8px 18px -8px rgba(0,0,0,0.3);
+  font-family:'DM Sans',sans-serif;
+  color:var(--black);
+}
+.cal-card-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:1rem;
+  margin-bottom:1rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.cal-month-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.5rem;
+  letter-spacing:0.04em;
+  line-height:1;
+  color:var(--black);
+}
+.cal-month-meta{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,0.5);
+}
+.cal-month-meta #cal-count{
+  color:var(--orange);
+  font-weight:700;
+}
+.cal-weekdays{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:5px;
+  font-family:'Space Mono',monospace;
+  font-size:0.5rem;letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,0.4);
+  margin-bottom:6px;
+}
+.cal-weekdays span{padding:0.25rem 0.3rem;text-align:center}
+.cal-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px;
+}
+.cal-day{
+  aspect-ratio:1/1;
+  border-radius:8px;
+  background:#f6f6f3;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  transition:all .3s ease;
+}
+.cal-day.empty{background:transparent}
+.cal-day .cal-num{
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;
+  letter-spacing:0.02em;
+  color:rgba(0,0,0,0.4);
+  font-weight:600;
+}
+.cal-event{
+  position:absolute;
+  bottom:5px;left:50%;
+  transform:translateX(-50%) scale(0.5);
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--white);
+  opacity:0;
+  transition:opacity .35s ease, transform .35s ease;
+}
+.cal-day.has-video{
+  background:var(--orange);
+  box-shadow:0 4px 12px -4px rgba(255,98,0,0.5);
+}
+.cal-day.has-video .cal-num{
+  color:var(--white);
+  font-weight:700;
+  font-size:0.7rem;
+}
+.cal-day.has-video .cal-event{
+  opacity:1;
+  transform:translateX(-50%) scale(1);
+}
+.cal-day.has-video:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px -6px rgba(255,98,0,0.65);
+}
 
 .platforms-list{
   display:flex;flex-wrap:wrap;
@@ -945,10 +1185,92 @@ section.light{background:var(--white);color:var(--black)}
    PAKKER
 ════════════════════════════════════ */
 #services{overflow:hidden;background:var(--black);color:var(--white)}
+.services-inner{max-width:1200px;margin:0 auto}
 .services-top{
   display:flex;justify-content:space-between;align-items:flex-end;
-  margin-bottom:5rem;gap:2rem;
+  margin-bottom:4rem;gap:2rem;
 }
+.services-desc strong{
+  color:var(--orange);
+  font-weight:600;
+}
+
+/* — Deliverables timeline — */
+.del-section{
+  margin-bottom:5rem;
+}
+.del-section-label{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:1.6rem;
+}
+.del-bullet{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--orange);
+  box-shadow:0 0 0 4px rgba(255,98,0,0.18);
+  display:inline-block;
+  animation:cadencePulse 2s ease-in-out infinite;
+}
+.del-track{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1.1fr;
+  gap:0.6rem;
+  align-items:stretch;
+}
+.del{
+  display:flex;flex-direction:column;
+  gap:0.5rem;
+  padding:1.4rem 1.3rem 1.3rem;
+  background:rgba(255,255,255,0.025);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:6px;
+  transition:border-color .25s, background .25s;
+}
+.del:hover{
+  border-color:rgba(255,98,0,0.35);
+  background:rgba(255,98,0,0.04);
+}
+.del-day{
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--orange);
+}
+.del-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;
+  letter-spacing:0.03em;
+  line-height:1;
+  color:var(--white);
+  margin:0;
+}
+.del-desc{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.82rem;
+  line-height:1.5;
+  color:rgba(255,255,255,0.65);
+  margin:0;
+}
+.del-shoot{
+  background:rgba(255,98,0,0.08);
+  border-color:var(--orange);
+  box-shadow:0 0 0 3px rgba(255,98,0,0.08);
+}
+.del-shoot .del-day{color:var(--white);font-weight:700}
+.del-shoot .del-name{color:var(--orange)}
+.del-shoot:hover{
+  background:rgba(255,98,0,0.12);
+}
+.del-arrow{
+  align-self:center;
+  width:22px;
+  color:rgba(255,98,0,0.5);
+}
+.del-arrow svg{width:100%;height:auto;display:block}
+.del-arrow-shoot{color:var(--orange)}
 .services-h{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(3rem,7vw,7rem);
@@ -1050,6 +1372,156 @@ section.light{background:var(--white);color:var(--black)}
   transition:color .25s;
 }
 .svc-num{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--gray)}
+
+/* — Expandable svc row (Podcast) — */
+.svc-row-trigger{
+  width:100%;
+  background:none;border:none;
+  font:inherit;color:inherit;
+  cursor:pointer;
+  text-align:left;
+  appearance:none;
+}
+.svc-row-meta{
+  display:flex;align-items:center;gap:1rem;
+}
+.svc-chevron{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:14px;height:14px;
+  color:rgba(255,255,255,0.5);
+  transition:transform .35s cubic-bezier(0.16,1,0.3,1), color .25s;
+}
+.svc-chevron svg{width:100%;height:100%;display:block}
+.svc-row-trigger[aria-expanded="true"] .svc-chevron{transform:rotate(180deg);color:var(--orange)}
+.svc-row-trigger[aria-expanded="true"] .svc-name{color:var(--orange)}
+
+.svc-panel{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .55s cubic-bezier(0.16,1,0.3,1);
+  border-bottom:1px solid var(--line);
+  margin-top:-1px; /* collapse with row's bottom border */
+}
+.svc-panel-clip{overflow:hidden}
+.svc-panel.open{grid-template-rows:1fr}
+
+.svc-panel-inner{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:4rem;
+  padding:2.5rem 0 3.5rem;
+}
+.svc-panel-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:1.4rem;
+}
+
+.svc-checklist{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;
+}
+.svc-checklist li{
+  display:flex;align-items:center;gap:0.9rem;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.95rem;
+  color:rgba(255,255,255,0.88);
+  padding:0.75rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.svc-checklist li:last-child{border-bottom:none}
+.svc-checklist li::before{
+  content:'';
+  flex:0 0 auto;
+  width:14px;height:14px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23ff6200' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 7 L6 11 L12 3'/></svg>") no-repeat center / contain;
+}
+
+.svc-deliv-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:1.5rem;
+  align-items:start;
+}
+.svc-deliv{
+  display:flex;flex-direction:column;gap:0.6rem;
+}
+.svc-deliv-tag{
+  font-family:'Space Mono',monospace;
+  font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+}
+.svc-deliv-frame{
+  width:100%;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:6px;
+  overflow:hidden;
+  position:relative;
+}
+.svc-deliv-frame img,
+.svc-deliv-frame video,
+.svc-deliv-frame iframe{
+  width:100%;height:100%;display:block;
+  object-fit:cover;border:none;
+}
+.svc-deliv-frame-square{aspect-ratio:1/1}
+.svc-deliv-frame-16by9{aspect-ratio:16/9}
+.svc-deliv-frame-9by16{aspect-ratio:9/16;max-width:60%}
+
+.svc-panel-lead{
+  font-family:'DM Sans',sans-serif;
+  font-size:1rem;
+  line-height:1.55;
+  color:rgba(255,255,255,0.8);
+  margin:0 0 1.5rem;
+  max-width:34rem;
+}
+.svc-panel-lead strong{color:var(--white);font-weight:600}
+
+.svc-stats{
+  display:flex;gap:2.4rem;
+  margin-top:1.6rem;padding-top:1.4rem;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.svc-stat{display:flex;flex-direction:column;gap:0.3rem}
+.svc-stat-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.3rem;color:var(--orange);
+  line-height:1;
+}
+.svc-stat-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+}
+
+@media (max-width:900px){
+  .svc-panel-inner{
+    grid-template-columns:1fr;
+    gap:2rem;
+    padding:1.8rem 0 2.6rem;
+  }
+  .svc-panel-lead{font-size:0.95rem;margin-bottom:1.3rem}
+  .svc-checklist li{font-size:0.92rem;padding:0.65rem 0;gap:0.75rem}
+  .svc-deliv-grid{
+    grid-template-columns:1fr;
+    gap:1.3rem;
+  }
+  .svc-deliv-frame-9by16{
+    max-width:55%;
+    align-self:center;
+  }
+  .svc-stats{
+    gap:1.4rem;
+    flex-wrap:wrap;
+    margin-top:1.3rem;
+    padding-top:1.2rem;
+  }
+  .svc-stat-num{font-size:1.9rem}
+  .svc-row-meta{gap:0.7rem}
+}
 
 /* Team */
 #team{overflow:hidden;background:var(--black);color:var(--white)}
@@ -1318,14 +1790,34 @@ footer{
 @media(max-width:900px){
   .hero-topbar{padding:1.2rem;flex-wrap:wrap;gap:0.8rem}
   .topbar-nav{display:none}
+  .logos-strip{
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .logos-strip::-webkit-scrollbar{display:none}
+  .logos-track{
+    gap:2.5rem;
+    --logo-base:32px;
+    animation:none;
+    padding:0 1.2rem;
+  }
+  .logo-item-text{font-size:1rem}
   .hero-body{grid-template-columns:1fr}
   .hero-rail{display:none}
-  .hero-stage{padding:3rem 1.2rem 5rem}
+  .hero-stage{padding:3rem 1.2rem 1.5rem}
   .hero-eyebrow{top:1.5rem;font-size:0.55rem}
   .hero-message{position:relative;left:auto;bottom:auto;transform:translateY(20px);margin-top:2rem;padding:0 1rem}
-  .scroll-cue{position:relative;bottom:auto;left:auto;transform:none;margin-top:3rem}
-  .hero-bottom{grid-template-columns:1fr;gap:1.2rem;padding:1.2rem;text-align:center}
-  .hb-left,.hb-right{justify-content:center;text-align:center}
+  .hero-message.show{transform:translateY(0)}
+  .scroll-cue{position:relative;bottom:auto;left:auto;transform:none;margin-top:0.6rem}
+  .hero-bottom{grid-template-columns:1fr;gap:0.7rem;padding:0.4rem 1rem 1.2rem;text-align:center}
+  .hb-left{
+    justify-content:center;text-align:center;
+    font-size:0.7rem;letter-spacing:0.14em;line-height:2.4;
+  }
+  .hb-left a{padding:0.4rem 0.5rem;display:inline-block}
+  .hb-right{display:none}
   .rost-tab{
     padding:0.9rem 0.5rem;
     gap:0.6rem;
@@ -1334,15 +1826,31 @@ footer{
   .rost-tab-meta{display:none}
   .rost-tab-arrow{width:14px;height:14px}
   section{padding:4rem 1.2rem}
+  #flow{padding-top:2rem}
   #about{grid-template-columns:1fr;gap:2rem}
   .pakker-grid{grid-template-columns:1fr}
   .reasons-grid{grid-template-columns:1fr}
-  .journey-track{flex-direction:column;align-items:stretch}
-  .journey-arrow{transform:rotate(90deg);align-self:center;width:14px;margin:0.2rem 0}
-  .flow-journey{padding:2rem 1rem 1.4rem}
-  .flow-output{grid-template-columns:1fr;gap:2.2rem}
-  .volume-toggle{grid-template-columns:1fr}
-  .vol-num{font-size:2.8rem}
+  .del-track{grid-template-columns:1fr;gap:0.6rem}
+  .del-arrow{transform:rotate(90deg);justify-self:center}
+  .flow-grid{grid-template-columns:1fr;gap:2.5rem}
+  .flow-aside{position:static}
+  .flow-cards{grid-template-columns:1fr;gap:1rem}
+  .phase-card{padding:1.3rem 1.2rem 1.2rem}
+  .phase-arrow{transform:rotate(90deg)}
+  .phase-card:last-child .phase-arrow{display:none}
+  .flow-output-row{grid-template-columns:1fr;gap:2rem}
+  .flow-output-row .flow-calendar{order:1}
+  .flow-output-row .flow-output-head{order:2}
+  .flow-calendar{max-width:100%;justify-self:stretch}
+  .vol-segmented{align-self:flex-start}
+  .cal-card{padding:1.1rem 1rem 1.2rem}
+  .cal-month-name{font-size:1.2rem}
+  .cal-weekdays{font-size:0.45rem;gap:3px}
+  .cal-weekdays span{padding:0.2rem}
+  .cal-grid{gap:3px}
+  .cal-day{border-radius:5px}
+  .cal-day .cal-num{font-size:0.55rem}
+  .cal-day.has-video .cal-num{font-size:0.6rem}
   .portal-grid{grid-template-columns:1fr;gap:3rem}
   .portal-mockup{font-size:0.9rem}
   .mockup-body{grid-template-columns:120px 1fr}
@@ -1401,6 +1909,7 @@ footer{
     <div class="topbar-nav">
       <a href="#about">Om oss</a>
       <a href="#flow">Prosess</a>
+      <a href="#portal">NyklaPortalen</a>
       <a href="#services">Hvorfor oss</a>
       <a href="#team">Team</a>
       <a href="#contact">Kontakt</a>
@@ -1450,11 +1959,14 @@ footer{
     <div class="hb-left">
       <a href="#about">Om oss</a> &nbsp;·&nbsp;
       <a href="#flow">Prosess</a> &nbsp;·&nbsp;
-      <a href="#services">Hvorfor oss</a>
+      <a href="#portal">NyklaPortalen</a> &nbsp;·&nbsp;
+      <a href="#services">Hvorfor oss</a> &nbsp;·&nbsp;
+      <a href="#team">Team</a> &nbsp;·&nbsp;
+      <a href="#contact">Kontakt</a>
     </div>
     <div class="hb-base">
       <div class="hb-base-label">Base & Studio</div>
-      <div class="hb-base-value">Gullhaugveien 10<span class="accent">,</span> Nydalen</div>
+      <div class="hb-base-value"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Gullhaugveien+10+Nydalen+Oslo" target="_blank" rel="noopener" aria-label="Veibeskrivelse til Gullhaugveien 10, Nydalen">Gullhaugveien 10<span class="accent">,</span> Nydalen</a></div>
     </div>
     <div class="hb-right">
       <span style="font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase">Lokal tid</span>
@@ -1478,114 +1990,137 @@ footer{
     <h2 class="about-h">Hei, vi er Nykla<span class="o">.</span><br>En kreativ<br>innholdsfabrikk<span class="o">.</span></h2>
   </div>
   <div class="about-body reveal reveal-d1">
-    <p>Folkene i Nykla har vært med å starte GUTTA og jobbet tett med Oskar Westerlin de siste årene.</p>
+    <p>Folkene i Nykla har vært med å starte <span class="highlight">GUTTA</span> og jobbet tett med <span class="highlight">Oskar Westerlin</span> de siste årene.</p>
     <p>Vi produserer dokumentarer, YouTube-serier, podcaster og annet innhold som bygger mennesker og merkevarer.</p>
   </div>
 </section>
 
+<!-- FRAMES STRIP — stillbilder fra filmene -->
+<div class="frames-strip" aria-label="Noen av det vi gjør">
+  <div class="frames-strip-label">Noen av det vi gjør</div>
+  <div class="frames-row">
+    <div class="frame-item"><img src="frames/01.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/02.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/03.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/04.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/05.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/06.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/07.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/08.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/09.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/11.jpg" alt="" loading="lazy"></div>
+    <div class="frame-item"><img src="frames/12.jpg" alt="" loading="lazy"></div>
+  </div>
+</div>
+
 <!-- SLIK JOBBER VI -->
 <section id="flow">
-  <div class="reveal">
-    <div class="section-label" style="color:rgba(255,255,255,0.5)">02 — Slik jobber vi</div>
-    <h2 class="flow-h">Vi tar over dine<br>sosiale medier<span class="o">.</span></h2>
-    <p class="flow-intro">
-      Levende, ekte film — laget av mennesker, ikke AI. Vi leverer 15 eller 30 ferdige videoer hver måned, og publiserer dem rett på dine kanaler.
-    </p>
-  </div>
+  <div class="flow-grid reveal">
+    <aside class="flow-aside">
+      <div class="section-label" style="color:rgba(255,255,255,0.5)">02 — Slik jobber vi</div>
+      <h2 class="flow-h">Vi tar over deres<br>sosiale medier<span class="o">.</span></h2>
+      <p class="flow-intro">
+        Levende, ekte film — laget av mennesker. Vi leverer 15 eller 30 ferdige videoer hver måned, og publiserer dem rett på dine kanaler.
+      </p>
+    </aside>
 
-  <!-- Workshop kickoff -->
-  <div class="flow-kickoff reveal">
-    <div class="kickoff-tag">Engangs · Oppstart</div>
-    <div class="kickoff-card">
-      <div class="kickoff-num">00</div>
-      <div class="kickoff-body">
-        <h3 class="kickoff-name">Workshop</h3>
-        <p class="kickoff-desc">Vi blir kjent med merkevaren din og bygger en idébank sammen. Grunnlaget for alt vi lager.</p>
-      </div>
-    </div>
-    <div class="kickoff-down" aria-hidden="true">
-      <svg viewBox="0 0 24 40" fill="none"><path d="M12 2 V 34 M 6 28 L 12 34 L 18 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-  </div>
-
-  <!-- Monthly journey -->
-  <div class="flow-journey reveal">
-    <div class="journey-header">
-      <span class="journey-label">
+    <div class="flow-cards-wrap">
+      <div class="flow-loop-hint">
         <svg class="journey-loop-icon" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-7.94-4.78M3 12a9 9 0 0 1 9-9 9 9 0 0 1 7.94 4.78M21 4v5h-5M3 20v-5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Hver måned
-      </span>
-    </div>
+        <span>Et månedlig kretsløp</span>
+      </div>
+      <div class="flow-cards">
+      <article class="phase-card">
+        <div class="phase-head">
+          <span class="phase-num">01</span>
+          <span class="phase-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <h3 class="phase-name">Pre-produksjon</h3>
+        <p class="phase-desc">Planlegging og godkjenning før innspilling. Idéer blir til ferdige planer du har godkjent.</p>
+        <ul class="phase-list">
+          <li>Konseptplan</li>
+          <li>Dagsplan</li>
+          <li>Godkjenning</li>
+        </ul>
+      </article>
 
-    <div class="journey-track">
-      <div class="journey-step">
-        <div class="step-num">01</div>
-        <div class="step-name">Konseptplan</div>
-        <div class="step-desc">Idéer planlegges og godkjennes ~7 dager før innspilling.</div>
-      </div>
-      <div class="journey-arrow" aria-hidden="true"><svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="journey-step">
-        <div class="step-num">02</div>
-        <div class="step-name">Dagsplan</div>
-        <div class="step-desc">Tidsestimat og rekkefølge sendes 2 dager før innspilling.</div>
-      </div>
-      <div class="journey-arrow" aria-hidden="true"><svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="journey-step">
-        <div class="step-num">03</div>
-        <div class="step-name">Innspilling</div>
-        <div class="step-desc">1–2 innspillingsdager dekker hele månedens innhold.</div>
-      </div>
-      <div class="journey-arrow" aria-hidden="true"><svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="journey-step">
-        <div class="step-num">04</div>
-        <div class="step-name">Godkjenning</div>
-        <div class="step-desc">Du godkjenner ferdige filmer i NyklaPortalen.</div>
-      </div>
-      <div class="journey-arrow" aria-hidden="true"><svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="journey-step optional">
-        <div class="step-num">05</div>
-        <div class="step-name">Revidering<span class="step-name-meta"> · om nødvendig</span></div>
-        <div class="step-desc">Vi gjør justeringer hvis du har kommentarer.</div>
-      </div>
-      <div class="journey-arrow" aria-hidden="true"><svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="journey-step">
-        <div class="step-num">06</div>
-        <div class="step-name">Publisering</div>
-        <div class="step-desc">Vi poster direkte på Instagram, Facebook og TikTok.</div>
-      </div>
-    </div>
+      <article class="phase-card">
+        <div class="phase-head">
+          <span class="phase-num">02</span>
+          <span class="phase-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <h3 class="phase-name">Innspilling</h3>
+        <p class="phase-desc">Vi dekker hele månedens innhold på 1–2 innspillingsdager med erfarent filmteam.</p>
+        <ul class="phase-list">
+          <li>1–2 dager</li>
+          <li>Filmteam</li>
+          <li>Studio eller location</li>
+          <li>Hele månedens innhold</li>
+        </ul>
+      </article>
 
-    <div class="journey-loop-back">
-      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 8 a 6 6 0 1 1 -6 -6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 2 L 14 2 L 14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Gjentas hver måned
+      <article class="phase-card">
+        <div class="phase-head">
+          <span class="phase-num">03</span>
+        </div>
+        <h3 class="phase-name">Post-produksjon</h3>
+        <p class="phase-desc">Klipp, grafikk og publisering. Filmene ferdigstilles og legges ut på dine kanaler.</p>
+        <ul class="phase-list">
+          <li>Klipp, lyd & farge</li>
+          <li>Grafikk</li>
+          <li>Revidering<span class="phase-list-meta"> · om nødvendig</span></li>
+          <li>Publisering</li>
+        </ul>
+      </article>
+      </div>
+      <div class="flow-loop-hint flow-portal-hint">
+        <svg class="journey-loop-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M8 14h2M14 14h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Du har all oversikt i NyklaPortalen</span>
+      </div>
     </div>
   </div>
 
-  <!-- Volume + Platforms output -->
-  <div class="flow-output reveal">
-    <div class="output-block">
-      <div class="output-label">Volum</div>
-      <div class="volume-toggle">
-        <button class="volume-btn active" data-pkg="15" type="button">
-          <span class="vol-num">15</span>
-          <span class="vol-label">filmer / mnd</span>
-          <span class="vol-meta">posting annenhver dag</span>
-        </button>
-        <button class="volume-btn" data-pkg="30" type="button">
-          <span class="vol-num">30</span>
-          <span class="vol-label">filmer / mnd</span>
-          <span class="vol-meta">posting hver dag</span>
-        </button>
+  <!-- Calendar + Volume -->
+  <div class="flow-output-row reveal">
+    <div class="flow-calendar">
+      <div class="cal-card">
+        <div class="cal-card-head">
+          <div class="cal-month-name">Mai 2026</div>
+          <div class="cal-month-meta"><span id="cal-count">15</span> filmer publiseres</div>
+        </div>
+        <div class="cal-weekdays">
+          <span>Man</span><span>Tir</span><span>Ons</span><span>Tor</span><span>Fre</span><span>Lør</span><span>Søn</span>
+        </div>
+        <div class="cal-grid" id="cal-grid" data-mode="15"></div>
       </div>
     </div>
 
-    <div class="output-block">
-      <div class="output-label">Plattformer</div>
-      <div class="platforms-list">
+    <div class="flow-output-head">
+      <div class="output-label">Volum & publisering</div>
+      <h3 class="output-title">Velg tempoet ditt<span class="o">.</span></h3>
+      <p class="output-desc">15 eller 30 ferdige filmer hver måned — vi planlegger publisering, du følger med i NyklaPortalen.</p>
+      <div class="vol-segmented" role="radiogroup" aria-label="Volum">
+        <button class="vol-seg active" data-pkg="15" type="button" role="radio" aria-checked="true">
+          <span class="seg-num">15</span>
+          <span class="seg-suffix">/ mnd</span>
+        </button>
+        <button class="vol-seg" data-pkg="30" type="button" role="radio" aria-checked="false">
+          <span class="seg-num">30</span>
+          <span class="seg-suffix">/ mnd</span>
+        </button>
+      </div>
+      <div class="vol-cadence">
+        <span class="cadence-dot"></span>
+        <span id="vol-cadence-text">Publisering annenhver dag</span>
+      </div>
+      <div class="output-platforms">
         <span class="platform-pill primary">Instagram Reels</span>
         <span class="platform-pill primary">Facebook Reels</span>
         <span class="platform-pill primary">TikTok</span>
-        <span class="platform-pill secondary">+ flere på forespørsel</span>
       </div>
     </div>
   </div>
@@ -1600,8 +2135,8 @@ footer{
   <div class="portal-grid reveal">
     <div class="portal-l">
       <div class="section-label">03 — NyklaPortalen</div>
-      <h2 class="portal-h">Alt på<br>ett sted<span class="o">.</span></h2>
-      <p class="portal-desc">En plattform der du følger hver film fra konsept til publisert. Godkjenn, kommenter og last ned alt — uten lenker som forsvinner i en e-posttråd.</p>
+      <h2 class="portal-h">Nykla<br>Portalen<span class="o">.</span></h2>
+      <p class="portal-desc">Vi har utviklet vår helt egen plattform — skreddersydd for nøyaktig det vi og kundene våre trenger. Følg hver film fra konsept til publisert. Godkjenn, kommenter og last ned alt — uten lenker som forsvinner i en e-posttråd.</p>
       <ul class="portal-features">
         <li>
           <span class="portal-feat-num">01</span>
@@ -1694,37 +2229,178 @@ footer{
 
 <!-- HVORFOR OSS -->
 <section id="services">
-  <div class="services-top reveal">
-    <div>
-      <div class="section-label" style="color:rgba(255,255,255,0.5)">04 — Hvorfor oss</div>
-      <h2 class="services-h">SOSIALE MEDIER<br>SATT I SYSTEM.</h2>
+  <div class="services-inner">
+    <div class="services-top reveal">
+      <div>
+        <div class="section-label" style="color:rgba(255,255,255,0.5)">04 — Hvorfor oss</div>
+        <h2 class="services-h">SOSIALE MEDIER<br>SATT I SYSTEM<span class="o">.</span></h2>
+      </div>
+      <p class="services-desc"><strong>Ikke en freelancer.</strong> Vi er et team som kjører flere produksjoner parallelt — med faste leveranser på faste datoer før hver innspillingsdag.</p>
     </div>
-    <p class="services-desc">Vi er en av få i Norge som leverer full sosiale medier-styring i et strukturert, profesjonelt system — fra første idé til ferdig publisert film.</p>
-  </div>
 
-  <div class="reasons-grid reveal reveal-d1">
-    <div class="reason">
-      <div class="reason-num">01</div>
-      <h3 class="reason-h">Levende, ekte film</h3>
-      <p class="reason-body">Vi spiller inn med ekte mennesker — ikke AI. Det skaper troverdighet og engasjement som genererte videoer aldri kommer i nærheten av.</p>
+    <!-- Deliverables timeline -->
+    <div class="del-section reveal reveal-d1">
+      <div class="del-section-label">
+        <span class="del-bullet"></span>
+        Hva som ligger klart i innboksen din
+      </div>
+      <div class="del-track">
+        <div class="del">
+          <div class="del-day">−7 dager</div>
+          <h4 class="del-name">Konseptplan</h4>
+          <p class="del-desc">Idéene for hele måneden, ferdig konseptualisert og klar for godkjenning.</p>
+        </div>
+        <div class="del-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="del">
+          <div class="del-day">−3 dager</div>
+          <h4 class="del-name">Dagsplan</h4>
+          <p class="del-desc">Tidsestimat og rekkefølge for hver film — du vet nøyaktig hva som skjer på dagen.</p>
+        </div>
+        <div class="del-arrow del-arrow-shoot" aria-hidden="true">
+          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="del del-shoot">
+          <div class="del-day">DAG 0</div>
+          <h4 class="del-name">Innspilling</h4>
+          <p class="del-desc">Filmteam på plass. Alt klart — ingen overraskelser.</p>
+        </div>
+        <div class="del-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="del">
+          <div class="del-day">Etter innspilling</div>
+          <h4 class="del-name">Godkjenning</h4>
+          <p class="del-desc">Du godkjenner ferdige videoer før vi poster — kort tid etter innspilling.</p>
+        </div>
+      </div>
     </div>
-    <div class="reason">
-      <div class="reason-num">02</div>
-      <h3 class="reason-h">Erfaring som teller</h3>
-      <p class="reason-body">Folkene bak Nykla har vært med å bygge GUTTA og jobbet tett med Oskar Westerlin. Vi vet hva som fungerer fordi vi har sett det fungere — i stor skala.</p>
-    </div>
-    <div class="reason">
-      <div class="reason-num">03</div>
-      <h3 class="reason-h">Alt i ett system</h3>
-      <p class="reason-body">Workshop, konseptplan, innspilling, godkjenning og publisering — alt satt i et profesjonelt system som leverer hver eneste måned.</p>
-    </div>
-  </div>
 
-  <div class="svc-rows reveal" style="margin-top:5rem">
-    <div class="section-label" style="color:rgba(255,255,255,0.5);margin-bottom:2rem">Hva vi ellers lager</div>
-    <div class="svc-row"><span class="svc-name">YouTube-serier</span><span class="svc-num">/01</span></div>
-    <div class="svc-row"><span class="svc-name">Podcast</span><span class="svc-num">/02</span></div>
-    <div class="svc-row"><span class="svc-name">Studioutleie</span><span class="svc-num">/03</span></div>
+    <!-- Reasons (slim) -->
+    <div class="reasons-grid reveal reveal-d2">
+      <div class="reason">
+        <div class="reason-num">01</div>
+        <h3 class="reason-h">Levende, ekte film</h3>
+        <p class="reason-body">Vi spiller inn med ekte mennesker. Det skaper troverdighet som genererte videoer aldri kommer i nærheten av.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-num">02</div>
+        <h3 class="reason-h">Erfaring som teller</h3>
+        <p class="reason-body">Folkene bak Nykla har vært med å bygge GUTTA og jobbet tett med Oskar Westerlin — i stor skala.</p>
+      </div>
+      <div class="reason">
+        <div class="reason-num">03</div>
+        <h3 class="reason-h">Parallelle løp</h3>
+        <p class="reason-body">Flere produksjoner kjører samtidig hos oss. Det betyr forutsigbarhet og kapasitet, ikke ad-hoc-leveranser.</p>
+      </div>
+    </div>
+
+    <div class="svc-rows reveal" style="margin-top:5rem">
+      <div class="section-label" style="color:rgba(255,255,255,0.5);margin-bottom:2rem">Hva vi ellers lager</div>
+      <button class="svc-row svc-row-trigger" id="svc-youtube-trigger" aria-expanded="false" aria-controls="svc-youtube-panel">
+        <span class="svc-name">YouTube-serier</span>
+        <span class="svc-row-meta">
+          <span class="svc-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="svc-num">/01</span>
+        </span>
+      </button>
+      <div class="svc-panel" id="svc-youtube-panel" role="region" aria-labelledby="svc-youtube-trigger">
+        <div class="svc-panel-clip">
+          <div class="svc-panel-inner">
+            <div class="svc-panel-services">
+              <div class="svc-panel-label">For GUTTA · Stortingspartiene vs 20 Velgere</div>
+              <p class="svc-panel-lead">Vi laget serien der hver partileder ble stilt ovenfor 20 velgere. Vi stod ikke bare for produksjonen — vi satte sammen casten: <strong>ungdomspolitikere, mikropartier og mannen i gata</strong>. Likt utfordret, for alle ni stortingspartier.</p>
+              <ul class="svc-checklist">
+                <li>Konseptutvikling</li>
+                <li>Balansert casting på tvers av politisk spektrum</li>
+                <li>Lik regi for alle ni partier</li>
+                <li>Flerkamera-produksjon</li>
+                <li>Klipp av ni hele episoder</li>
+                <li>Thumbnail-design og publisering på YouTube</li>
+              </ul>
+            </div>
+            <div class="svc-panel-deliverables">
+              <div class="svc-panel-label">Utvalgt episode</div>
+              <div class="svc-deliv">
+                <div class="svc-deliv-frame svc-deliv-frame-16by9">
+                  <iframe data-src="https://www.youtube.com/embed/jlGo9k3X21Y" src="about:blank" title="Jonas Gahr Støre vs 20 Velgere" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="svc-deliv-tag">Jonas Gahr Støre vs 20 Velgere · YouTube</div>
+              </div>
+              <div class="svc-stats">
+                <div class="svc-stat"><div class="svc-stat-num">9</div><div class="svc-stat-label">Partier</div></div>
+                <div class="svc-stat"><div class="svc-stat-num">9</div><div class="svc-stat-label">Episoder</div></div>
+                <div class="svc-stat"><div class="svc-stat-num">180</div><div class="svc-stat-label">Velgere castet</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="svc-row svc-row-trigger" id="svc-podcast-trigger" aria-expanded="false" aria-controls="svc-podcast-panel">
+        <span class="svc-name">Podcast</span>
+        <span class="svc-row-meta">
+          <span class="svc-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="svc-num">/02</span>
+        </span>
+      </button>
+      <div class="svc-panel" id="svc-podcast-panel" role="region" aria-labelledby="svc-podcast-trigger">
+        <div class="svc-panel-clip">
+          <div class="svc-panel-inner">
+            <div class="svc-panel-services">
+              <div class="svc-panel-label">Hva som inngår</div>
+              <ul class="svc-checklist">
+                <li>Tre-kamera produksjon</li>
+                <li>Produsent som monitorerer under innspilling</li>
+                <li>Podcaststudio designet for video</li>
+                <li>Klipping av hele episoden</li>
+                <li>Kort photoshoot for grafikk</li>
+                <li>Thumbnail til YouTube-publisering</li>
+                <li>Coverbilde til Spotify</li>
+                <li>Publisering på YouTube og Spotify</li>
+                <li>Kortformats-klipp til sosiale medier</li>
+              </ul>
+            </div>
+            <div class="svc-panel-deliverables">
+              <div class="svc-panel-label">Leveranse</div>
+              <div class="svc-deliv-grid">
+                <div class="svc-deliv">
+                  <div class="svc-deliv-frame svc-deliv-frame-square">
+                    <img src="podcast/cover.jpg" alt="Spotify cover" loading="lazy">
+                  </div>
+                  <div class="svc-deliv-tag">Spotify · cover</div>
+                </div>
+                <div class="svc-deliv">
+                  <div class="svc-deliv-frame svc-deliv-frame-16by9">
+                    <img src="podcast/thumbnail.jpg" alt="YouTube thumbnail" loading="lazy">
+                  </div>
+                  <div class="svc-deliv-tag">YouTube · thumbnail</div>
+                </div>
+                <div class="svc-deliv" style="grid-column:1 / -1">
+                  <div class="svc-deliv-frame svc-deliv-frame-16by9">
+                    <iframe data-src="https://www.youtube.com/embed/Z0OH5_342wQ" src="about:blank" title="Hele episoden" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                  </div>
+                  <div class="svc-deliv-tag">Hele episoden · YouTube</div>
+                </div>
+                <div class="svc-deliv" style="grid-column:1 / -1;align-items:flex-start">
+                  <div class="svc-deliv-frame svc-deliv-frame-9by16">
+                    <video src="podcast/short.mp4" muted loop playsinline preload="none"></video>
+                  </div>
+                  <div class="svc-deliv-tag">Kortformats-klipp · 9:16</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row"><span class="svc-name">Studioutleie</span><span class="svc-num">/03</span></div>
+    </div>
   </div>
 </section>
 
@@ -1776,7 +2452,7 @@ footer{
         <a href="mailto:mathias.skarbo@nykla.no" class="contact-col-email">mathias.skarbo@nykla.no</a>
       </div>
     </div>
-    <div class="contact-address reveal">Gullhaugveien 10, Nydalen, Oslo</div>
+    <div class="contact-address reveal"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Gullhaugveien+10+Nydalen+Oslo" target="_blank" rel="noopener" aria-label="Veibeskrivelse til Gullhaugveien 10, Nydalen, Oslo">Gullhaugveien 10, Nydalen, Oslo</a></div>
   </div>
 </section>
 
@@ -1913,9 +2589,31 @@ function loop(){
   requestAnimationFrame(loop);
 }
 loop();
-document.querySelectorAll('a,button,.pakke,.svc-row,.video-card,.rost-tab,.member,.social-pill,.platform-pill,.volume-btn,.journey-step,.logo-item').forEach(el=>{
+document.querySelectorAll('a,button,.pakke,.svc-row,.video-card,.rost-tab,.member,.social-pill,.platform-pill,.vol-seg,.phase-card,.logo-item').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+});
+
+/* ─── EXPANDABLE SVC ROWS ─── */
+document.querySelectorAll('.svc-row-trigger').forEach(trigger=>{
+  const panel=document.getElementById(trigger.getAttribute('aria-controls'));
+  if(!panel)return;
+  trigger.addEventListener('click',()=>{
+    const open=trigger.getAttribute('aria-expanded')==='true';
+    trigger.setAttribute('aria-expanded',String(!open));
+    panel.classList.toggle('open',!open);
+    if(!open){
+      const iframe=panel.querySelector('iframe[data-src]');
+      if(iframe&&iframe.getAttribute('src')==='about:blank'){
+        iframe.setAttribute('src',iframe.dataset.src);
+      }
+      const video=panel.querySelector('video');
+      if(video){video.play().catch(()=>{});}
+    }else{
+      const video=panel.querySelector('video');
+      if(video){video.pause();}
+    }
+  });
 });
 
 /* ─── CLOCK ─── */
@@ -1928,24 +2626,9 @@ function updateClock(){
 }
 updateClock();setInterval(updateClock,1000);
 
-/* ─── HERO MESSAGE on scroll ─── */
+/* ─── HERO MESSAGE: fade in shortly after logo ─── */
 const heroMsg = document.getElementById('hero-message');
-let msgShown = false;
-window.addEventListener('scroll',()=>{
-  if(window.scrollY > 60 && !msgShown){
-    heroMsg.classList.add('show');
-    msgShown=true;
-  }
-},{passive:true});
-// Also trigger on slight mouse move down in hero
-document.querySelector('.hero-stage').addEventListener('mousemove',e=>{
-  const rect=e.currentTarget.getBoundingClientRect();
-  const yPct=(e.clientY-rect.top)/rect.height;
-  if(yPct>0.7 && !msgShown){
-    heroMsg.classList.add('show');
-    msgShown=true;
-  }
-});
+if(heroMsg) setTimeout(()=>heroMsg.classList.add('show'), 1000);
 
 /* ─── REVEAL on scroll ─── */
 const obs=new IntersectionObserver(entries=>{
@@ -1971,8 +2654,8 @@ function buildTicker(){
     if(c.text){
       return `<div class="logo-item"><span class="logo-item-text">${c.name}</span></div>`;
     }
-    const h = Math.round(48 * (c.scale || 1));
-    return `<div class="logo-item"><img src="${c.src}" alt="${c.name}" loading="lazy" style="height:${h}px"></div>`;
+    const scale = c.scale || 1;
+    return `<div class="logo-item"><img src="${c.src}" alt="${c.name}" loading="lazy" style="height:calc(var(--logo-base, 48px) * ${scale})"></div>`;
   }).join('');
   track.innerHTML = html;
 }
@@ -1983,11 +2666,95 @@ document.querySelectorAll('.logo-item').forEach(el=>{
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
 });
 
-/* ─── FLOW: volume toggle (15 ↔ 30) ─── */
-document.querySelectorAll('.volume-btn').forEach(btn=>{
+/* ─── FRAMES TRACK: duplicate for seamless loop ─── */
+(function(){
+  const framesRow = document.querySelector('.frames-row');
+  if(!framesRow) return;
+  framesRow.innerHTML += framesRow.innerHTML;
+})();
+
+/* ─── LOGO TICKER: mobile swipe hint ─── */
+(function(){
+  if(!window.matchMedia('(max-width:900px)').matches) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const strip = document.querySelector('.logos-strip');
+  if(!strip) return;
+  const hintObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        setTimeout(()=>{
+          strip.scrollTo({left:95, behavior:'smooth'});
+          setTimeout(()=>strip.scrollTo({left:0, behavior:'smooth'}), 850);
+        }, 400);
+        hintObs.disconnect();
+      }
+    });
+  },{threshold:0.5});
+  hintObs.observe(strip);
+})();
+
+/* ─── FLOW: build calendar grid (Mai 2026, starts Friday) ─── */
+(function buildCalendar(){
+  const grid=document.getElementById('cal-grid');
+  if(!grid) return;
+  // May 2026: starts Friday (offset 4 from Monday), 31 days
+  const offset=4;
+  const days=31;
+  // Leading empty cells
+  for(let i=0;i<offset;i++){
+    const e=document.createElement('div');
+    e.className='cal-day empty';
+    grid.appendChild(e);
+  }
+  // Day cells
+  for(let d=1;d<=days;d++){
+    const c=document.createElement('div');
+    c.className='cal-day';
+    c.dataset.day=d;
+    c.innerHTML='<span class="cal-num">'+d+'</span><span class="cal-event"></span>';
+    grid.appendChild(c);
+  }
+  applyCalMode(grid.dataset.mode||'15');
+})();
+
+function applyCalMode(mode){
+  const grid=document.getElementById('cal-grid');
+  if(!grid) return;
+  grid.dataset.mode=mode;
+  const targetCount=mode==='30'?30:15;
+  // 30 days for 30-mode (skip day 31), or every other day starting at 1 for 15-mode
+  const videoDays=new Set();
+  if(mode==='30'){
+    for(let d=1;d<=30;d++) videoDays.add(d);
+  } else {
+    for(let d=1;d<=29;d+=2) videoDays.add(d); // 1,3,5,...,29 = 15 days
+  }
+  grid.querySelectorAll('.cal-day').forEach(c=>{
+    const d=parseInt(c.dataset.day,10);
+    if(videoDays.has(d)) c.classList.add('has-video');
+    else c.classList.remove('has-video');
+  });
+  const counter=document.getElementById('cal-count');
+  if(counter) counter.textContent=targetCount;
+}
+
+
+/* ─── FLOW: segmented volume control (15 ↔ 30) ─── */
+document.querySelectorAll('.vol-seg').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    document.querySelectorAll('.volume-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.vol-seg').forEach(b=>{
+      b.classList.remove('active');
+      b.setAttribute('aria-checked','false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-checked','true');
+    applyCalMode(btn.dataset.pkg);
+    const cadenceEl=document.getElementById('vol-cadence-text');
+    if(cadenceEl){
+      cadenceEl.textContent = btn.dataset.pkg==='30'
+        ? 'Publisering hver dag'
+        : 'Publisering annenhver dag';
+    }
   });
 });
 
