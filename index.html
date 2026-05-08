@@ -461,20 +461,9 @@ body.hovering #cursor-ring{opacity:0}
 .frames-row{
   display:flex;
   gap:0;
-  width:max-content;
-  animation:slideFrames 80s linear infinite;
-  --frame-w:160px;
-}
-@media (hover:hover){
-  .frames-row:hover{animation-play-state:paused}
-}
-@keyframes slideFrames{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
 }
 .frame-item{
-  flex:0 0 auto;
-  width:var(--frame-w);
+  flex:0 0 calc(100% / 11);
   aspect-ratio:9/16;
   overflow:hidden;
   background:rgba(255,255,255,0.04);
@@ -501,17 +490,15 @@ body.hovering #cursor-ring{opacity:0}
   .frames-strip::-webkit-scrollbar{display:none}
   .frames-strip-label{left:1rem}
   .frames-row{
-    animation:none;
-    --frame-w:176px;
     padding:0 1rem 0.4rem;
     gap:0.5rem;
     scroll-snap-type:x mandatory;
   }
   .frame-item{
+    flex:0 0 176px;
     border-radius:8px;
     scroll-snap-align:start;
   }
-  .frame-item:nth-child(n+12){display:none}
 }
 
 /* ════════════════════════════════════
@@ -1914,14 +1901,14 @@ footer{
       <a href="#team">Team</a>
       <a href="#contact">Kontakt</a>
     </div>
-    <div class="topbar-issue">N°.04 — APRIL '26</div>
+    <div class="topbar-issue" id="topbar-date">—</div>
   </div>
 
   <!-- Body -->
   <div class="hero-body">
     <div class="hero-rail">
       <div class="rail-text">Produksjonsselskap</div>
-      <div class="rail-text">EST. 2024</div>
+      <div class="rail-text">EST. 2025</div>
     </div>
 
     <div class="hero-stage">
@@ -2616,6 +2603,15 @@ document.querySelectorAll('.svc-row-trigger').forEach(trigger=>{
   });
 });
 
+/* ─── TOPBAR DATE ─── */
+(function(){
+  const el=document.getElementById('topbar-date');
+  if(!el)return;
+  const months=['JAN','FEB','MAR','APR','MAI','JUN','JUL','AUG','SEP','OKT','NOV','DES'];
+  const d=new Date();
+  el.textContent=`${d.getDate()}. ${months[d.getMonth()]} '${String(d.getFullYear()).slice(-2)}`;
+})();
+
 /* ─── CLOCK ─── */
 function updateClock(){
   const n=new Date();
@@ -2665,13 +2661,6 @@ document.querySelectorAll('.logo-item').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
 });
-
-/* ─── FRAMES TRACK: duplicate for seamless loop ─── */
-(function(){
-  const framesRow = document.querySelector('.frames-row');
-  if(!framesRow) return;
-  framesRow.innerHTML += framesRow.innerHTML;
-})();
 
 /* ─── LOGO TICKER: mobile swipe hint ─── */
 (function(){
