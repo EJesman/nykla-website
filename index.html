@@ -1848,14 +1848,25 @@ footer{
   .contact-cols{grid-template-columns:1fr}
   .services-top{flex-direction:column;align-items:flex-start}
   .services-desc{text-align:left;max-width:100%;margin-right:0}
-  .rost-body{padding:3rem 1.2rem}
+  #rost-page nav.rost-nav{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:1rem 1.2rem;
+  }
+  .rost-nav-spacer{width:0!important;justify-self:end}
+  .rost-back-text{display:none}
+  .rost-back::before{font-size:1.5rem;line-height:1}
+  .rost-back{gap:0;padding:0.4rem 0.4rem 0.4rem 0;justify-self:start}
+  .rost-body{padding:2rem 1.2rem 3rem}
   .rost-hero-split{
     grid-template-columns:1fr;
-    gap:3rem;
+    gap:1.8rem;
     padding-bottom:3rem;
     margin-bottom:3rem;
   }
-  .rost-hero-logo-img{width:min(70vw,240px)}
+  .rost-hero-logo-col{gap:1rem}
+  .rost-hero-logo-img{width:min(45vw,160px)}
   .stat-card{padding:1.6rem 0 1.4rem}
   .rost-updated{flex-direction:column;align-items:flex-start;gap:0.8rem}
   .rost-hero-row{gap:1.2rem}
@@ -2471,7 +2482,7 @@ footer{
 <!-- ════════ RØST PAGE ════════ -->
 <div class="page" id="rost-page">
   <nav class="rost-nav">
-    <a class="rost-back" id="rost-back">Tilbake til Nykla</a>
+    <a class="rost-back" id="rost-back" aria-label="Tilbake til Nykla"><span class="rost-back-text">Tilbake til Nykla</span></a>
     <div class="rost-brand-mini">
       <svg viewBox="0 0 1920 1080" aria-label="Nykla">
         <path d="M222.46,696.7v-380.88h113.18l103.38,341.7h8.71v-341.7h58.22v380.88h-113.18l-103.38-342.25h-8.71v342.25h-58.22Z"/>
@@ -2483,7 +2494,7 @@ footer{
       <span class="x">×</span>
       <img class="rost-brand-logo" src="ROSTLOGO-BLAA.png" alt="RØST"/>
     </div>
-    <div style="width:130px"></div>
+    <div class="rost-nav-spacer" style="width:130px"></div>
   </nav>
 
   <div class="rost-body">
