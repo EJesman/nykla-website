@@ -84,9 +84,9 @@ body.hovering #cursor-ring{opacity:0}
 .brand-mini{
   display:flex;align-items:center;gap:0.4rem;
 }
-.brand-mini svg{height:18px;width:auto;fill:var(--black)}
+.brand-mini svg{height:24px;width:auto;fill:var(--black)}
 .brand-mini .dot{
-  width:7px;height:7px;border-radius:50%;
+  width:9px;height:9px;border-radius:50%;
   background:var(--orange);
   display:inline-block;margin-left:2px;
 }
@@ -107,6 +107,29 @@ body.hovering #cursor-ring{opacity:0}
   font-size:0.55rem;letter-spacing:0.18em;
   text-transform:uppercase;color:var(--gray);
 }
+.topbar-right{
+  display:flex;align-items:center;gap:1.2rem;
+}
+.topbar-login{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--black);
+  border:1px solid var(--black);
+  border-radius:999px;
+  padding:0.55rem 1rem;
+  transition:background .25s, color .25s, border-color .25s, transform .25s;
+}
+.topbar-login svg{
+  width:10px;height:10px;
+  transition:transform .25s;
+}
+.topbar-login:hover{
+  background:var(--orange);
+  border-color:var(--orange);
+  color:var(--black);
+}
+.topbar-login:hover svg{transform:translateX(2px)}
 
 /* ─── HERO BODY ─── */
 .hero-body{
@@ -150,6 +173,7 @@ body.hovering #cursor-ring{opacity:0}
   font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;
   color:var(--gray);
   display:flex;align-items:center;gap:0.7rem;
+  white-space:nowrap;
   opacity:0;
   animation:fadeIn 1s 0.3s forwards;
 }
@@ -397,7 +421,7 @@ body.hovering #cursor-ring{opacity:0}
   color:var(--gray);z-index:2;
 }
 .logos-track{
-  display:flex;gap:5rem;
+  display:flex;
   animation:slideLogos 40s linear infinite;
   width:max-content;
   align-items:center;
@@ -414,6 +438,7 @@ body.hovering #cursor-ring{opacity:0}
 .logo-item{
   flex-shrink:0;
   display:flex;align-items:center;
+  margin-right:5rem;
   transition:opacity .3s, filter .3s;
 }
 .logo-item img{
@@ -1774,10 +1799,212 @@ footer{
 .video-placeholder{width:100%;aspect-ratio:16/9;background:#0a0a22;display:flex;align-items:center;justify-content:center}
 .video-placeholder-icon{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.08);display:grid;place-items:center;font-size:1.1rem;color:rgba(255,255,255,0.3)}
 
+/* ════════════════════════════════════
+   MOBILE FLOATBAR + MENU
+   (hidden on desktop, shown on mobile)
+════════════════════════════════════ */
+.mobile-floatbar{display:none}
+.mobile-menu{display:none}
+
+@media(max-width:900px){
+  .mobile-floatbar{
+    display:flex;
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:120;
+    align-items:center;
+    justify-content:space-between;
+    padding:0.65rem 1rem;
+    background:rgba(245,242,237,0.88);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid rgba(0,0,0,0.05);
+  }
+  .mobile-menu{display:block}
+}
+
+.mfb-brand{
+  display:flex;align-items:center;gap:0.35rem;
+  background:none;border:none;padding:0;cursor:pointer;
+}
+.mfb-brand svg{height:20px;width:auto;fill:var(--black)}
+.mfb-brand .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--orange);
+  display:inline-block;
+}
+.mfb-actions{
+  display:flex;align-items:center;gap:0.55rem;
+}
+.mfb-login{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--black);
+  border:1px solid var(--black);
+  border-radius:999px;
+  padding:0.55rem 0.95rem;
+}
+.mfb-login svg{width:10px;height:10px}
+.mfb-hamburger{
+  position:relative;
+  width:42px;height:42px;
+  background:transparent;
+  border:1px solid rgba(0,0,0,0.2);
+  border-radius:50%;
+  cursor:pointer;
+  padding:0;
+}
+.mfb-hamburger span{
+  position:absolute;
+  left:50%;top:50%;
+  width:18px;height:1.6px;
+  background:var(--black);
+  border-radius:2px;
+  transform-origin:center;
+  transition:transform .3s cubic-bezier(0.16,1,0.3,1), opacity .2s;
+}
+.mfb-hamburger span:nth-child(1){transform:translate(-50%,calc(-50% - 5px))}
+.mfb-hamburger span:nth-child(2){transform:translate(-50%,-50%)}
+.mfb-hamburger span:nth-child(3){transform:translate(-50%,calc(-50% + 5px))}
+body.menu-open .mfb-hamburger span:nth-child(1){
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+body.menu-open .mfb-hamburger span:nth-child(2){
+  opacity:0;
+}
+body.menu-open .mfb-hamburger span:nth-child(3){
+  transform:translate(-50%,-50%) rotate(-45deg);
+}
+
+/* Mobile menu overlay */
+.mobile-menu{
+  position:fixed;inset:0;
+  z-index:115;
+  background:var(--white);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s cubic-bezier(0.16,1,0.3,1);
+}
+.mobile-menu.open{
+  opacity:1;
+  pointer-events:auto;
+}
+.mobile-menu-inner{
+  height:100%;
+  display:flex;flex-direction:column;
+  padding:5.2rem 1.6rem 2rem;
+  overflow-y:auto;
+}
+.mobile-menu-section-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.6rem;
+  opacity:0;
+  transition:opacity .3s .15s;
+}
+.mobile-menu-section-label::before{
+  content:'';width:24px;height:1px;background:var(--orange);
+}
+.mobile-menu.open .mobile-menu-section-label{opacity:1}
+.mobile-menu-nav{
+  display:flex;flex-direction:column;
+  margin-bottom:2rem;
+}
+.mobile-menu-nav a{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;
+  letter-spacing:0.03em;
+  color:var(--black);
+  padding:0.7rem 0;
+  border-bottom:1px solid rgba(0,0,0,0.07);
+  display:flex;align-items:center;justify-content:space-between;
+  transform:translateX(-16px);
+  opacity:0;
+  transition:transform .45s cubic-bezier(0.16,1,0.3,1), opacity .35s;
+}
+.mobile-menu-nav a::after{
+  content:'→';
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  font-size:1.1rem;
+  color:var(--orange);
+  opacity:0;
+  transform:translateX(-4px);
+  transition:opacity .2s, transform .2s;
+}
+.mobile-menu-nav a:hover::after,
+.mobile-menu-nav a:active::after{
+  opacity:1;transform:translateX(0);
+}
+.mobile-menu.open .mobile-menu-nav a{
+  transform:translateX(0);
+  opacity:1;
+}
+.mobile-menu.open .mobile-menu-nav a:nth-child(1){transition-delay:.10s}
+.mobile-menu.open .mobile-menu-nav a:nth-child(2){transition-delay:.15s}
+.mobile-menu.open .mobile-menu-nav a:nth-child(3){transition-delay:.20s}
+.mobile-menu.open .mobile-menu-nav a:nth-child(4){transition-delay:.25s}
+.mobile-menu.open .mobile-menu-nav a:nth-child(5){transition-delay:.30s}
+.mobile-menu.open .mobile-menu-nav a:nth-child(6){transition-delay:.35s}
+
+.mobile-menu-rost{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--blue);
+  color:var(--white);
+  padding:1.15rem 1.3rem;
+  border-radius:10px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;
+  letter-spacing:0.08em;
+  margin-bottom:1.5rem;
+  cursor:pointer;border:none;width:100%;
+  opacity:0;transform:translateY(10px);
+  transition:transform .45s .42s cubic-bezier(0.16,1,0.3,1), opacity .35s .42s;
+}
+.mobile-menu-rost-meta{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+}
+.mobile-menu.open .mobile-menu-rost{
+  opacity:1;transform:translateY(0);
+}
+.mobile-menu-foot{
+  margin-top:auto;
+  padding-top:1.5rem;
+  border-top:1px solid rgba(0,0,0,0.06);
+  display:flex;flex-direction:column;gap:0.4rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--gray);
+  opacity:0;
+  transition:opacity .35s .5s;
+}
+.mobile-menu.open .mobile-menu-foot{opacity:1}
+.mobile-menu-foot a{color:var(--black)}
+.mobile-menu-foot a:hover{color:var(--orange)}
+
+/* Body lock when menu open */
+body.menu-open{overflow:hidden}
+
+/* RØST tab hidden on small screens — it lives in the menu now */
+@media(max-width:700px){
+  .rost-tab{display:none}
+}
+
+/* Hide mobile floatbar when RØST page is active — rost-nav handles
+   navigation there, so we avoid stacking two top bars. */
+@media(max-width:900px){
+  body:has(#rost-page.active) .mobile-floatbar{display:none}
+}
+
 /* ─── MOBILE ─── */
 @media(max-width:900px){
-  .hero-topbar{padding:1.2rem;flex-wrap:wrap;gap:0.8rem}
-  .topbar-nav{display:none}
+  .hero-topbar{display:none}
+  .hero{padding-top:56px}
   .logos-strip{
     overflow-x:auto;
     overflow-y:hidden;
@@ -1786,25 +2013,22 @@ footer{
   }
   .logos-strip::-webkit-scrollbar{display:none}
   .logos-track{
-    gap:2.5rem;
     --logo-base:32px;
     animation:none;
     padding:0 1.2rem;
   }
+  .logo-item{margin-right:2.5rem}
   .logo-item-text{font-size:1rem}
   .hero-body{grid-template-columns:1fr}
   .hero-rail{display:none}
   .hero-stage{padding:3rem 1.2rem 1.5rem}
-  .hero-eyebrow{top:1.5rem;font-size:0.55rem}
+  .hero-eyebrow{top:2rem;font-size:0.5rem;gap:0.5rem}
+  .hero-eyebrow::before,.hero-eyebrow::after{width:18px}
   .hero-message{position:relative;left:auto;bottom:auto;transform:translateY(20px);margin-top:2rem;padding:0 1rem}
   .hero-message.show{transform:translateY(0)}
   .scroll-cue{position:relative;bottom:auto;left:auto;transform:none;margin-top:0.6rem}
-  .hero-bottom{grid-template-columns:1fr;gap:0.7rem;padding:0.4rem 1rem 1.2rem;text-align:center}
-  .hb-left{
-    justify-content:center;text-align:center;
-    font-size:0.7rem;letter-spacing:0.14em;line-height:2.4;
-  }
-  .hb-left a{padding:0.4rem 0.5rem;display:inline-block}
+  .hero-bottom{grid-template-columns:1fr;gap:0.7rem;padding:1rem 1rem 1.2rem;text-align:center}
+  .hb-left{display:none}
   .hb-right{display:none}
   .rost-tab{
     padding:0.9rem 0.5rem;
@@ -1850,14 +2074,28 @@ footer{
   .services-desc{text-align:left;max-width:100%;margin-right:0}
   #rost-page nav.rost-nav{
     display:grid;
-    grid-template-columns:1fr auto 1fr;
+    grid-template-columns:auto 1fr;
     align-items:center;
-    padding:1rem 1.2rem;
+    padding:0.85rem 1rem;
+    gap:0.8rem;
   }
-  .rost-nav-spacer{width:0!important;justify-self:end}
-  .rost-back-text{display:none}
-  .rost-back::before{font-size:1.5rem;line-height:1}
-  .rost-back{gap:0;padding:0.4rem 0.4rem 0.4rem 0;justify-self:start}
+  .rost-nav-spacer{display:none}
+  .rost-back{
+    justify-self:start;
+    gap:0.45rem;
+    padding:0.75rem 1.05rem;
+    border:1px solid var(--black);
+    border-radius:999px;
+    background:transparent;
+    font-size:0.55rem;
+  }
+  .rost-back:active{background:var(--orange);color:var(--black);border-color:var(--orange)}
+  .rost-back::before{font-size:0.9rem;line-height:1}
+  .rost-back-text{display:inline}
+  .rost-brand-mini{justify-self:end;gap:0.7rem}
+  .rost-brand-mini svg{height:22px}
+  .rost-brand-mini .rost-brand-logo{height:26px}
+  .rost-brand-mini .x{font-size:0.8rem}
   .rost-body{padding:2rem 1.2rem 3rem}
   .rost-hero-split{
     grid-template-columns:1fr;
@@ -1887,6 +2125,56 @@ footer{
   <div class="panel" id="trans-panel"></div>
 </div>
 
+<!-- Mobile floatbar (always visible on mobile) -->
+<div class="mobile-floatbar" id="mobile-floatbar" role="navigation" aria-label="Mobil navigasjon">
+  <button class="mfb-brand" id="mfb-brand" aria-label="Til toppen">
+    <svg viewBox="0 0 1920 1080" aria-label="Nykla">
+      <path d="M222.46,696.7v-380.88h113.18l103.38,341.7h8.71v-341.7h58.22v380.88h-113.18l-103.38-342.25h-8.71v342.25h-58.22Z"/>
+      <path d="M655.57,696.7v-138.21l-132.22-242.68h66.38l91.41,172.49h8.16l91.41-172.49h66.38l-132.22,242.68v138.21h-59.31Z"/>
+      <path d="M864.5,696.7v-380.88h58.76v158.34h8.71l142.01-158.34h76.72l-171.94,187.72,177.93,193.16h-78.9l-145.82-161.6h-8.71v161.6h-58.76Z"/>
+      <path d="M1172.47,696.7v-380.88h58.76v327.56h183.37v53.32h-242.13Z"/>
+      <path d="M1411.88,696.7l108.82-380.88h103.38l108.28,380.88h-60.4l-25.03-89.78h-149.09l-25.03,89.78h-60.94ZM1512.54,552.51h119.71l-55.5-200.23h-8.71l-55.5,200.23Z"/>
+    </svg>
+    <span class="dot"></span>
+  </button>
+  <div class="mfb-actions">
+    <a class="mfb-login" href="https://portal.nykla.no" target="_blank" rel="noopener">
+      Logg inn
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <button class="mfb-hamburger" id="mfb-hamburger" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-section-label">Navigasjon</div>
+    <nav class="mobile-menu-nav">
+      <a href="#about" data-menu-link>Om oss</a>
+      <a href="#flow" data-menu-link>Prosess</a>
+      <a href="#portal" data-menu-link>NyklaPortalen</a>
+      <a href="#services" data-menu-link>Hvorfor oss</a>
+      <a href="#team" data-menu-link>Team</a>
+      <a href="#contact" data-menu-link>Kontakt</a>
+    </nav>
+    <button class="mobile-menu-rost" id="mobile-menu-rost" type="button">
+      <span>RØST · YouTube-serie</span>
+      <span class="mobile-menu-rost-meta">→</span>
+    </button>
+    <div class="mobile-menu-foot">
+      <span>Nykla AS · Gullhaugveien 10, Nydalen</span>
+      <a href="mailto:emil@nykla.no">emil@nykla.no</a>
+    </div>
+  </div>
+</div>
+
 <!-- ════════ MAIN PAGE ════════ -->
 <div class="page active" id="main-page">
 
@@ -1913,7 +2201,15 @@ footer{
       <a href="#team">Team</a>
       <a href="#contact">Kontakt</a>
     </div>
-    <div class="topbar-issue" id="topbar-date">—</div>
+    <div class="topbar-right">
+      <div class="topbar-issue" id="topbar-date">—</div>
+      <a class="topbar-login" href="https://portal.nykla.no" target="_blank" rel="noopener">
+        Logg inn
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
   </div>
 
   <!-- Body -->
@@ -1995,8 +2291,8 @@ footer{
 </section>
 
 <!-- FRAMES STRIP — stillbilder fra filmene -->
-<div class="frames-strip" aria-label="Noen av det vi gjør">
-  <div class="frames-strip-label">Noen av det vi gjør</div>
+<div class="frames-strip" aria-label="Noe av det vi gjør">
+  <div class="frames-strip-label">Noe av det vi gjør</div>
   <div class="frames-row">
     <div class="frame-item"><img src="frames/01.jpg" alt="" loading="lazy"></div>
     <div class="frame-item"><img src="frames/02.jpg" alt="" loading="lazy"></div>
@@ -2663,7 +2959,7 @@ function buildTicker(){
       return `<div class="logo-item"><span class="logo-item-text">${c.name}</span></div>`;
     }
     const scale = c.scale || 1;
-    return `<div class="logo-item"><img src="${c.src}" alt="${c.name}" loading="lazy" style="height:calc(var(--logo-base, 48px) * ${scale})"></div>`;
+    return `<div class="logo-item"><img src="${c.src}" alt="${c.name}" style="height:calc(var(--logo-base, 48px) * ${scale})"></div>`;
   }).join('');
   track.innerHTML = html;
 }
@@ -2672,6 +2968,44 @@ buildTicker();
 document.querySelectorAll('.logo-item').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+});
+
+/* Precise seamless loop: measure exact pixel distance to the start of the
+   duplicated set and inject a keyframe with that exact value. Avoids
+   subpixel rounding errors from translateX(-50%). */
+function setTickerKeyframe(distancePx){
+  let styleEl = document.getElementById('ticker-keyframe');
+  if(!styleEl){
+    styleEl = document.createElement('style');
+    styleEl.id = 'ticker-keyframe';
+    document.head.appendChild(styleEl);
+  }
+  styleEl.textContent = '@keyframes slideLogos{from{transform:translateX(0)}to{transform:translateX(-'+distancePx+'px)}}';
+}
+function measureTicker(){
+  const items = track.querySelectorAll('.logo-item');
+  if(items.length < COMPANIES.length + 1) return;
+  const shift = items[COMPANIES.length].offsetLeft;
+  if(shift > 0) setTickerKeyframe(shift);
+}
+function waitImagesThenMeasure(){
+  const imgs = track.querySelectorAll('img');
+  if(!imgs.length){ measureTicker(); return; }
+  let pending = imgs.length;
+  const done = ()=>{ if(--pending <= 0) measureTicker(); };
+  imgs.forEach(img=>{
+    if(img.complete && img.naturalWidth > 0){ done(); }
+    else {
+      img.addEventListener('load', done, {once:true});
+      img.addEventListener('error', done, {once:true});
+    }
+  });
+}
+waitImagesThenMeasure();
+let tickerResizeTimer;
+window.addEventListener('resize', ()=>{
+  clearTimeout(tickerResizeTimer);
+  tickerResizeTimer = setTimeout(measureTicker, 200);
 });
 
 /* ─── LOGO TICKER: mobile swipe hint ─── */
@@ -2813,6 +3147,69 @@ function goMain(){
 
 document.getElementById('rost-tab').addEventListener('click',goRost);
 document.getElementById('rost-back').addEventListener('click',goMain);
+
+/* ─── MOBILE MENU ─── */
+(function(){
+  const menu = document.getElementById('mobile-menu');
+  const toggle = document.getElementById('mfb-hamburger');
+  const brand = document.getElementById('mfb-brand');
+  const rostBtn = document.getElementById('mobile-menu-rost');
+  if(!menu || !toggle) return;
+
+  function openMenu(){
+    menu.classList.add('open');
+    document.body.classList.add('menu-open');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','Lukk meny');
+    menu.setAttribute('aria-hidden','false');
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Åpne meny');
+    menu.setAttribute('aria-hidden','true');
+  }
+  toggle.addEventListener('click',()=>{
+    if(menu.classList.contains('open')) closeMenu();
+    else openMenu();
+  });
+  // Section links: close menu, then default smooth-scroll runs.
+  // If currently on RØST page, transition back to main first, then scroll.
+  menu.querySelectorAll('[data-menu-link]').forEach(a=>{
+    a.addEventListener('click',(e)=>{
+      closeMenu();
+      if(rost.classList.contains('active')){
+        e.preventDefault();
+        const target = a.getAttribute('href');
+        goMain();
+        setTimeout(()=>{
+          const el = document.querySelector(target);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }, 1700);
+      }
+    });
+  });
+  // RØST → close menu, then trigger page transition (skip if already there)
+  if(rostBtn){
+    rostBtn.addEventListener('click',()=>{
+      closeMenu();
+      if(!rost.classList.contains('active')){
+        setTimeout(goRost, 280);
+      }
+    });
+  }
+  // Brand button → scroll to top
+  if(brand){
+    brand.addEventListener('click',()=>{
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  }
+  // ESC to close
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape' && menu.classList.contains('open')) closeMenu();
+  });
+})();
 
 /* ─── YOUTUBE API ─── */
 function fmt(n){
