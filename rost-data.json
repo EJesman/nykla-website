@@ -5,6 +5,13 @@
   },
   "videos": [
     {
+      "videoId": "A789G0iAsE8",
+      "title": "Sykepleieren som valgte å hjelpe til i Palestina | Perspektiv",
+      "publishedAt": "2026-06-12T14:17:29Z",
+      "durationSeconds": 976,
+      "thumbnail": "https://i.ytimg.com/vi/A789G0iAsE8/maxresdefault.jpg"
+    },
+    {
       "videoId": "W0zeLRCX-WE",
       "title": "Leder av Norges største kriminelle gjeng svarer på Gjengkrigen | Alt du lurer på",
       "publishedAt": "2026-06-05T12:55:06Z",
@@ -17,15 +24,8 @@
       "publishedAt": "2026-05-28T13:53:43Z",
       "durationSeconds": 726,
       "thumbnail": "https://i.ytimg.com/vi/PIoNthd-ZRw/maxresdefault.jpg"
-    },
-    {
-      "videoId": "hVJ0jF8iFU4",
-      "title": "Myter om å være pilot | Alt du lurer på",
-      "publishedAt": "2026-05-08T13:55:50Z",
-      "durationSeconds": 1421,
-      "thumbnail": "https://i.ytimg.com/vi/hVJ0jF8iFU4/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-06-13T10:35:16.139Z",
-  "videos_updated_at": "2026-06-12T12:41:47.713Z"
+  "stats_updated_at": "2026-06-13T12:15:48.824Z",
+  "videos_updated_at": "2026-06-13T12:15:48.824Z"
 }
