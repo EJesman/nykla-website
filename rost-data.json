@@ -1,9 +1,16 @@
 {
   "stats": {
-    "subscribers": 12500,
-    "views": 578725
+    "subscribers": 12600,
+    "views": 601464
   },
   "videos": [
+    {
+      "videoId": "A789G0iAsE8",
+      "title": "Sykepleieren i en aktiv krigssone i 2026 | Perspektiv",
+      "publishedAt": "2026-06-12T14:17:29Z",
+      "durationSeconds": 976,
+      "thumbnail": "https://i.ytimg.com/vi/A789G0iAsE8/maxresdefault.jpg"
+    },
     {
       "videoId": "W0zeLRCX-WE",
       "title": "Leder av Norges største kriminelle gjeng svarer på Gjengkrigen | Alt du lurer på",
@@ -17,15 +24,8 @@
       "publishedAt": "2026-05-28T13:53:43Z",
       "durationSeconds": 726,
       "thumbnail": "https://i.ytimg.com/vi/PIoNthd-ZRw/maxresdefault.jpg"
-    },
-    {
-      "videoId": "hVJ0jF8iFU4",
-      "title": "Myter om å være pilot | Alt du lurer på",
-      "publishedAt": "2026-05-08T13:55:50Z",
-      "durationSeconds": 1421,
-      "thumbnail": "https://i.ytimg.com/vi/hVJ0jF8iFU4/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-06-11T11:12:59.665Z",
-  "videos_updated_at": "2026-06-11T11:12:59.665Z"
+  "stats_updated_at": "2026-06-16T05:37:28.471Z",
+  "videos_updated_at": "2026-06-15T16:19:13.199Z"
 }
