@@ -5,6 +5,13 @@
   },
   "videos": [
     {
+      "videoId": "9WkO43y4v-s",
+      "title": "Hva skjer om Norge vinner VM?",
+      "publishedAt": "2026-06-26T09:00:18Z",
+      "durationSeconds": 461,
+      "thumbnail": "https://i.ytimg.com/vi/9WkO43y4v-s/maxresdefault.jpg"
+    },
+    {
       "videoId": "A789G0iAsE8",
       "title": "Sykepleieren i en aktiv krigssone i 2026 | Perspektiv",
       "publishedAt": "2026-06-12T14:17:29Z",
@@ -17,17 +24,10 @@
       "publishedAt": "2026-06-05T12:55:06Z",
       "durationSeconds": 892,
       "thumbnail": "https://i.ytimg.com/vi/W0zeLRCX-WE/maxresdefault.jpg"
-    },
-    {
-      "videoId": "PIoNthd-ZRw",
-      "title": "Vennen din selger narkotika - og vet det ikke",
-      "publishedAt": "2026-05-28T13:53:43Z",
-      "durationSeconds": 726,
-      "thumbnail": "https://i.ytimg.com/vi/PIoNthd-ZRw/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-06-26T13:29:48.630Z",
-  "videos_updated_at": "2026-06-25T15:15:34.578Z",
+  "stats_updated_at": "2026-06-26T15:54:52.547Z",
+  "videos_updated_at": "2026-06-26T15:54:52.547Z",
   "external_stats": {
     "instagram": {
       "views": 302215,
