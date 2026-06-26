@@ -26,22 +26,6 @@
       "thumbnail": "https://i.ytimg.com/vi/PIoNthd-ZRw/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-06-26T11:23:51.268Z",
-  "videos_updated_at": "2026-06-25T15:15:34.578Z",
-  "external_stats": {
-    "instagram": {
-      "views": 302208,
-      "posts": 69,
-      "source": "Meta API",
-      "updated_at": "2026-06-26T12:01:57.879Z"
-    },
-    "facebook": {
-      "views": 708132,
-      "posts": 70,
-      "source": "Meta API",
-      "updated_at": "2026-06-26T12:01:57.879Z"
-    },
-    "total_views": 1010340,
-    "updated_at": "2026-06-26T12:01:57.879Z"
-  }
+  "stats_updated_at": "2026-06-26T13:29:48.630Z",
+  "videos_updated_at": "2026-06-25T15:15:34.578Z"
 }
