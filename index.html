@@ -3350,7 +3350,8 @@ const transPanel=document.getElementById('trans-panel');
 
 function isRostUrl(){
   const p = decodeURIComponent(window.location.pathname || '/').toLowerCase().replace(/\/+$/,'');
-  return p === '/røst' || p === '/rost';
+  const h = (window.location.hash || '').toLowerCase();
+  return p === '/røst' || p === '/rost' || h === '#rost' || h === '#røst';
 }
 
 // Flagg for å unngå at popstate-trigget navigasjon pusher en ny state
@@ -3358,7 +3359,7 @@ let suppressPushState = false;
 
 function goRost(){
   if (!suppressPushState) {
-    history.pushState({page:'rost'}, '', '/rost');
+    history.pushState({page:'rost'}, '', '/#rost');
   }
   // Blue panel slides in from the right
   transPanel.style.background='var(--blue)';
