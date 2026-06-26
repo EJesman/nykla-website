@@ -58,10 +58,11 @@ async function fetchInstagram() {
   if (!META_PAGE_TOKEN || !META_IG_ACCOUNT_ID) {
     throw new Error('META_PAGE_TOKEN eller META_IG_ACCOUNT_ID mangler');
   }
-  // Hent alle videoer/Reels med insights inline
+  // Hent alle videoer/Reels med insights inline.
+  // Meta deprecerte `plays` — bruker `views` nå (gjelder Reels og video-posts).
   const initialUrl =
     `https://graph.facebook.com/${GRAPH_API_VERSION}/${META_IG_ACCOUNT_ID}/media` +
-    `?fields=id,media_type,media_product_type,insights.metric(plays)` +
+    `?fields=id,media_type,media_product_type,insights.metric(views)` +
     `&limit=${PAGE_SIZE}` +
     `&access_token=${encodeURIComponent(META_PAGE_TOKEN)}`;
 
@@ -71,8 +72,8 @@ async function fetchInstagram() {
     for (const item of batch) {
       if (item.media_type !== 'VIDEO') continue;
       const insights = item.insights?.data || [];
-      const plays = insights.find((i) => i.name === 'plays');
-      const value = plays?.values?.[0]?.value || 0;
+      const views = insights.find((i) => i.name === 'views');
+      const value = views?.values?.[0]?.value || 0;
       if (value > 0) {
         totalViews += value;
         posts += 1;
