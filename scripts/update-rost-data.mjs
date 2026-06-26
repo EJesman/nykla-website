@@ -109,7 +109,12 @@ async function main() {
     videosUpdatedAt = now.toISOString();
   }
 
+  // Bevar external_stats (skrives av update-social-stats.mjs i en separat
+  // workflow). Hvis vi ikke spreader inn existing først, wiper YouTube-jobben
+  // alle Meta/TikTok-data hvert 15. minutt — race-condition med
+  // /jobb-side display der mobil/desktop ville se ulike tall avhengig av timing.
   const output = {
+    ...existing,
     stats,
     videos,
     stats_updated_at: now.toISOString(),
