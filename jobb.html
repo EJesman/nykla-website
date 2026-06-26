@@ -444,6 +444,25 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   }
   .footer-est,.footer-org{justify-self:center;text-align:center}
 }
+
+/* Email-template panel — stack vertikalt på smale skjermer
+   så verdier ikke wrapper stygt i smal kolonne */
+@media(max-width:600px){
+  .send-panel-inner{padding:1.4rem 1.2rem 1.2rem}
+  .send-row{
+    grid-template-columns:1fr;
+    gap:0.5rem;
+    padding:1rem 0;
+  }
+  .send-label{padding-top:0}
+  .send-value, .send-body-text{padding:0}
+  .send-value.mono{font-size:0.95rem;word-break:break-all}
+  .send-body-text{font-size:0.95rem}
+  .copy-mini{
+    justify-self:start;
+    padding:0.55rem 1.1rem;
+  }
+}
 </style>
 </head>
 <body>
