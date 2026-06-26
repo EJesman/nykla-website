@@ -3348,7 +3348,18 @@ const rost=document.getElementById('rost-page');
 const trans=document.getElementById('page-trans');
 const transPanel=document.getElementById('trans-panel');
 
+function isRostUrl(){
+  const p = decodeURIComponent(window.location.pathname || '/').toLowerCase().replace(/\/+$/,'');
+  return p === '/røst' || p === '/rost';
+}
+
+// Flagg for å unngå at popstate-trigget navigasjon pusher en ny state
+let suppressPushState = false;
+
 function goRost(){
+  if (!suppressPushState) {
+    history.pushState({page:'rost'}, '', '/røst');
+  }
   // Blue panel slides in from the right
   transPanel.style.background='var(--blue)';
   trans.classList.add('from-right-in');
@@ -3370,6 +3381,9 @@ function goRost(){
 }
 
 function goMain(){
+  if (!suppressPushState) {
+    history.pushState({page:'main'}, '', '/');
+  }
   // White panel slides in from the left
   transPanel.style.background='var(--white)';
   // Position offscreen on the left, no transition
@@ -3396,6 +3410,26 @@ function goMain(){
 
 document.getElementById('rost-tab').addEventListener('click',goRost);
 document.getElementById('rost-back').addEventListener('click',goMain);
+
+// Browser tilbake/frem-knapp: synkroniser side-state med URL
+window.addEventListener('popstate', () => {
+  suppressPushState = true;
+  try {
+    const onRostUrl = isRostUrl();
+    const onRostPage = rost.classList.contains('active');
+    if (onRostUrl && !onRostPage) goRost();
+    else if (!onRostUrl && onRostPage) goMain();
+  } finally {
+    suppressPushState = false;
+  }
+});
+
+// Direkte URL-tilgang: hvis brukeren lander på /røst, vis RØST uten animasjon
+if (isRostUrl()) {
+  main.classList.remove('active');
+  rost.classList.add('active');
+  fetchYT();
+}
 
 /* ─── MOBILE MENU ─── */
 (function(){
