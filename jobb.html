@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Karriere — Vis oss hva du kan | Nykla</title>
+<meta name="description" content="Vi er på utkikk etter klippere, frontpersoner og kreative talenter til Nykla — produksjonsselskap i Oslo. Vis oss hva du kan.">
+<meta name="theme-color" content="#FF6200">
+<link rel="canonical" href="https://www.nykla.no/jobb">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%23FF6200'/%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nykla">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:title" content="Karriere — Vis oss hva du kan | Nykla">
+<meta property="og:description" content="Vi er på utkikk etter klippere, frontpersoner og kreative talenter. Vis oss hva du kan.">
+<meta property="og:url" content="https://www.nykla.no/jobb">
+<meta property="og:image" content="https://www.nykla.no/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;
+  --white:#f5f2ed;
+  --orange:#FF6200;
+  --blue:#1a1aff;
+  --gray:#8a8580;
+  --line-light:#e8e5e0;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--white);
+  color:var(--black);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+
+/* ─── TOP BAR ─── */
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.6rem 2.5rem;
+  border-bottom:1px solid var(--line-light);
+  position:relative;z-index:5;
+}
+.brand-mini{display:flex;align-items:center;gap:0.4rem}
+.brand-mini svg{height:24px;width:auto;fill:var(--black)}
+.brand-mini .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--orange);
+  display:inline-block;margin-left:2px;
+}
+.topbar-nav{
+  display:flex;gap:2.2rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;
+}
+.topbar-nav a{position:relative;padding-bottom:2px}
+.topbar-nav a::after{
+  content:'';position:absolute;left:0;bottom:0;
+  width:0;height:1px;background:var(--orange);
+  transition:width .3s cubic-bezier(0.16,1,0.3,1);
+}
+.topbar-nav a:hover::after{width:100%}
+.topbar-right{display:flex;align-items:center;gap:1.2rem}
+.topbar-login{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--black);
+  border:1px solid var(--black);
+  border-radius:999px;
+  padding:0.55rem 1rem;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.topbar-login svg{width:10px;height:10px;transition:transform .25s}
+.topbar-login:hover{background:var(--orange);border-color:var(--orange);color:var(--black)}
+.topbar-login:hover svg{transform:translateX(2px)}
+
+/* ─── PAGE BODY ─── */
+.page-body{
+  position:relative;
+  display:grid;
+  grid-template-columns:60px 1fr 60px;
+  flex:1;
+}
+.rail{
+  border-right:1px solid var(--line-light);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:1.5rem 0;
+}
+.rail-r{border-right:none;border-left:1px solid var(--line-light)}
+.rail-text{
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--gray);
+}
+
+.page-main{
+  padding:4rem 2.5rem 5rem;
+  max-width:760px;margin:0 auto;
+  width:100%;
+}
+
+/* ─── HERO ─── */
+.hero-eyebrow{
+  display:flex;align-items:center;justify-content:center;gap:0.7rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:2rem;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';width:24px;height:1px;background:var(--orange);
+}
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.6rem,6.5vw,5.5rem);
+  line-height:0.95;
+  letter-spacing:0.005em;
+  text-align:center;
+  margin-bottom:2rem;
+}
+.hero-title .o{color:var(--orange)}
+.hero-desc{
+  font-size:1rem;line-height:1.7;
+  text-align:center;
+  max-width:55ch;
+  margin:0 auto 5rem;
+  color:var(--black);
+  opacity:0.78;
+}
+
+/* ─── SECTION LABEL ─── */
+.section-label{
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:0.8rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:1.8rem;
+}
+.section-label::after{
+  content:'';width:1px;height:28px;background:var(--orange);
+}
+
+/* ─── ROLE CARDS ─── */
+.roles{margin-bottom:4.5rem}
+.role-cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+.role-card{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.4rem;
+  padding:2.4rem 1rem 2rem;
+  background:var(--white);
+  border:1px solid rgba(0,0,0,0.1);
+  border-radius:10px;
+  cursor:pointer;
+  transition:border-color .25s, background .25s, transform .25s, box-shadow .25s;
+}
+.role-card:hover{
+  border-color:var(--black);
+  transform:translateY(-2px);
+}
+.role-card.selected{
+  border-color:var(--orange);
+  background:rgba(255,98,0,0.04);
+  box-shadow:0 0 0 1px var(--orange);
+}
+.role-icon{
+  width:42px;height:42px;
+  color:var(--black);
+  transition:color .25s;
+}
+.role-card.selected .role-icon{color:var(--orange)}
+.role-icon svg{width:100%;height:100%;display:block}
+.role-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.3rem;
+  letter-spacing:0.06em;
+  color:var(--black);
+}
+.role-card.selected .role-name{color:var(--black)}
+
+/* ─── ROLE INSTRUCTIONS (revealed when role selected) ─── */
+.role-instructions{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .4s cubic-bezier(0.16,1,0.3,1), opacity .35s, margin-top .4s;
+}
+.role-instructions.show{
+  max-height:500px;
+  opacity:1;
+  margin-top:1.6rem;
+}
+.role-instructions-inner{
+  background:rgba(255,98,0,0.04);
+  border:1px dashed rgba(255,98,0,0.4);
+  border-radius:10px;
+  padding:1.5rem 1.6rem;
+}
+.role-instructions-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:0.6rem;
+  display:flex;align-items:center;gap:0.55rem;
+}
+.role-instructions-label::before{
+  content:'';width:18px;height:1px;background:var(--orange);
+}
+.role-instructions-body{
+  font-size:0.95rem;line-height:1.6;
+  color:var(--black);
+  opacity:0.85;
+}
+.role-instructions-body strong{font-weight:500}
+
+/* ─── STEPS ─── */
+.steps{margin-bottom:3rem}
+.step-list{
+  list-style:none;
+  display:flex;flex-direction:column;
+  gap:0;
+}
+.step{
+  display:grid;
+  grid-template-columns:60px 1fr;
+  gap:1.2rem;
+  padding:1.4rem 0;
+  border-bottom:1px solid var(--line-light);
+}
+.step:first-child{border-top:1px solid var(--line-light)}
+.step-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;
+  color:var(--orange);
+  letter-spacing:0.02em;
+  line-height:1;
+}
+.step-content h3{
+  font-family:'Space Mono',monospace;
+  font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;
+  font-weight:700;
+  color:var(--black);
+  margin-bottom:0.45rem;
+}
+.step-content p{
+  font-size:0.92rem;line-height:1.55;
+  color:var(--black);
+  opacity:0.7;
+}
+
+/* ─── UPLOAD CTA ─── */
+.upload-cta-wrap{
+  display:flex;justify-content:center;
+  margin-top:3rem;
+}
+.upload-cta{
+  display:inline-flex;align-items:center;gap:0.7rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--orange);
+  background:transparent;
+  border:1.5px solid var(--orange);
+  border-radius:999px;
+  padding:1rem 1.8rem;
+  transition:background .25s,color .25s,transform .15s;
+  cursor:pointer;
+}
+.upload-cta svg{width:14px;height:14px;flex-shrink:0}
+.upload-cta:hover{
+  background:var(--orange);
+  color:var(--white);
+}
+.upload-cta:active{transform:translateY(1px)}
+.upload-cta.disabled{
+  opacity:0.45;
+  border-color:var(--gray);
+  color:var(--gray);
+  cursor:not-allowed;
+  pointer-events:none;
+}
+.upload-hint{
+  text-align:center;
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gray);
+  margin-top:1rem;
+  min-height:1rem;
+}
+
+/* ─── SEND PANEL (revealed after first copy) ─── */
+.send-panel{
+  max-height:0;overflow:hidden;
+  opacity:0;
+  transition:max-height .45s cubic-bezier(0.16,1,0.3,1), opacity .35s, margin-top .4s;
+}
+.send-panel.show{
+  max-height:1200px;
+  opacity:1;
+  margin-top:2rem;
+}
+.send-panel-inner{
+  background:var(--white);
+  border:1px solid rgba(0,0,0,0.1);
+  border-radius:12px;
+  padding:1.6rem 1.6rem 1.4rem;
+}
+.send-panel-title{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.send-panel-title::before{
+  content:'';width:24px;height:1px;background:var(--orange);
+}
+.send-row{
+  display:grid;grid-template-columns:80px 1fr auto;
+  gap:0.8rem;
+  align-items:start;
+  padding:0.7rem 0;
+  border-bottom:1px solid var(--line-light);
+}
+.send-row:last-of-type{border-bottom:none}
+.send-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gray);
+  padding-top:0.4rem;
+}
+.send-value{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.95rem;line-height:1.5;
+  color:var(--black);
+  word-break:break-word;
+  padding:0.35rem 0;
+}
+.send-value.mono{font-family:'Space Mono',monospace;font-size:0.85rem}
+.send-body-text{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.9rem;line-height:1.55;
+  color:var(--black);
+  white-space:pre-line;
+  padding:0.35rem 0;
+}
+.copy-mini{
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--orange);
+  border:1px solid var(--orange);
+  border-radius:999px;
+  padding:0.4rem 0.8rem;
+  cursor:pointer;
+  background:transparent;
+  transition:background .2s,color .2s;
+  white-space:nowrap;
+}
+.copy-mini:hover{background:var(--orange);color:var(--white)}
+.copy-mini.copied{background:var(--black);border-color:var(--black);color:var(--white)}
+
+/* ─── TOAST ─── */
+.toast{
+  position:fixed;
+  bottom:2rem;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--black);
+  color:var(--white);
+  padding:0.85rem 1.4rem;
+  border-radius:999px;
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;
+  opacity:0;
+  pointer-events:none;
+  z-index:1000;
+  transition:opacity .3s, transform .3s cubic-bezier(0.16,1,0.3,1);
+  box-shadow:0 10px 30px -8px rgba(0,0,0,0.3);
+}
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* ─── FOOTER ─── */
+.footer{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:center;
+  padding:1.6rem 2.5rem;
+  border-top:1px solid var(--line-light);
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gray);
+  margin-top:auto;
+}
+.footer-est{justify-self:start}
+.footer-base{
+  justify-self:center;text-align:center;
+  display:flex;flex-direction:column;gap:0.3rem;
+}
+.footer-base-label{font-size:0.5rem;letter-spacing:0.22em;color:var(--gray)}
+.footer-base-value{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;letter-spacing:0.04em;
+  color:var(--black);
+}
+.footer-base-value .o{color:var(--orange)}
+.footer-org{justify-self:end;text-align:right}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  .topbar{padding:1rem 1.2rem;flex-wrap:wrap;gap:0.8rem}
+  .topbar-nav{display:none}
+  .page-body{grid-template-columns:1fr}
+  .rail{display:none}
+  .page-main{padding:3rem 1.2rem 4rem}
+  .hero-desc{margin-bottom:3.5rem}
+  .role-cards{grid-template-columns:1fr;gap:0.6rem}
+  .role-card{padding:1.6rem 1rem;flex-direction:row;justify-content:flex-start;gap:1rem}
+  .role-icon{width:28px;height:28px}
+  .role-name{font-size:1.1rem}
+  .step{grid-template-columns:40px 1fr;gap:0.8rem;padding:1.2rem 0}
+  .step-num{font-size:1.4rem}
+  .footer{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:0.7rem;
+    padding:1.4rem 1.2rem;
+  }
+  .footer-est,.footer-org{justify-self:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="/" class="brand-mini" aria-label="Tilbake til Nykla forsiden">
+    <svg viewBox="0 0 1920 1080" aria-label="Nykla">
+      <path d="M222.46,696.7v-380.88h113.18l103.38,341.7h8.71v-341.7h58.22v380.88h-113.18l-103.38-342.25h-8.71v342.25h-58.22Z"/>
+      <path d="M655.57,696.7v-138.21l-132.22-242.68h66.38l91.41,172.49h8.16l91.41-172.49h66.38l-132.22,242.68v138.21h-59.31Z"/>
+      <path d="M864.5,696.7v-380.88h58.76v158.34h8.71l142.01-158.34h76.72l-171.94,187.72,177.93,193.16h-78.9l-145.82-161.6h-8.71v161.6h-58.76Z"/>
+      <path d="M1172.47,696.7v-380.88h58.76v327.56h183.37v53.32h-242.13Z"/>
+      <path d="M1411.88,696.7l108.82-380.88h103.38l108.28,380.88h-60.4l-25.03-89.78h-149.09l-25.03,89.78h-60.94ZM1512.54,552.51h119.71l-55.5-200.23h-8.71l-55.5,200.23Z"/>
+    </svg>
+    <span class="dot"></span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="/#about">Om oss</a>
+    <a href="/#flow">Prosess</a>
+    <a href="/#portal">NyklaPortalen</a>
+    <a href="/#services">Hvorfor oss</a>
+    <a href="/#team">Team</a>
+    <a href="/#contact">Kontakt</a>
+  </nav>
+  <div class="topbar-right">
+    <a class="topbar-login" href="https://portal.nykla.no" target="_blank" rel="noopener">
+      Logg inn
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+  <aside class="rail">
+    <div class="rail-text">Produksjonsselskap</div>
+  </aside>
+
+  <main class="page-main">
+
+    <!-- HERO -->
+    <div class="hero-eyebrow">Kreativt nettverk</div>
+    <h1 class="hero-title">Vis oss<br>hva du kan<span class="o">.</span></h1>
+    <p class="hero-desc">
+      Vi er alltid på utkikk etter flere flinke mennesker å jobbe med.
+      Enten du er sterk på klipp, foran kamera eller begge deler,
+      kan du vise oss hva du kan ved å følge stegene nedenfor.
+    </p>
+
+    <!-- ROLES -->
+    <section class="roles">
+      <div class="section-label">Velg din rolle</div>
+      <div class="role-cards" id="role-cards">
+        <button class="role-card" data-role="produsent" type="button" aria-pressed="false">
+          <div class="role-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="13" width="26" height="15" rx="1.5"/>
+              <path d="M3 8 L29 8 L29 13 L3 13 Z"/>
+              <line x1="9" y1="8" x2="5" y2="13"/>
+              <line x1="15" y1="8" x2="11" y2="13"/>
+              <line x1="21" y1="8" x2="17" y2="13"/>
+              <line x1="27" y1="8" x2="23" y2="13"/>
+            </svg>
+          </div>
+          <div class="role-name">SoMe Produsent</div>
+        </button>
+        <button class="role-card" data-role="frontperson" type="button" aria-pressed="false">
+          <div class="role-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="9" width="22" height="16" rx="2"/>
+              <path d="M9 9 L11 6 L17 6 L19 9"/>
+              <circle cx="14" cy="17" r="4"/>
+              <circle cx="22" cy="13" r="0.8" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="role-name">Frontperson</div>
+        </button>
+        <button class="role-card" data-role="begge" type="button" aria-pressed="false">
+          <div class="role-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="9" width="18" height="14" rx="2"/>
+              <path d="M7 9 L8.5 6.5 L13.5 6.5 L15 9"/>
+              <circle cx="11" cy="16" r="3.4"/>
+              <circle cx="27" cy="10" r="2.6"/>
+              <circle cx="27" cy="22" r="2.6"/>
+              <line x1="29" y1="12" x2="38" y2="22"/>
+              <line x1="29" y1="20" x2="38" y2="10"/>
+            </svg>
+          </div>
+          <div class="role-name">Begge deler</div>
+        </button>
+      </div>
+
+      <!-- Reveals when role is chosen -->
+      <div class="role-instructions" id="role-instructions">
+        <div class="role-instructions-inner">
+          <div class="role-instructions-label">Din oppgave</div>
+          <div class="role-instructions-body" id="role-instructions-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="steps">
+      <div class="section-label">Slik gjør du det</div>
+      <ol class="step-list">
+        <li class="step">
+          <span class="step-num">01</span>
+          <div class="step-content">
+            <h3>Gjennomfør oppgaven</h3>
+            <p>Følg instruksene for din valgte rolle. Når du er ferdig, har du en video klar.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <div class="step-content">
+            <h3>Finn lenke til videoen</h3>
+            <p>Last opp eller finn lenke til video(er) du skal legge ved. Gjerne på YouTube, Vimeo, Dropbox eller WeTransfer.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <div class="step-content">
+            <h3>Send e-posten</h3>
+            <p>Trykk "Åpne e-post". Kopier e-post, emne og innhold. Fyll ut e-posten. Ship avgårde!</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="upload-cta-wrap">
+        <button class="upload-cta disabled" id="upload-cta" type="button" aria-disabled="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="3.5" width="12" height="9" rx="1.5"/>
+            <path d="M2.5 4.5 L8 9 L13.5 4.5"/>
+          </svg>
+          Åpne e-post
+        </button>
+      </div>
+      <div class="upload-hint" id="upload-hint">Velg rolle først</div>
+
+      <!-- Reveals after first copy: full template -->
+      <div class="send-panel" id="send-panel">
+        <div class="send-panel-inner">
+          <div class="send-panel-title">Send e-posten</div>
+          <div class="send-row">
+            <div class="send-label">Til</div>
+            <div class="send-value mono" id="send-email">emil@nykla.no</div>
+            <button class="copy-mini" data-copy-target="email" type="button">Kopier</button>
+          </div>
+          <div class="send-row">
+            <div class="send-label">Emne</div>
+            <div class="send-value mono" id="send-subject"></div>
+            <button class="copy-mini" data-copy-target="subject" type="button">Kopier</button>
+          </div>
+          <div class="send-row">
+            <div class="send-label">Innhold</div>
+            <div class="send-body-text" id="send-body"></div>
+            <button class="copy-mini" data-copy-target="body" type="button">Kopier</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="rail rail-r">
+    <div class="rail-text">Oslo · Norge</div>
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-est">EST. 2025</div>
+  <div class="footer-base">
+    <div class="footer-base-label">Based in Oslo</div>
+    <div class="footer-base-value">Gullhaugveien 10<span class="o">,</span> Nydalen</div>
+  </div>
+  <div class="footer-org">Nykla AS</div>
+</footer>
+
+<!-- Toast for copy feedback -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const ROLE_INSTRUCTIONS = {
+  produsent: {
+    label: 'SoMe Produsent',
+    body: 'Vi ser etter produsenter som kan jobbe <strong>både selvstendig, men også i team</strong>. Vis oss et konsept du har planlagt, filmet og redigert i <strong>vertikalt format</strong>. Husk å forklare i mailen hva du har gjort. Lengde: <strong>30 sek – 2 min</strong>.',
+  },
+  frontperson: {
+    label: 'Frontperson',
+    body: 'Vis oss hvordan du er <strong>foran kameraet</strong>. Spill inn en selftape: fortell hvem du er, hva du brenner for, og hvorfor du vil jobbe med innholdsproduksjon. Vær deg selv — vi vil se personligheten, ikke en CV. Lengde: <strong>60–90 sek</strong>.',
+  },
+  begge: {
+    label: 'Begge deler',
+    body: 'Vi ser etter folk som kan jobbe <strong>både selvstendig, men også i team</strong> — og som er like trygge foran som bak kameraet. Vis oss et konsept du har planlagt, filmet og redigert i <strong>vertikalt format</strong>, der du selv fronter. Husk å forklare i mailen hva du har gjort. Lengde: <strong>30 sek – 2 min</strong>.',
+  },
+};
+
+const EMAIL = 'jobb@nykla.no';
+
+const cards = document.querySelectorAll('.role-card');
+const instructionsWrap = document.getElementById('role-instructions');
+const instructionsBody = document.getElementById('role-instructions-body');
+const uploadCta = document.getElementById('upload-cta');
+const uploadHint = document.getElementById('upload-hint');
+const sendPanel = document.getElementById('send-panel');
+const sendEmail = document.getElementById('send-email');
+const sendSubject = document.getElementById('send-subject');
+const sendBody = document.getElementById('send-body');
+const toast = document.getElementById('toast');
+
+let toastTimer = null;
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  if(toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toast.classList.remove('show'), 2400);
+}
+
+async function copyText(text){
+  try{
+    await navigator.clipboard.writeText(text);
+    return true;
+  }catch(e){
+    // Fallback for older browsers / file:// context
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try{ ok = document.execCommand('copy'); }catch(_){}
+    document.body.removeChild(ta);
+    return ok;
+  }
+}
+
+let currentRole = null;
+
+function selectRole(role){
+  currentRole = role;
+  cards.forEach(c => {
+    const isSelected = c.dataset.role === role;
+    c.classList.toggle('selected', isSelected);
+    c.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+  });
+
+  const data = ROLE_INSTRUCTIONS[role];
+  if (!data) return;
+  instructionsBody.innerHTML = data.body;
+  instructionsWrap.classList.add('show');
+
+  // Build subject + body templates
+  const subject = 'Søknad: ' + data.label + ' – [ditt navn]';
+  const body =
+    'Hei Nykla!\n\n' +
+    'Jeg vil gjerne søke som ' + data.label.toLowerCase() + '.\n\n' +
+    'Lenke til video:\n' +
+    '(husk å gi oss tilgang)\n\n' +
+    'Litt om meg:\n' +
+    '(navn, hvor du holder til, kort om hva du har gjort før)\n\n' +
+    'Telefon:\n' +
+    'Portfolio/Instagram:\n\n' +
+    'Mvh';
+
+  sendSubject.textContent = subject;
+  sendBody.textContent = body;
+  sendSubject.dataset.copyValue = subject;
+  sendBody.dataset.copyValue = body;
+  sendEmail.dataset.copyValue = EMAIL;
+
+  uploadCta.classList.remove('disabled');
+  uploadCta.removeAttribute('aria-disabled');
+  uploadHint.textContent = 'Klar — åpne e-post-malen';
+}
+
+cards.forEach(card => {
+  card.addEventListener('click', () => selectRole(card.dataset.role));
+});
+
+uploadCta.addEventListener('click', () => {
+  if (uploadCta.classList.contains('disabled')) return;
+  sendPanel.classList.add('show');
+  // Scroll the panel into view if needed
+  setTimeout(() => {
+    sendPanel.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 100);
+});
+
+// Mini copy buttons inside the send panel
+document.querySelectorAll('.copy-mini').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const target = btn.dataset.copyTarget;
+    let value = '';
+    if (target === 'email') value = EMAIL;
+    else if (target === 'subject') value = sendSubject.textContent;
+    else if (target === 'body') value = sendBody.textContent;
+    const ok = await copyText(value);
+    if (ok) {
+      btn.classList.add('copied');
+      const original = btn.textContent;
+      btn.textContent = 'Kopiert ✓';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = original;
+      }, 1600);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
