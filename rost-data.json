@@ -41,7 +41,13 @@
       "source": "Meta API",
       "updated_at": "2026-06-26T14:45:35.547Z"
     },
-    "total_views": 1010402,
-    "updated_at": "2026-06-26T14:45:35.547Z"
+    "total_views": 4657489,
+    "updated_at": "2026-06-26T14:45:35.547Z",
+    "tiktok": {
+      "views": 3647087,
+      "posts": 74,
+      "source": "Apify",
+      "updated_at": "2026-06-26T14:12:49.263Z"
+    }
   }
 }

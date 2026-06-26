@@ -26,20 +26,29 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync with latest origin before running
+        run: git pull --rebase
+
       - name: Fetch RØST data
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: node scripts/update-rost-data.mjs
 
+      - name: Verify JSON integrity before push
+        run: |
+          node -e "const d = JSON.parse(require('fs').readFileSync('rost-data.json','utf8')); if (!d.stats || !d.videos) { console.error('rost-data.json missing stats/videos — aborting'); process.exit(1); }"
+
       - name: Commit and push if changed
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase --autostash
           if [[ -n "$(git status --porcelain rost-data.json)" ]]; then
             git add rost-data.json
             git commit -m "chore: update RØST data"
-            git push
+            git push || echo "Push failed — another workflow pushed first. Next cron will retry."
           else
             echo "No changes to commit"
           fi
