@@ -110,23 +110,40 @@ async function fetchInstagram() {
 async function fetchFacebook() {
   // For Facebook MÅ vi bruke Page-bundet token (ikke System User direkte)
   const pageToken = await getPageBoundToken();
-  const initialUrl =
-    `https://graph.facebook.com/${GRAPH_API_VERSION}/${META_PAGE_ID}/posts` +
-    `?fields=id,video_insights.metric(total_video_views)` +
-    `&limit=${PAGE_SIZE}` +
-    `&access_token=${encodeURIComponent(pageToken)}`;
 
+  // Hent fra både /video_reels (Reels) og /videos (vanlige videoer + tidligere
+  // Reels før split). Bruker views-feltet direkte på video-objektet i stedet
+  // for video_insights — krever bare pages_read_engagement, ikke read_insights.
+  const sources = [
+    `${META_PAGE_ID}/video_reels`,
+    `${META_PAGE_ID}/videos`,
+  ];
+
+  const seenIds = new Set();
   let totalViews = 0;
   let posts = 0;
-  for await (const batch of paginate(initialUrl)) {
-    for (const item of batch) {
-      const insights = item.video_insights?.data || [];
-      const tvv = insights.find((i) => i.name === 'total_video_views');
-      const value = tvv?.values?.[0]?.value || 0;
-      if (value > 0) {
-        totalViews += value;
-        posts += 1;
+
+  for (const path of sources) {
+    const initialUrl =
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${path}` +
+      `?fields=id,views,length` +
+      `&limit=${PAGE_SIZE}` +
+      `&access_token=${encodeURIComponent(pageToken)}`;
+    try {
+      for await (const batch of paginate(initialUrl)) {
+        for (const item of batch) {
+          if (!item?.id || seenIds.has(item.id)) continue;
+          seenIds.add(item.id);
+          const value = item.views || 0;
+          if (value > 0) {
+            totalViews += value;
+            posts += 1;
+          }
+        }
       }
+    } catch (e) {
+      // /video_reels finnes ikke for alle Pages — bare hopp over
+      console.error(`  (hopper over ${path}: ${e.message?.slice(0, 100)})`);
     }
   }
   return { views: totalViews, posts };
