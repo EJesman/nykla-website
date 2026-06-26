@@ -1,0 +1,6 @@
+# Nykla – robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.nykla.no/sitemap.xml
