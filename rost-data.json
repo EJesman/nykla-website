@@ -29,6 +29,7 @@
   "stats_updated_at": "2026-06-26T14:12:10.562Z",
   "videos_updated_at": "2026-06-25T15:15:34.578Z",
   "external_stats": {
+<<<<<<< Updated upstream
     "instagram": {
       "views": 302211,
       "posts": 69,
@@ -43,5 +44,15 @@
     },
     "total_views": 1010380,
     "updated_at": "2026-06-26T14:12:26.057Z"
+=======
+    "tiktok": {
+      "views": 3647087,
+      "posts": 74,
+      "source": "Apify",
+      "updated_at": "2026-06-26T14:12:49.263Z"
+    },
+    "total_views": 3647087,
+    "updated_at": "2026-06-26T14:12:49.263Z"
+>>>>>>> Stashed changes
   }
 }
