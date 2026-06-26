@@ -196,11 +196,23 @@ async function main() {
   const prev = existing.external_stats || {};
   const next = { ...prev };
 
-  const platforms = [
+  // PLATFORMS env var lar workflows kjøre kun et subset, f.eks.
+  // PLATFORMS=instagram,facebook for Meta-only (hver 15. min)
+  // PLATFORMS=tiktok for Apify-only (daglig)
+  // Tomt = alle (lokal testing)
+  const enabled = (process.env.PLATFORMS || 'instagram,facebook,tiktok')
+    .split(',')
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+
+  const allPlatforms = [
     ['instagram', fetchInstagram, 'Meta API'],
     ['facebook', fetchFacebook, 'Meta API'],
     ['tiktok', fetchTikTok, 'Apify'],
   ];
+  const platforms = allPlatforms.filter(([name]) => enabled.includes(name));
+
+  console.log(`Henter for: ${platforms.map(([n]) => n).join(', ')}\n`);
 
   const results = await Promise.allSettled(platforms.map(([, fn]) => fn()));
 

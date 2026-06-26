@@ -1,15 +1,17 @@
-name: Update RØST data
+name: Update RØST Meta stats (Instagram + Facebook)
 
 on:
   schedule:
-    # Hver 15. minutt. GitHub kan utsette cron 5–30 min ved høy last —
-    # det er ok, vi sparer uansett kvote ved å ikke gå oftere.
+    # Hvert 15. minutt. Meta Graph API er gratis så hyppige kall
+    # koster ingenting — view-tall blir tilnærmet real-time.
     - cron: '*/15 * * * *'
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
+# Felles concurrency-gruppe på tvers av alle rost-data-jobber
+# så ingen pusher samtidig.
 concurrency:
   group: rost-data
   cancel-in-progress: false
@@ -26,10 +28,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Fetch RØST data
+      - name: Fetch Instagram + Facebook stats
         env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: node scripts/update-rost-data.mjs
+          PLATFORMS: instagram,facebook
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_ACCOUNT_ID: ${{ secrets.META_IG_ACCOUNT_ID }}
+        run: node scripts/update-social-stats.mjs
 
       - name: Commit and push if changed
         run: |
@@ -38,7 +43,7 @@ jobs:
           git pull --rebase --autostash
           if [[ -n "$(git status --porcelain rost-data.json)" ]]; then
             git add rost-data.json
-            git commit -m "chore: update RØST data"
+            git commit -m "chore: update RØST Meta stats"
             git push
           else
             echo "No changes to commit"

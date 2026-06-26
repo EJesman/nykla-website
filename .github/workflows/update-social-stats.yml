@@ -1,17 +1,19 @@
-name: Update RØST social stats
+name: Update RØST TikTok stats (Apify)
 
 on:
   schedule:
     # Daily at 06:00 UTC (08:00 norsk sommer / 07:00 vinter).
-    # Apify-scraping er dyrere enn YouTube API — daglig holder.
+    # Apify koster compute units — daglig holder.
     - cron: '0 6 * * *'
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
+# Felles concurrency-gruppe på tvers av alle rost-data-jobber
+# så ingen pusher samtidig.
 concurrency:
-  group: update-social
+  group: rost-data
   cancel-in-progress: false
 
 jobs:
@@ -26,11 +28,9 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Fetch social stats (Meta API + Apify TikTok)
+      - name: Fetch TikTok stats
         env:
-          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
-          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
-          META_IG_ACCOUNT_ID: ${{ secrets.META_IG_ACCOUNT_ID }}
+          PLATFORMS: tiktok
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: node scripts/update-social-stats.mjs
 
@@ -38,9 +38,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash
           if [[ -n "$(git status --porcelain rost-data.json)" ]]; then
             git add rost-data.json
-            git commit -m "chore: update RØST social stats"
+            git commit -m "chore: update RØST TikTok stats"
             git push
           else
             echo "No changes to commit"
