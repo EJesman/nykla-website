@@ -192,6 +192,18 @@ async function loadExisting() {
 
 async function main() {
   const existing = await loadExisting();
+
+  // Sikkerhet: hvis fila ikke har YouTube-data (stats + videos), kan noe være
+  // galt — fila kan være korrupt, tom eller midlertidig manglende. Vi nekter
+  // å skrive videre fordi det vil overskrive med kun external_stats og wipe
+  // alt YouTube-relatert. (Dette skjedde 2026-06-26 — fb984d8.)
+  if (!existing || !existing.stats || !existing.videos || !Array.isArray(existing.videos)) {
+    console.error('✗ ABORT: rost-data.json mangler stats/videos.');
+    console.error('  Sjekker filinnhold:', JSON.stringify(existing).slice(0, 200));
+    console.error('  Kjør update-rost-data.mjs (YouTube) først for å bygge baseline.');
+    process.exit(1);
+  }
+
   const now = new Date().toISOString();
   const prev = existing.external_stats || {};
   const next = { ...prev };

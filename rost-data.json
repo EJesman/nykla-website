@@ -1,4 +1,33 @@
 {
+  "stats": {
+    "subscribers": 12800,
+    "views": 614256
+  },
+  "videos": [
+    {
+      "videoId": "A789G0iAsE8",
+      "title": "Sykepleieren i en aktiv krigssone i 2026 | Perspektiv",
+      "publishedAt": "2026-06-12T14:17:29Z",
+      "durationSeconds": 976,
+      "thumbnail": "https://i.ytimg.com/vi/A789G0iAsE8/maxresdefault.jpg"
+    },
+    {
+      "videoId": "W0zeLRCX-WE",
+      "title": "Leder av Norges største kriminelle gjeng svarer på Gjengkrigen | Alt du lurer på",
+      "publishedAt": "2026-06-05T12:55:06Z",
+      "durationSeconds": 892,
+      "thumbnail": "https://i.ytimg.com/vi/W0zeLRCX-WE/maxresdefault.jpg"
+    },
+    {
+      "videoId": "PIoNthd-ZRw",
+      "title": "Vennen din selger narkotika - og vet det ikke",
+      "publishedAt": "2026-05-28T13:53:43Z",
+      "durationSeconds": 726,
+      "thumbnail": "https://i.ytimg.com/vi/PIoNthd-ZRw/maxresdefault.jpg"
+    }
+  ],
+  "stats_updated_at": "2026-06-26T13:29:48.630Z",
+  "videos_updated_at": "2026-06-25T15:15:34.578Z",
   "external_stats": {
     "instagram": {
       "views": 302215,
