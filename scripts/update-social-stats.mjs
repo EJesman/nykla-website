@@ -54,6 +54,30 @@ async function* paginate(initialUrl) {
   }
 }
 
+// For New Pages Experience trenger Facebook `/posts`-endpointen en
+// Page-bundet access token, ikke en System User token direkte. Vi henter
+// derfor Page-token fra /me/accounts hver kjøring (gratis API-call).
+let _cachedPageToken = null;
+async function getPageBoundToken() {
+  if (_cachedPageToken) return _cachedPageToken;
+  if (!META_PAGE_TOKEN || !META_PAGE_ID) {
+    throw new Error('META_PAGE_TOKEN eller META_PAGE_ID mangler');
+  }
+  const url =
+    `https://graph.facebook.com/${GRAPH_API_VERSION}/me/accounts` +
+    `?fields=id,access_token&limit=50` +
+    `&access_token=${encodeURIComponent(META_PAGE_TOKEN)}`;
+  const d = await getJson(url);
+  const page = (d.data || []).find((p) => String(p.id) === String(META_PAGE_ID));
+  if (!page?.access_token) {
+    throw new Error(
+      `Fant ikke Page ${META_PAGE_ID} blant System User assets — sjekk at Pagen er assignet med Full access`
+    );
+  }
+  _cachedPageToken = page.access_token;
+  return _cachedPageToken;
+}
+
 async function fetchInstagram() {
   if (!META_PAGE_TOKEN || !META_IG_ACCOUNT_ID) {
     throw new Error('META_PAGE_TOKEN eller META_IG_ACCOUNT_ID mangler');
@@ -84,15 +108,13 @@ async function fetchInstagram() {
 }
 
 async function fetchFacebook() {
-  if (!META_PAGE_TOKEN || !META_PAGE_ID) {
-    throw new Error('META_PAGE_TOKEN eller META_PAGE_ID mangler');
-  }
-  // Hent alle posts på Pagen med video_insights inline
+  // For Facebook MÅ vi bruke Page-bundet token (ikke System User direkte)
+  const pageToken = await getPageBoundToken();
   const initialUrl =
     `https://graph.facebook.com/${GRAPH_API_VERSION}/${META_PAGE_ID}/posts` +
     `?fields=id,video_insights.metric(total_video_views)` +
     `&limit=${PAGE_SIZE}` +
-    `&access_token=${encodeURIComponent(META_PAGE_TOKEN)}`;
+    `&access_token=${encodeURIComponent(pageToken)}`;
 
   let totalViews = 0;
   let posts = 0;
