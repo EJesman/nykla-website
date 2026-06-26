@@ -29,25 +29,25 @@
   "stats_updated_at": "2026-06-26T08:54:49.502Z",
   "videos_updated_at": "2026-06-25T15:15:34.578Z",
   "external_stats": {
-    "total_views": 3949073,
-    "updated_at": "2026-06-26T09:34:39.822Z",
+    "total_views": 4657161,
+    "updated_at": "2026-06-26T09:39:27.501Z",
     "instagram": {
       "views": 302202,
       "posts": 69,
       "source": "Meta API",
-      "updated_at": "2026-06-26T09:34:39.822Z"
+      "updated_at": "2026-06-26T09:39:27.501Z"
     },
     "facebook": {
-      "views": 0,
-      "posts": 0,
+      "views": 708088,
+      "posts": 70,
       "source": "Meta API",
-      "updated_at": "2026-06-26T09:34:39.822Z"
+      "updated_at": "2026-06-26T09:39:27.501Z"
     },
     "tiktok": {
       "views": 3646871,
       "posts": 74,
       "source": "Apify",
-      "updated_at": "2026-06-26T09:34:39.822Z"
+      "updated_at": "2026-06-26T09:39:27.501Z"
     }
   }
 }
