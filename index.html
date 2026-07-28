@@ -1632,7 +1632,7 @@ section.light{background:var(--white);color:var(--black)}
   font-size:clamp(3rem,7vw,7rem);
   color:var(--orange);margin-bottom:4rem;line-height:0.9;
 }
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;position:relative}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;position:relative}
 .team-stripe{
   position:absolute;top:50%;left:-3rem;right:-3rem;
   height:50px;background:var(--orange);
@@ -2289,6 +2289,10 @@ body.menu-open{overflow:hidden}
   .mockup-body{grid-template-columns:120px 1fr}
   .mockup-thumb{width:38px;height:26px}
   .team-grid{grid-template-columns:1fr;gap:2rem}
+  /* Stripe er sentrert på 50% for desktop-rekken. På mobil (stacked
+     kolonne) faller 50% mellom to medlemmer og krysser teksten.
+     Flytter til 82% så den havner bak siste bilde i stedet. */
+  .team-stripe{top:82%;height:36px}
   #contact{grid-template-columns:1fr}
   .contact-cols{grid-template-columns:1fr}
   .services-top{flex-direction:column;align-items:flex-start}
@@ -2968,6 +2972,11 @@ body.menu-open{overflow:hidden}
       <img class="member-photo" src="team-skarbo.gif" alt="Mathias Skarbø"/>
       <div class="member-name">Mathias Skarbø</div>
       <div class="member-detail">Svart kaffe og bare det!<br>Ålesund</div>
+    </div>
+    <div class="member">
+      <img class="member-photo" src="team-matilde.gif" alt="Matilde Sveen"/>
+      <div class="member-name">Matilde Sveen</div>
+      <div class="member-detail">Ismocca<br>Siggerud</div>
     </div>
   </div>
 </section>
