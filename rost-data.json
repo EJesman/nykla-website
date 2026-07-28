@@ -1,7 +1,7 @@
 {
   "stats": {
-    "subscribers": 12900,
-    "views": 615709
+    "subscribers": 13500,
+    "views": 722385
   },
   "videos": [
     {
@@ -26,28 +26,28 @@
       "thumbnail": "https://i.ytimg.com/vi/W0zeLRCX-WE/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-06-27T11:36:39.298Z",
-  "videos_updated_at": "2026-06-26T15:54:52.547Z",
+  "stats_updated_at": "2026-07-28T12:26:54.495Z",
+  "videos_updated_at": "2026-07-27T13:58:59.551Z",
   "external_stats": {
     "instagram": {
-      "views": 302259,
-      "posts": 69,
-      "source": "Meta API",
-      "updated_at": "2026-06-27T12:18:57.954Z"
-    },
-    "facebook": {
-      "views": 708518,
+      "views": 303542,
       "posts": 70,
       "source": "Meta API",
-      "updated_at": "2026-06-27T12:18:57.954Z"
+      "updated_at": "2026-07-28T11:45:09.392Z"
     },
-    "total_views": 4659650,
-    "updated_at": "2026-06-27T12:18:57.954Z",
+    "facebook": {
+      "views": 732471,
+      "posts": 70,
+      "source": "Meta API",
+      "updated_at": "2026-07-28T11:45:09.392Z"
+    },
+    "total_views": 4732425,
+    "updated_at": "2026-07-28T11:45:09.392Z",
     "tiktok": {
-      "views": 3648873,
-      "posts": 74,
+      "views": 3696412,
+      "posts": 75,
       "source": "Apify",
-      "updated_at": "2026-06-27T08:39:36.622Z"
+      "updated_at": "2026-07-28T08:37:42.480Z"
     }
   }
 }
