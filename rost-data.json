@@ -5,6 +5,13 @@
   },
   "videos": [
     {
+      "videoId": "xOYvuYuxgUg",
+      "title": "Ekte Hacker Svarer På Spørsmål Fra Internett | Alt du lurer på",
+      "publishedAt": "2026-08-08T09:11:20Z",
+      "durationSeconds": 829,
+      "thumbnail": "https://i.ytimg.com/vi/xOYvuYuxgUg/maxresdefault.jpg"
+    },
+    {
       "videoId": "9WkO43y4v-s",
       "title": "Hva skjer om Norge vinner VM?",
       "publishedAt": "2026-06-26T09:00:18Z",
@@ -17,17 +24,10 @@
       "publishedAt": "2026-06-12T14:17:29Z",
       "durationSeconds": 976,
       "thumbnail": "https://i.ytimg.com/vi/A789G0iAsE8/maxresdefault.jpg"
-    },
-    {
-      "videoId": "W0zeLRCX-WE",
-      "title": "Leder av Norges største kriminelle gjeng svarer på Gjengkrigen | Alt du lurer på",
-      "publishedAt": "2026-06-05T12:55:06Z",
-      "durationSeconds": 892,
-      "thumbnail": "https://i.ytimg.com/vi/W0zeLRCX-WE/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-08-08T11:08:30.695Z",
-  "videos_updated_at": "2026-08-07T12:27:52.485Z",
+  "stats_updated_at": "2026-08-08T11:43:28.015Z",
+  "videos_updated_at": "2026-08-08T11:43:28.015Z",
   "external_stats": {
     "instagram": {
       "views": 303577,
