@@ -5,6 +5,13 @@
   },
   "videos": [
     {
+      "videoId": "kuiDLc9HugQ",
+      "title": "girl in red &  Snorre Monsson svarer på rykter fra internett | Undercover på nett",
+      "publishedAt": "2026-09-04T14:01:11Z",
+      "durationSeconds": 761,
+      "thumbnail": "https://i.ytimg.com/vi/kuiDLc9HugQ/maxresdefault.jpg"
+    },
+    {
       "videoId": "xOYvuYuxgUg",
       "title": "Ekte Hacker Svarer På Spørsmål Fra Internett | Alt du lurer på",
       "publishedAt": "2026-08-08T09:11:20Z",
@@ -17,17 +24,10 @@
       "publishedAt": "2026-06-26T09:00:18Z",
       "durationSeconds": 461,
       "thumbnail": "https://i.ytimg.com/vi/9WkO43y4v-s/maxresdefault.jpg"
-    },
-    {
-      "videoId": "A789G0iAsE8",
-      "title": "Sykepleieren som valgte å hjelpe til i nød | Perspektiv",
-      "publishedAt": "2026-06-12T14:17:29Z",
-      "durationSeconds": 976,
-      "thumbnail": "https://i.ytimg.com/vi/A789G0iAsE8/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-09-04T18:16:45.826Z",
-  "videos_updated_at": "2026-09-03T21:23:02.251Z",
+  "stats_updated_at": "2026-09-04T20:56:24.807Z",
+  "videos_updated_at": "2026-09-04T20:56:24.807Z",
   "external_stats": {
     "instagram": {
       "views": 318380,
