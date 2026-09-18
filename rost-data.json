@@ -5,8 +5,15 @@
   },
   "videos": [
     {
+      "videoId": "dNctUpjcMVY",
+      "title": "Alt du lurer på om å være komiker",
+      "publishedAt": "2026-09-18T15:00:35Z",
+      "durationSeconds": 657,
+      "thumbnail": "https://i.ytimg.com/vi/dNctUpjcMVY/maxresdefault.jpg"
+    },
+    {
       "videoId": "5aEgvNVYcj8",
-      "title": "Videoene du trodde var privat",
+      "title": "Du blir filmet uten at du vet det",
       "publishedAt": "2026-09-12T14:00:29Z",
       "durationSeconds": 614,
       "thumbnail": "https://i.ytimg.com/vi/5aEgvNVYcj8/maxresdefault.jpg"
@@ -17,17 +24,10 @@
       "publishedAt": "2026-09-04T14:01:11Z",
       "durationSeconds": 761,
       "thumbnail": "https://i.ytimg.com/vi/kuiDLc9HugQ/maxresdefault.jpg"
-    },
-    {
-      "videoId": "xOYvuYuxgUg",
-      "title": "Ekte Hacker Svarer På Spørsmål Fra Internett | Alt du lurer på",
-      "publishedAt": "2026-08-08T09:11:20Z",
-      "durationSeconds": 829,
-      "thumbnail": "https://i.ytimg.com/vi/xOYvuYuxgUg/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-09-18T19:59:10.166Z",
-  "videos_updated_at": "2026-09-17T22:21:16.480Z",
+  "stats_updated_at": "2026-09-18T22:29:30.616Z",
+  "videos_updated_at": "2026-09-18T22:29:30.616Z",
   "external_stats": {
     "instagram": {
       "views": 369462,
