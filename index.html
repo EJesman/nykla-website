@@ -1082,7 +1082,7 @@ section.light{background:var(--white);color:var(--black)}
 /* ════════════════════════════════════
    NYKLA PORTALEN
 ════════════════════════════════════ */
-#portal{
+#portalen{
   background:var(--white);
   color:var(--black);
   padding:7rem 2.5rem;
@@ -1109,6 +1109,20 @@ section.light{background:var(--white);color:var(--black)}
   color:rgba(0,0,0,0.7);
   max-width:48ch;
   margin-bottom:2.5rem;
+}
+.portal-cta{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--black);
+  border-bottom:1px solid var(--black);
+  padding-bottom:0.35rem;
+  transition:color .25s, border-color .25s, gap .25s;
+}
+.portal-cta:hover{
+  color:var(--orange);
+  border-color:var(--orange);
+  gap:0.8rem;
 }
 .portal-features{
   list-style:none;
@@ -2384,7 +2398,7 @@ body.menu-open{overflow:hidden}
     <nav class="mobile-menu-nav">
       <a href="#about" data-menu-link>Om oss</a>
       <a href="#flow" data-menu-link>Prosess</a>
-      <a href="#portal" data-menu-link>NyklaPortalen</a>
+      <a href="/portalen">Nyklaportalen</a>
       <a href="#services" data-menu-link>Hvorfor oss</a>
       <a href="#team" data-menu-link>Team</a>
       <a href="#contact" data-menu-link>Kontakt</a>
@@ -2448,7 +2462,7 @@ body.menu-open{overflow:hidden}
     <div class="topbar-nav">
       <a href="#about">Om oss</a>
       <a href="#flow">Prosess</a>
-      <a href="#portal">NyklaPortalen</a>
+      <a href="/portalen">Nyklaportalen</a>
       <a href="#services">Hvorfor oss</a>
       <a href="#team">Team</a>
       <a href="#contact">Kontakt</a>
@@ -2507,7 +2521,7 @@ body.menu-open{overflow:hidden}
     <div class="hb-left">
       <a href="#about">Om oss</a> &nbsp;·&nbsp;
       <a href="#flow">Prosess</a> &nbsp;·&nbsp;
-      <a href="#portal">NyklaPortalen</a> &nbsp;·&nbsp;
+      <a href="/portalen">Nyklaportalen</a> &nbsp;·&nbsp;
       <a href="#services">Hvorfor oss</a> &nbsp;·&nbsp;
       <a href="#team">Team</a> &nbsp;·&nbsp;
       <a href="#contact">Kontakt</a>
@@ -2627,7 +2641,7 @@ body.menu-open{overflow:hidden}
       </div>
       <div class="flow-loop-hint flow-portal-hint">
         <svg class="journey-loop-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M8 14h2M14 14h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Du har all oversikt i NyklaPortalen</span>
+        <span>Du har all oversikt i Nyklaportalen</span>
       </div>
     </div>
   </div>
@@ -2650,7 +2664,7 @@ body.menu-open{overflow:hidden}
     <div class="flow-output-head">
       <div class="output-label">Volum & publisering</div>
       <h3 class="output-title">Velg tempoet ditt<span class="o">.</span></h3>
-      <p class="output-desc">15 eller 30 ferdige filmer hver måned — vi planlegger publisering, du følger med i NyklaPortalen.</p>
+      <p class="output-desc">15 eller 30 ferdige filmer hver måned — vi planlegger publisering, du følger med i Nyklaportalen.</p>
       <div class="vol-segmented" role="radiogroup" aria-label="Volum">
         <button class="vol-seg active" data-pkg="15" type="button" role="radio" aria-checked="true">
           <span class="seg-num">15</span>
@@ -2679,42 +2693,13 @@ body.menu-open{overflow:hidden}
 </section>
 
 <!-- NYKLA PORTALEN -->
-<section id="portal" class="light">
+<section id="portalen" class="light">
   <div class="portal-grid reveal">
     <div class="portal-l">
-      <div class="section-label">03 — NyklaPortalen</div>
-      <h2 class="portal-h">Nykla<br>Portalen<span class="o">.</span></h2>
-      <p class="portal-desc">Vi har utviklet vår helt egen plattform — skreddersydd for nøyaktig det vi og kundene våre trenger. Følg hver film fra konsept til publisert. Godkjenn, kommenter og last ned alt — uten lenker som forsvinner i en e-posttråd.</p>
-      <ul class="portal-features">
-        <li>
-          <span class="portal-feat-num">01</span>
-          <div>
-            <div class="portal-feat-name">Innspillingsoversikt</div>
-            <div class="portal-feat-desc">Se hva som er planlagt og hva som er produsert.</div>
-          </div>
-        </li>
-        <li>
-          <span class="portal-feat-num">02</span>
-          <div>
-            <div class="portal-feat-name">Godkjenning og kommentarer</div>
-            <div class="portal-feat-desc">Godkjenn ferdige filmer eller be om endringer direkte i plattformen.</div>
-          </div>
-        </li>
-        <li>
-          <span class="portal-feat-num">03</span>
-          <div>
-            <div class="portal-feat-name">Direkte chat</div>
-            <div class="portal-feat-desc">Snakk med innholdsskaper og kundekontakt uten å bytte verktøy.</div>
-          </div>
-        </li>
-        <li>
-          <span class="portal-feat-num">04</span>
-          <div>
-            <div class="portal-feat-name">Komplett filmarkiv</div>
-            <div class="portal-feat-desc">Last ned alt som er produsert. Aldri en e-postlenke som forsvinner.</div>
-          </div>
-        </li>
-      </ul>
+      <div class="section-label">03 — Nyklaportalen</div>
+      <h2 class="portal-h">Nyklaportalen<span class="o">.</span></h2>
+      <p class="portal-desc">Vi bygget vår egen plattform fordi ingen av verktøyene som fantes gjorde hele jobben. Kunden godkjenner, vi publiserer, og hver film måles etterpå. Alt samlet ett sted, uten lenker som forsvinner i en e-posttråd.</p>
+      <a href="/portalen" class="portal-cta">Se hvordan Nyklaportalen fungerer <span aria-hidden="true">→</span></a>
     </div>
     <div class="portal-r" aria-hidden="true">
       <div class="portal-mockup">
@@ -3207,6 +3192,7 @@ const COMPANIES = [
   {name:'Eika',            src:'logos/Eika.png',             scale:0.75},
   {name:'Grue Sparebank',  src:'logos/GrueSparebank.svg',    scale:0.8},
   {name:'Tinde Sparebank', src:'logos/TindeSparebank.svg',   scale:0.8},
+  {name:'Nordisk Film',    src:'logos/NordiskFilm.svg',      scale:1.2},
   {name:'Oskar Westerlin', text:true}
 ];
 const track = document.getElementById('logos-track');

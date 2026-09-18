@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nyklaportalen — plattformen som holder produksjonen samlet | Nykla</title>
+<meta name="description" content="Nyklaportalen er plattformen der kundene godkjenner, vi publiserer, og hver film måles etterpå. Alt samlet ett sted, uten lenker som forsvinner i en e-posttråd.">
+<meta name="theme-color" content="#FF6200">
+<link rel="canonical" href="https://www.nykla.no/portalen">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%23FF6200'/%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nykla">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:title" content="Nyklaportalen — plattformen som holder produksjonen samlet">
+<meta property="og:description" content="Kunden godkjenner, vi publiserer, og hver film måles etterpå. Alt samlet ett sted.">
+<meta property="og:url" content="https://www.nykla.no/portalen">
+<meta property="og:image" content="https://www.nykla.no/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500;600&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;
+  --white:#f5f2ed;
+  --orange:#FF6200;
+  --blue:#1a1aff;
+  --gray:#8a8580;
+  --line-light:#e8e5e0;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--white);
+  color:var(--black);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+img{max-width:100%;display:block}
+
+/* ─── TOP BAR (matches main site) ─── */
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.6rem 2.5rem;
+  border-bottom:1px solid var(--line-light);
+  position:relative;z-index:5;
+}
+.brand-mini{display:flex;align-items:center;gap:0.4rem}
+.brand-mini svg{height:24px;width:auto;fill:var(--black)}
+.brand-mini .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--orange);
+  display:inline-block;margin-left:2px;
+}
+.topbar-nav{
+  display:flex;gap:2.2rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;
+}
+.topbar-nav a{position:relative;padding-bottom:2px}
+.topbar-nav a::after{
+  content:'';position:absolute;left:0;bottom:0;
+  width:0;height:1px;background:var(--orange);
+  transition:width .3s cubic-bezier(0.16,1,0.3,1);
+}
+.topbar-nav a.current::after{width:100%}
+.topbar-nav a:hover::after{width:100%}
+.topbar-right{display:flex;align-items:center;gap:1.2rem}
+.topbar-login{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--black);
+  border:1px solid var(--black);
+  border-radius:999px;
+  padding:0.55rem 1rem;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.topbar-login svg{width:10px;height:10px;transition:transform .25s}
+.topbar-login:hover{background:var(--orange);border-color:var(--orange);color:var(--black)}
+.topbar-login:hover svg{transform:translateX(2px)}
+
+/* ─── HERO ─── */
+.hero{
+  padding:5rem 2.5rem 4rem;
+  max-width:1400px;
+  margin:0 auto;
+  width:100%;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.7rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:1.4rem;
+}
+.hero-eyebrow::before{
+  content:'';width:24px;height:1px;background:var(--orange);
+}
+.hero-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,8vw,7rem);
+  line-height:0.95;
+  letter-spacing:0.005em;
+  margin-bottom:1.6rem;
+  max-width:14ch;
+}
+.hero-h .o{color:var(--orange)}
+.hero-sub{
+  font-size:1.15rem;line-height:1.6;
+  color:var(--black);
+  opacity:0.78;
+  max-width:60ch;
+  margin-bottom:3rem;
+}
+.hero-shot{
+  margin-top:2rem;
+}
+
+/* ─── REVEAL ON SCROLL ─── */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .9s cubic-bezier(0.16,1,0.3,1), transform .9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.08s}
+.reveal-d2{transition-delay:.16s}
+.reveal-d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ─── HANDWRITTEN ANNOTATION (matches hero-message pattern on main site) ─── */
+.hero-shot-wrap{position:relative}
+.hero-shot-note{
+  position:absolute;
+  top:-1.2rem;right:2rem;
+  font-family:'Caveat',cursive;
+  font-weight:600;
+  font-size:1.6rem;
+  color:var(--orange);
+  transform:rotate(-3deg);
+  pointer-events:none;
+  z-index:2;
+  white-space:nowrap;
+}
+.hero-shot-note svg{
+  position:absolute;
+  right:-8px;bottom:-22px;
+  width:18px;height:26px;
+  color:var(--orange);
+  transform:rotate(18deg);
+}
+@media(max-width:900px){
+  .hero-shot-note{
+    top:-0.8rem;right:1rem;
+    font-size:1.25rem;
+  }
+}
+
+/* ─── SHOT FRAME (screenshot container, 1288x900) ─── */
+.shot{
+  position:relative;
+  aspect-ratio:1288/900;
+  background:#f0ede8;
+  border:1px solid var(--line-light);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,0.12), 0 8px 22px -8px rgba(0,0,0,0.06);
+}
+.shot img{
+  width:100%;height:100%;
+  object-fit:cover;
+}
+/* Placeholder look when image fails to load or is missing */
+.shot::before{
+  content:attr(data-placeholder);
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gray);
+  text-align:center;
+  padding:2rem;
+  z-index:0;
+}
+.shot img{position:relative;z-index:1}
+
+/* ─── SECTION LABEL (hairline + eyebrow) ─── */
+.section-label{
+  display:inline-flex;align-items:center;gap:0.7rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:1rem;
+}
+.section-label::before{
+  content:'';width:24px;height:1px;background:var(--orange);
+}
+
+/* ─── FEATURE BLOCKS ─── */
+.features{
+  padding:2rem 2.5rem 5rem;
+  max-width:1400px;
+  margin:0 auto;
+  width:100%;
+}
+.features-intro{
+  display:flex;flex-direction:column;
+  gap:0.5rem;
+  padding:3rem 0 4rem;
+  border-top:1px solid var(--line-light);
+}
+.features-intro-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1;
+  letter-spacing:0.02em;
+  margin-top:0.6rem;
+}
+.features-intro-h .o{color:var(--orange)}
+.feature{
+  display:grid;
+  grid-template-columns:1fr 1.35fr;
+  gap:4rem;
+  align-items:center;
+  padding:5rem 0;
+  border-top:1px solid var(--line-light);
+}
+.feature:nth-child(even){
+  grid-template-columns:1.35fr 1fr;
+}
+.feature:nth-child(even) .feature-text{order:2}
+.feature:nth-child(even) .feature-shot{order:1}
+.feature-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.8rem;
+  color:var(--orange);
+  line-height:1;
+  letter-spacing:0.02em;
+  margin-bottom:1.2rem;
+}
+.feature-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  line-height:1.02;
+  letter-spacing:0.02em;
+  color:var(--black);
+  margin-bottom:1.2rem;
+  max-width:16ch;
+}
+.feature-desc{
+  font-size:1.05rem;line-height:1.65;
+  color:var(--black);
+  opacity:0.78;
+  max-width:50ch;
+}
+
+/* Text-only variant (no screenshot) — full width, centered */
+.feature-text-only{
+  display:block;
+  text-align:center;
+  padding:4rem 0;
+}
+.feature-text-only .feature-num{margin-bottom:1rem}
+.feature-text-only .feature-title{
+  margin:0 auto 1rem;
+}
+.feature-text-only .feature-desc{
+  margin:0 auto;
+  max-width:44ch;
+}
+
+/* ─── CLOSING ─── */
+.closing{
+  padding:6rem 2.5rem 5rem;
+  max-width:900px;
+  margin:0 auto;
+  width:100%;
+  border-top:1px solid var(--line-light);
+  text-align:center;
+}
+.closing-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.4rem,5vw,4rem);
+  line-height:0.95;
+  letter-spacing:0.02em;
+  margin-bottom:1.4rem;
+}
+.closing-h .o{color:var(--orange)}
+.closing-desc{
+  font-size:1.05rem;line-height:1.7;
+  color:var(--black);
+  opacity:0.78;
+  max-width:56ch;
+  margin:0 auto 2.4rem;
+}
+.closing-cta{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;
+  padding:1rem 1.8rem;
+  border:1.5px solid var(--black);
+  border-radius:999px;
+  transition:background .25s, color .25s, gap .25s;
+}
+.closing-cta:hover{
+  background:var(--black);
+  color:var(--white);
+  gap:0.9rem;
+}
+
+/* ─── FOOTER ─── */
+.footer{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:center;
+  padding:1.6rem 2.5rem;
+  border-top:1px solid var(--line-light);
+  font-family:'Space Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gray);
+  margin-top:auto;
+}
+.footer-est{justify-self:start}
+.footer-base{
+  justify-self:center;text-align:center;
+  display:flex;flex-direction:column;gap:0.3rem;
+}
+.footer-base-label{font-size:0.5rem;letter-spacing:0.22em;color:var(--gray)}
+.footer-base-value{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;letter-spacing:0.04em;
+  color:var(--black);
+}
+.footer-base-value .o{color:var(--orange)}
+.footer-org{justify-self:end;text-align:right}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  .topbar{padding:1rem 1.2rem;flex-wrap:wrap;gap:0.8rem}
+  .topbar-nav{display:none}
+  .hero{padding:3rem 1.2rem 2.5rem}
+  .features{padding:1.5rem 1.2rem 3rem}
+  .feature{
+    grid-template-columns:1fr;
+    gap:2rem;
+    padding:3rem 0;
+  }
+  .feature:nth-child(even){grid-template-columns:1fr}
+  .feature:nth-child(even) .feature-text{order:1}
+  .feature:nth-child(even) .feature-shot{order:2}
+  .feature-num{font-size:2.2rem;margin-bottom:0.8rem}
+  .closing{padding:4rem 1.2rem 3rem}
+  .footer{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:0.7rem;
+    padding:1.4rem 1.2rem;
+  }
+  .footer-est,.footer-org{justify-self:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="/" class="brand-mini" aria-label="Tilbake til Nykla forsiden">
+    <svg viewBox="0 0 1920 1080" aria-label="Nykla">
+      <path d="M222.46,696.7v-380.88h113.18l103.38,341.7h8.71v-341.7h58.22v380.88h-113.18l-103.38-342.25h-8.71v342.25h-58.22Z"/>
+      <path d="M655.57,696.7v-138.21l-132.22-242.68h66.38l91.41,172.49h8.16l91.41-172.49h66.38l-132.22,242.68v138.21h-59.31Z"/>
+      <path d="M864.5,696.7v-380.88h58.76v158.34h8.71l142.01-158.34h76.72l-171.94,187.72,177.93,193.16h-78.9l-145.82-161.6h-8.71v161.6h-58.76Z"/>
+      <path d="M1172.47,696.7v-380.88h58.76v327.56h183.37v53.32h-242.13Z"/>
+      <path d="M1411.88,696.7l108.82-380.88h103.38l108.28,380.88h-60.4l-25.03-89.78h-149.09l-25.03,89.78h-60.94ZM1512.54,552.51h119.71l-55.5-200.23h-8.71l-55.5,200.23Z"/>
+    </svg>
+    <span class="dot"></span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="/#about">Om oss</a>
+    <a href="/#flow">Prosess</a>
+    <a href="/portalen" class="current">Nyklaportalen</a>
+    <a href="/#services">Hvorfor oss</a>
+    <a href="/#team">Team</a>
+    <a href="/#contact">Kontakt</a>
+    <a href="/jobb">Karriere</a>
+  </nav>
+  <div class="topbar-right">
+    <a class="topbar-login" href="https://portal.nykla.no" target="_blank" rel="noopener">
+      Logg inn
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow reveal">Vår plattform</div>
+  <h1 class="hero-h reveal reveal-d1">Nyklaportalen<span class="o">.</span></h1>
+  <p class="hero-sub reveal reveal-d2">
+    Kunden godkjenner, vi publiserer, og hver film måles etterpå. Alt samlet ett sted, uten lenker som forsvinner i en e-posttråd.
+  </p>
+  <div class="hero-shot reveal reveal-d3">
+    <div class="hero-shot-wrap">
+      <span class="hero-shot-note" aria-hidden="true">
+        Live hos alle kundene
+        <svg viewBox="0 0 18 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 2 L9 22 M4 17 L9 22 L14 17"/>
+        </svg>
+      </span>
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /public/portal/dashboard.html.png">
+        <img src="/public/portal/dashboard.html.png" alt="Nyklaportalen — hovedvisning" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-intro reveal">
+    <div class="section-label">Innhold</div>
+    <h2 class="features-intro-h">Slik ser det ut fra innsiden<span class="o">.</span></h2>
+  </div>
+
+  <article class="feature reveal">
+    <div class="feature-text">
+      <div class="feature-num">01</div>
+      <h3 class="feature-title">Godkjenning og kommentarer</h3>
+      <p class="feature-desc">Godkjenn ferdige filmer eller be om endringer direkte i plattformen.</p>
+    </div>
+    <div class="feature-shot">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /public/portal/godkjenning.png">
+        <img src="/public/portal/godkjenning.png" alt="Godkjenning og kommentarer i Nyklaportalen" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </article>
+
+  <article class="feature reveal">
+    <div class="feature-text">
+      <div class="feature-num">02</div>
+      <h3 class="feature-title">Publiseringskalender</h3>
+      <p class="feature-desc">Hele måneden i én oversikt, med tidspunkt for hver kanal.</p>
+    </div>
+    <div class="feature-shot">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /public/portal/kalender.png">
+        <img src="/public/portal/kalender.png" alt="Publiseringskalender i Nyklaportalen" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </article>
+
+  <article class="feature reveal">
+    <div class="feature-text">
+      <div class="feature-num">03</div>
+      <h3 class="feature-title">Måling av hver film</h3>
+      <p class="feature-desc">Vi måler hver publisering etter at den er ute, ikke bare likes og visninger.</p>
+    </div>
+    <div class="feature-shot">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /public/portal/analyse.png">
+        <img src="/public/portal/analyse.png" alt="Måling av hver film i Nyklaportalen" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </article>
+
+  <article class="feature reveal">
+    <div class="feature-text">
+      <div class="feature-num">04</div>
+      <h3 class="feature-title">Komplett filmarkiv</h3>
+      <p class="feature-desc">Last ned alt som er produsert, helt tilbake til første måned.</p>
+    </div>
+    <div class="feature-shot">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /public/portal/arkiv.png">
+        <img src="/public/portal/arkiv.png" alt="Komplett filmarkiv i Nyklaportalen" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </article>
+
+  <article class="feature feature-text-only reveal">
+    <div class="feature-num">05</div>
+    <h3 class="feature-title">Direkte chat</h3>
+    <p class="feature-desc">Snakk med innholdsskaper og kundekontakt uten å bytte verktøy.</p>
+  </article>
+</section>
+
+<!-- CLOSING -->
+<section class="closing reveal">
+  <div class="section-label" style="justify-content:center;display:flex">Under utvikling</div>
+  <h2 class="closing-h">Ikke ferdig — vi bygger videre<span class="o">.</span></h2>
+  <p class="closing-desc">
+    Nyklaportalen er operativ hos alle kundene våre, men den er ikke ferdig. Vi legger til nye funksjoner løpende, basert på hva vi og kundene faktisk trenger for å få jobben gjort.
+  </p>
+  <a href="/#contact" class="closing-cta">Ta kontakt <span aria-hidden="true">→</span></a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-est">EST. 2025</div>
+  <div class="footer-base">
+    <div class="footer-base-label">Based in Oslo</div>
+    <div class="footer-base-value">Gullhaugveien 10<span class="o">,</span> Nydalen</div>
+  </div>
+  <div class="footer-org">Nykla AS</div>
+</footer>
+
+<script>
+  // Reveal on scroll — matches pattern from main site
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
