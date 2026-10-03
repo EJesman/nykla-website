@@ -5,6 +5,13 @@
   },
   "videos": [
     {
+      "videoId": "gmd0QBpR7L4",
+      "title": "Drapet som endret Norge for alltid",
+      "publishedAt": "2026-10-02T15:44:54Z",
+      "durationSeconds": 887,
+      "thumbnail": "https://i.ytimg.com/vi/gmd0QBpR7L4/maxresdefault.jpg"
+    },
+    {
       "videoId": "dNctUpjcMVY",
       "title": "Henrik Fladseth svarer internett | Undercover på nett",
       "publishedAt": "2026-09-18T15:00:35Z",
@@ -17,17 +24,10 @@
       "publishedAt": "2026-09-12T14:00:29Z",
       "durationSeconds": 614,
       "thumbnail": "https://i.ytimg.com/vi/5aEgvNVYcj8/maxresdefault.jpg"
-    },
-    {
-      "videoId": "kuiDLc9HugQ",
-      "title": "girl in red &  Snorre Monsson svarer på rykter fra internett | Undercover på nett",
-      "publishedAt": "2026-09-04T14:01:11Z",
-      "durationSeconds": 761,
-      "thumbnail": "https://i.ytimg.com/vi/kuiDLc9HugQ/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-10-03T01:58:51.205Z",
-  "videos_updated_at": "2026-10-02T07:32:08.157Z",
+  "stats_updated_at": "2026-10-03T07:57:59.701Z",
+  "videos_updated_at": "2026-10-03T07:57:59.701Z",
   "external_stats": {
     "instagram": {
       "views": 386339,
