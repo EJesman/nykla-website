@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nb-NO">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,6 +16,61 @@
 <meta property="og:description" content="Kunden godkjenner, vi publiserer, og hver film måles etterpå. Alt samlet ett sted.">
 <meta property="og:url" content="https://www.nykla.no/portalen">
 <meta property="og:image" content="https://www.nykla.no/og-image.jpg">
+<meta property="og:image:width" content="1201">
+<meta property="og:image:height" content="572">
+<meta property="og:image:alt" content="Nyklaportalen — plattformen som holder produksjonen samlet">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nyklaportalen — plattformen som holder produksjonen samlet">
+<meta name="twitter:description" content="Kunden godkjenner, vi publiserer, og hver film måles etterpå. Alt samlet ett sted.">
+<meta name="twitter:image" content="https://www.nykla.no/og-image.jpg">
+<meta name="twitter:image:alt" content="Nyklaportalen — plattformen som holder produksjonen samlet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.nykla.no/portalen#webpage",
+      "url": "https://www.nykla.no/portalen",
+      "name": "Nyklaportalen — plattformen som holder produksjonen samlet",
+      "description": "Nyklaportalen er plattformen der kundene godkjenner, vi publiserer, og hver film måles etterpå.",
+      "inLanguage": "nb-NO",
+      "isPartOf": { "@id": "https://www.nykla.no/#website" },
+      "about": { "@id": "https://www.nykla.no/portalen#software" },
+      "breadcrumb": { "@id": "https://www.nykla.no/portalen#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.nykla.no/portalen#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Nykla", "item": "https://www.nykla.no/" },
+        { "@type": "ListItem", "position": 2, "name": "Nyklaportalen" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.nykla.no/portalen#software",
+      "name": "Nyklaportalen",
+      "url": "https://portal.nykla.no",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "nb-NO",
+      "description": "Plattform for godkjenning, publisering, måling og arkivering av videoproduksjoner. Kunden godkjenner, Nykla publiserer, og hver film måles etterpå.",
+      "featureList": [
+        "Godkjenning og kommentarer",
+        "Publiseringskalender",
+        "Måling av hver film",
+        "Komplett filmarkiv",
+        "Direkte chat"
+      ],
+      "publisher": { "@id": "https://www.nykla.no/#organization" }
+    }
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -403,6 +458,8 @@ img{max-width:100%;display:block}
   </div>
 </div>
 
+<main>
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow reveal">Vår plattform</div>
@@ -418,8 +475,8 @@ img{max-width:100%;display:block}
           <path d="M9 2 L9 22 M4 17 L9 22 L14 17"/>
         </svg>
       </span>
-      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/dashboard.html.png">
-        <img src="/portal-shots/dashboard.html.png" alt="Nyklaportalen — hovedvisning" onerror="this.style.display='none'">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/dashboard.html.webp">
+        <img src="/portal-shots/dashboard.html.webp" alt="Nyklaportalen — hovedvisning" width="1288" height="900" loading="lazy" decoding="async" onerror="this.style.display='none'">
       </div>
     </div>
   </div>
@@ -439,8 +496,8 @@ img{max-width:100%;display:block}
       <p class="feature-desc">Godkjenn ferdige filmer eller be om endringer direkte i plattformen.</p>
     </div>
     <div class="feature-shot">
-      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/godkjenning.png">
-        <img src="/portal-shots/godkjenning.png" alt="Godkjenning og kommentarer i Nyklaportalen" onerror="this.style.display='none'">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/godkjenning.webp">
+        <img src="/portal-shots/godkjenning.webp" alt="Godkjenning og kommentarer i Nyklaportalen" width="1288" height="900" loading="lazy" decoding="async" onerror="this.style.display='none'">
       </div>
     </div>
   </article>
@@ -452,8 +509,8 @@ img{max-width:100%;display:block}
       <p class="feature-desc">Hele måneden i én oversikt, med tidspunkt for hver kanal.</p>
     </div>
     <div class="feature-shot">
-      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/kalender.png">
-        <img src="/portal-shots/kalender.png" alt="Publiseringskalender i Nyklaportalen" onerror="this.style.display='none'">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/kalender.webp">
+        <img src="/portal-shots/kalender.webp" alt="Publiseringskalender i Nyklaportalen" width="1288" height="900" loading="lazy" decoding="async" onerror="this.style.display='none'">
       </div>
     </div>
   </article>
@@ -465,8 +522,8 @@ img{max-width:100%;display:block}
       <p class="feature-desc">Vi måler hver publisering etter at den er ute, ikke bare likes og visninger.</p>
     </div>
     <div class="feature-shot">
-      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/analyse.png">
-        <img src="/portal-shots/analyse.png" alt="Måling av hver film i Nyklaportalen" onerror="this.style.display='none'">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/analyse.webp">
+        <img src="/portal-shots/analyse.webp" alt="Måling av hver film i Nyklaportalen" width="1288" height="900" loading="lazy" decoding="async" onerror="this.style.display='none'">
       </div>
     </div>
   </article>
@@ -478,8 +535,8 @@ img{max-width:100%;display:block}
       <p class="feature-desc">Last ned alt som er produsert, helt tilbake til første måned.</p>
     </div>
     <div class="feature-shot">
-      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/arkiv.png">
-        <img src="/portal-shots/arkiv.png" alt="Komplett filmarkiv i Nyklaportalen" onerror="this.style.display='none'">
+      <div class="shot" data-placeholder="Skjermbilde 1288 × 900 · /portal-shots/arkiv.webp">
+        <img src="/portal-shots/arkiv.webp" alt="Komplett filmarkiv i Nyklaportalen" width="1288" height="900" loading="lazy" decoding="async" onerror="this.style.display='none'">
       </div>
     </div>
   </article>
@@ -500,6 +557,8 @@ img{max-width:100%;display:block}
   </p>
   <a href="/#contact" class="closing-cta">Ta kontakt <span aria-hidden="true">→</span></a>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="footer">

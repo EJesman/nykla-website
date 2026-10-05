@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nb-NO">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,6 +16,43 @@
 <meta property="og:description" content="Vi er på utkikk etter klippere, frontpersoner og kreative talenter. Vis oss hva du kan.">
 <meta property="og:url" content="https://www.nykla.no/jobb">
 <meta property="og:image" content="https://www.nykla.no/og-image.jpg">
+<meta property="og:image:width" content="1201">
+<meta property="og:image:height" content="572">
+<meta property="og:image:alt" content="Nykla søker klippere, frontpersoner og kreative talenter">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Karriere — Vis oss hva du kan | Nykla">
+<meta name="twitter:description" content="Vi er på utkikk etter klippere, frontpersoner og kreative talenter. Vis oss hva du kan.">
+<meta name="twitter:image" content="https://www.nykla.no/og-image.jpg">
+<meta name="twitter:image:alt" content="Nykla søker klippere, frontpersoner og kreative talenter">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.nykla.no/jobb#webpage",
+      "url": "https://www.nykla.no/jobb",
+      "name": "Karriere — Vis oss hva du kan | Nykla",
+      "description": "Nykla søker klippere, frontpersoner og kreative talenter til produksjonsselskapet i Oslo.",
+      "inLanguage": "nb-NO",
+      "isPartOf": { "@id": "https://www.nykla.no/#website" },
+      "about": { "@id": "https://www.nykla.no/#organization" },
+      "breadcrumb": { "@id": "https://www.nykla.no/jobb#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.nykla.no/jobb#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Nykla", "item": "https://www.nykla.no/" },
+        { "@type": "ListItem", "position": 2, "name": "Karriere" }
+      ]
+    }
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,6 +183,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   flex-direction:column;gap:0.8rem;
   font-family:'Space Mono',monospace;
   font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;
+  font-weight:inherit;
   color:var(--gray);
   margin-bottom:1.8rem;
 }
@@ -516,7 +554,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 
     <!-- ROLES -->
     <section class="roles">
-      <div class="section-label">Velg din rolle</div>
+      <h2 class="section-label">Velg din rolle</h2>
       <div class="role-cards" id="role-cards">
         <button class="role-card" data-role="produsent" type="button" aria-pressed="false">
           <div class="role-icon" aria-hidden="true">
@@ -569,7 +607,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 
     <!-- STEPS -->
     <section class="steps">
-      <div class="section-label">Slik gjør du det</div>
+      <h2 class="section-label">Slik gjør du det</h2>
       <ol class="step-list">
         <li class="step">
           <span class="step-num">01</span>

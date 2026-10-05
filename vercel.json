@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/rost", "destination": "/" }
+  "redirects": [
+    { "source": "/r%C3%B8st", "destination": "/rost", "permanent": true }
   ]
 }
