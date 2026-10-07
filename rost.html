@@ -2541,6 +2541,10 @@ async function fetchYT(){
 }
 document.getElementById('rost-refresh').addEventListener('click',fetchYT);
 
+// Som egen side må hentingen startes her. I SPA-en lå kallet i goRost()
+// og i isRostUrl()-grenen, som begge forsvant da RØST ble skilt ut.
+fetchYT();
+
 /* ─── COOKIE CONSENT + POSTHOG ─── */
 (function(){
   const CONSENT_KEY = 'nykla-cookie-consent';
