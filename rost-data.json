@@ -1,9 +1,16 @@
 {
   "stats": {
     "subscribers": 14800,
-    "views": 1009473
+    "views": 1012620
   },
   "videos": [
+    {
+      "videoId": "lBCbNjDxpy4",
+      "title": "Myter om Dinosaurer med Paleontolog og Dinosaur-ekspert | Alt du lurer på",
+      "publishedAt": "2026-10-09T11:00:27Z",
+      "durationSeconds": 657,
+      "thumbnail": "https://i.ytimg.com/vi/lBCbNjDxpy4/maxresdefault.jpg"
+    },
     {
       "videoId": "gmd0QBpR7L4",
       "title": "Drapet som endret Norge for alltid",
@@ -17,17 +24,10 @@
       "publishedAt": "2026-09-18T15:00:35Z",
       "durationSeconds": 657,
       "thumbnail": "https://i.ytimg.com/vi/dNctUpjcMVY/maxresdefault.jpg"
-    },
-    {
-      "videoId": "5aEgvNVYcj8",
-      "title": "Du blir filmet uten at du vet det",
-      "publishedAt": "2026-09-12T14:00:29Z",
-      "durationSeconds": 614,
-      "thumbnail": "https://i.ytimg.com/vi/5aEgvNVYcj8/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-10-09T18:09:57.714Z",
-  "videos_updated_at": "2026-10-08T19:27:45.117Z",
+  "stats_updated_at": "2026-10-09T22:39:33.275Z",
+  "videos_updated_at": "2026-10-09T22:39:33.275Z",
   "external_stats": {
     "instagram": {
       "views": 388935,
