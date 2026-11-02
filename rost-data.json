@@ -1,12 +1,12 @@
 {
   "stats": {
     "subscribers": 15000,
-    "views": 1059241
+    "views": 1059369
   },
   "videos": [
     {
       "videoId": "sUBX_DGc3no",
-      "title": "Hvorfor feirer vi Halloween? | Forklart",
+      "title": "Knask eller knep var en trussel",
       "publishedAt": "2026-10-21T15:08:09Z",
       "durationSeconds": 433,
       "thumbnail": "https://i.ytimg.com/vi/sUBX_DGc3no/maxresdefault.jpg"
@@ -26,8 +26,8 @@
       "thumbnail": "https://i.ytimg.com/vi/gmd0QBpR7L4/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-11-02T09:49:33.649Z",
-  "videos_updated_at": "2026-11-01T14:50:28.866Z",
+  "stats_updated_at": "2026-11-02T20:01:57.753Z",
+  "videos_updated_at": "2026-11-02T20:01:57.753Z",
   "external_stats": {
     "instagram": {
       "views": 435022,
