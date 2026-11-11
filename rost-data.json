@@ -5,6 +5,13 @@
   },
   "videos": [
     {
+      "videoId": "hEFDBlHMRqw",
+      "title": "Hvorfor blir ALT tyngre når det blir mørkt",
+      "publishedAt": "2026-11-10T15:00:07Z",
+      "durationSeconds": 603,
+      "thumbnail": "https://i.ytimg.com/vi/hEFDBlHMRqw/maxresdefault.jpg"
+    },
+    {
       "videoId": "sUBX_DGc3no",
       "title": "Knask eller knep var en trussel",
       "publishedAt": "2026-10-21T15:08:09Z",
@@ -17,17 +24,10 @@
       "publishedAt": "2026-10-09T11:00:27Z",
       "durationSeconds": 657,
       "thumbnail": "https://i.ytimg.com/vi/lBCbNjDxpy4/maxresdefault.jpg"
-    },
-    {
-      "videoId": "gmd0QBpR7L4",
-      "title": "Drapet som endret Norge for alltid",
-      "publishedAt": "2026-10-02T15:44:54Z",
-      "durationSeconds": 887,
-      "thumbnail": "https://i.ytimg.com/vi/gmd0QBpR7L4/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-11-10T23:55:34.123Z",
-  "videos_updated_at": "2026-11-10T03:16:53.901Z",
+  "stats_updated_at": "2026-11-11T05:25:07.609Z",
+  "videos_updated_at": "2026-11-11T05:25:07.609Z",
   "external_stats": {
     "instagram": {
       "views": 445361,
