@@ -2655,7 +2655,7 @@ body.menu-open{overflow:hidden}
   </div>
 
   <div style="text-align:center;margin-top:3rem">
-    <a href="mailto:hei@nykla.no?subject=Foresp%C3%B8rsel%20fra%20nykla.no&amp;body=Hei%20Nykla!%0D%0A%0D%0ABedrift%3A%0D%0AKontaktperson%3A%0D%0A%0D%0AHva%20trenger%20dere%3F%0D%0A15%20filmer%20i%20m%C3%A5neden%0D%0A%0D%0AN%C3%A5r%20%C3%B8nsker%20dere%20%C3%A5%20starte%3F%0D%0A" class="flow-side-cta" id="vol-cta" data-attr="foresporsel-volum">Send forespørsel →</a>
+    <a href="mailto:hei@nykla.no?subject=Foresp%C3%B8rsel%20fra%20nykla.no&amp;body=Hei%20Nykla!%0D%0A%0D%0ABedrift%3A%0D%0AKontaktperson%3A%0D%0A%0D%0AHva%20trenger%20dere%3F%0D%0A%0D%0A%0D%0AN%C3%A5r%20%C3%B8nsker%20dere%20%C3%A5%20starte%3F%0D%0A" class="flow-side-cta" data-attr="foresporsel-tjenester">Send forespørsel →</a>
   </div>
   <div class="services-inner">
     <div class="svc-rows reveal" style="margin-top:5rem">
@@ -3240,16 +3240,8 @@ function applyCalMode(mode){
   },{threshold:0.4}).observe(el);
 })();
 
-/* ─── FORESPØRSEL: fyll inn valgt volum ─── */
-function forespHref(behov){
-  const t=['Hei Nykla!','','Bedrift:','Kontaktperson:','','Hva trenger dere?',behov||'','','Når ønsker dere å starte?',''].join('\r\n');
-  return 'mailto:hei@nykla.no?subject='+encodeURIComponent('Forespørsel fra nykla.no')+'&body='+encodeURIComponent(t);
-}
-const volCta=document.getElementById('vol-cta');
-
 document.querySelectorAll('.vol-seg').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    if(volCta) volCta.href=forespHref(btn.dataset.pkg+' filmer i måneden');
     document.querySelectorAll('.vol-seg').forEach(b=>{
       b.classList.remove('active');
       b.setAttribute('aria-checked','false');
