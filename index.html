@@ -1401,6 +1401,7 @@ section.light{background:var(--white);color:var(--black)}
   font-size:1rem;line-height:1.5;color:rgba(255,255,255,0.85);
 }
 .data-counter-num{
+  min-width:7ch;
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(2.6rem,5vw,4rem);line-height:1;
   color:var(--orange);
@@ -3172,8 +3173,22 @@ function applyCalMode(mode){
 (function(){
   const el=document.getElementById('data-counter'); if(!el) return;
   const BASE=628932, BASE_TS=Date.parse('2026-11-15T10:00:47Z'), PER_DAG=2893;
-  const tick=()=>{ el.textContent=Math.floor(BASE+(Date.now()-BASE_TS)/864e5*PER_DAG).toLocaleString('nb-NO'); };
-  tick(); setInterval(tick,1000);
+  const naa=()=>BASE+(Date.now()-BASE_TS)/864e5*PER_DAG;
+  const vis=n=>{ el.textContent=Math.floor(n).toLocaleString('nb-NO'); };
+  const fortsett=()=>setInterval(()=>vis(naa()),1000);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { vis(naa()); fortsett(); return; }
+  // Teller opp fra null når den blir synlig, lander på det ekte tallet, fortsetter i ekte tempo
+  vis(0);
+  new IntersectionObserver((es,o)=>{
+    if(!es.some(e=>e.isIntersecting)) return;
+    o.disconnect();
+    const t0=Date.now(), VARIGHET=1600;
+    (function steg(){
+      const p=Math.min(1,(Date.now()-t0)/VARIGHET);
+      vis(naa()*(1-Math.pow(1-p,3)));
+      if(p<1) setTimeout(steg,30); else fortsett();
+    })();
+  },{threshold:0.4}).observe(el);
 })();
 
 /* ─── FORESPØRSEL: fyll inn valgt volum ─── */
