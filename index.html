@@ -2036,6 +2036,20 @@ footer{
   padding:0.55rem 0.95rem;
 }
 .mfb-login svg{width:10px;height:10px}
+.mfb-contact{
+  display:inline-flex;align-items:center;
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--white);background:var(--black);
+  border:1px solid var(--black);
+  border-radius:999px;
+  padding:0.55rem 0.95rem;
+}
+@media(max-width:374px){
+  .mfb-actions{gap:0.4rem}
+  .mfb-contact,.mfb-login{padding:0.5rem 0.7rem;letter-spacing:0.1em}
+  .mfb-login svg{display:none}
+}
 .mfb-hamburger{
   position:relative;
   width:42px;height:42px;
@@ -2258,10 +2272,10 @@ body.menu-open{overflow:hidden}
   .portal-mockup{font-size:0.9rem}
   .mockup-body{grid-template-columns:120px 1fr}
   .mockup-thumb{width:38px;height:26px}
-  .team-grid{grid-template-columns:1fr;gap:2rem}
-  /* Stripe er sentrert på 50% for desktop-rekken. På mobil (stacked
-     kolonne) faller 50% mellom to medlemmer og krysser teksten.
-     Flytter til 82% så den havner bak siste bilde i stedet. */
+  .team-grid{grid-template-columns:repeat(2,1fr);gap:1.6rem 1rem}
+  /* Femte medlem alene på siste rad: midtstilt, ikke hengende til venstre */
+  .member:last-child:nth-child(odd of .member){grid-column:1 / -1;justify-self:center;width:calc(50% - 0.5rem)}
+  .member-photo{margin-bottom:0.9rem}
   .team-stripe{top:82%;height:36px}
   #contact{grid-template-columns:1fr}
   .contact-cols{grid-template-columns:1fr}
@@ -2337,6 +2351,7 @@ body.menu-open{overflow:hidden}
     <span class="dot"></span>
   </button>
   <div class="mfb-actions">
+    <a class="mfb-contact" href="#contact" data-attr="mfb-kontakt">Kontakt</a>
     <a class="mfb-login" href="https://portal.nykla.no" target="_blank" rel="noopener">
       Logg inn
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
