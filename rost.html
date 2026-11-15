@@ -2,6 +2,40 @@
 <html lang="nb-NO">
 <head>
 <meta charset="UTF-8"/>
+<!-- Sideovergang: må stå først, ellers kan siden tegnes før den sier ja til overgangen -->
+<style>
+/* ─── SIDEOVERGANG MELLOM FORSIDEN OG RØST ───
+   RØST glir inn fra høyre, forsiden tilbake fra venstre. Samme tempo som
+   den gamle animasjonen. Nettlesere uten støtte navigerer som vanlig. */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){
+  animation-duration:.8s;
+  animation-timing-function:cubic-bezier(0.76,0,0.24,1);
+}
+html:active-view-transition-type(til-rost)::view-transition-new(root){animation-name:vt-inn-fra-hoyre}
+html:active-view-transition-type(til-rost)::view-transition-old(root){animation-name:vt-ut-mot-venstre}
+html:active-view-transition-type(fra-rost)::view-transition-new(root){animation-name:vt-inn-fra-venstre}
+html:active-view-transition-type(fra-rost)::view-transition-old(root){animation-name:vt-ut-mot-hoyre}
+@keyframes vt-inn-fra-hoyre{from{transform:translateX(100%)}}
+@keyframes vt-ut-mot-venstre{to{transform:translateX(-25%)}}
+@keyframes vt-inn-fra-venstre{from{transform:translateX(-100%)}}
+@keyframes vt-ut-mot-hoyre{to{transform:translateX(25%)}}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}
+</style>
+<script>
+/* Retning på sideovergangen: til RØST fra høyre, tilbake fra venstre */
+addEventListener('pagereveal',e=>{
+  if(!e.viewTransition||!e.viewTransition.types)return;
+  const erRost=p=>/^\/r(o|ø|%C3%B8)st/i.test(p);
+  let fra='';
+  try{const a=window.navigation&&navigation.activation&&navigation.activation.from;fra=new URL((a&&a.url)||document.referrer).pathname;}catch(_){}
+  const til=location.pathname;
+  if(erRost(til)&&!erRost(fra))e.viewTransition.types.add('til-rost');
+  else if(erRost(fra)&&!erRost(til))e.viewTransition.types.add('fra-rost');
+});
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>RØST — YouTube-kanalen fra Nykla</title>
 <meta name="description" content="RØST er YouTube-kanalen drevet av produksjonsselskapet Nykla i Oslo. Vi lager videoer som gir innblikk i ting man ellers aldri ville fått oppleve. Se de nyeste episodene.">
@@ -2210,7 +2244,9 @@ body.menu-open{overflow:hidden}
 }
 /* Lar overskriften omslutte RØST-logoen uten å påvirke flex-layouten */
 .rost-hero-h1{display:contents}
+
 </style>
+<script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/"},"eagerness":"moderate"}]}</script>
 </head>
 <body>
 
