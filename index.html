@@ -1771,6 +1771,17 @@ section.light{background:var(--white);color:var(--black)}
 .contact-col-name{font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--orange);margin-bottom:0.25rem}
 .contact-col-email{font-family:'Space Mono',monospace;font-size:0.68rem;opacity:0.6;transition:opacity .2s}
 .contact-col-email:hover{opacity:1;color:var(--orange)}
+.contact-cta{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  margin-top:2rem;
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--white);background:var(--black);
+  border:1px solid var(--black);border-radius:999px;
+  padding:0.95rem 1.5rem;
+  transition:background .25s,border-color .25s;
+}
+.contact-cta:hover{background:var(--orange);border-color:var(--orange)}
 .contact-address{margin-top:3rem;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--gray)}
 
 /* Footer */
@@ -2533,7 +2544,7 @@ body.menu-open{overflow:hidden}
       <div class="section-label" style="color:rgba(255,255,255,0.5)">02 — Slik jobber vi</div>
       <h2 class="flow-h">Vi tar over deres<br>sosiale medier<span class="o">.</span></h2>
       <p class="flow-intro">
-        Levende, ekte film — laget av mennesker. Vi leverer 15 eller 30 ferdige videoer hver måned, og publiserer dem rett på dine kanaler.
+        15 eller 30 ferdige filmer i måneden. Vi lager dem og legger dem ut.
       </p>
     </aside>
 
@@ -2614,8 +2625,8 @@ body.menu-open{overflow:hidden}
 
     <div class="flow-output-head">
       <div class="output-label">Volum & publisering</div>
-      <h3 class="output-title">Velg tempoet ditt<span class="o">.</span></h3>
-      <p class="output-desc">15 eller 30 ferdige filmer hver måned — vi planlegger publisering, du følger med i Nyklaportalen.</p>
+      <h3 class="output-title">Velg tempo<span class="o">.</span></h3>
+      <p class="output-desc">Vi publiserer, du følger med i portalen.</p>
       <div class="vol-segmented" role="radiogroup" aria-label="Volum">
         <button class="vol-seg active" data-pkg="15" type="button" role="radio" aria-checked="true">
           <span class="seg-num">15</span>
@@ -2639,7 +2650,7 @@ body.menu-open{overflow:hidden}
   </div>
 
   <div style="text-align:center;margin-top:3rem">
-    <a href="#contact" class="flow-side-cta">Ta kontakt for tilbud →</a>
+    <a href="mailto:hei@nykla.no?subject=Foresp%C3%B8rsel%20fra%20nykla.no&amp;body=Hei%20Nykla!%0D%0A%0D%0ABedrift%3A%0D%0AKontaktperson%3A%0D%0A%0D%0AHva%20trenger%20dere%3F%0D%0A15%20filmer%20i%20m%C3%A5neden%0D%0A%0D%0AN%C3%A5r%20%C3%B8nsker%20dere%20%C3%A5%20starte%3F%0D%0A" class="flow-side-cta" id="vol-cta" data-attr="foresporsel-volum">Send forespørsel →</a>
   </div>
 </section>
 
@@ -2649,7 +2660,7 @@ body.menu-open{overflow:hidden}
     <div class="portal-l">
       <div class="section-label">03 — Nyklaportalen</div>
       <h2 class="portal-h">Nyklaportalen<span class="o">.</span></h2>
-      <p class="portal-desc">Vi bygget vår egen plattform fordi ingen av verktøyene som fantes gjorde hele jobben. Kunden godkjenner, vi publiserer, og hver film måles etterpå. Alt samlet ett sted, uten lenker som forsvinner i en e-posttråd.</p>
+      <p class="portal-desc">Vår egen plattform. Du godkjenner, vi publiserer, alt måles. Ingen lenker som forsvinner i e-posten.</p>
       <a href="/portalen" class="portal-cta">Se hvordan Nyklaportalen fungerer <span aria-hidden="true">→</span></a>
     </div>
     <div class="portal-r" aria-hidden="true">
@@ -2719,7 +2730,7 @@ body.menu-open{overflow:hidden}
         <div class="section-label" style="color:rgba(255,255,255,0.5)">04 — Hvorfor oss</div>
         <h2 class="services-h">SOSIALE MEDIER<br>SATT I SYSTEM<span class="o">.</span></h2>
       </div>
-      <p class="services-desc"><strong>Ikke en freelancer.</strong> Vi er et team som kjører flere produksjoner parallelt — med faste leveranser på faste datoer før hver innspillingsdag.</p>
+      <p class="services-desc"><strong>Ikke en frilanser.</strong> Et team med faste leveranser på faste datoer.</p>
     </div>
 
     <!-- Deliverables timeline -->
@@ -2732,7 +2743,7 @@ body.menu-open{overflow:hidden}
         <div class="del">
           <div class="del-day">−7 dager</div>
           <h3 class="del-name">Konseptplan</h3>
-          <p class="del-desc">Idéene for hele måneden, ferdig konseptualisert og klar for godkjenning.</p>
+          <p class="del-desc">Hele månedens idéer, klare til godkjenning.</p>
         </div>
         <div class="del-arrow" aria-hidden="true">
           <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2740,7 +2751,7 @@ body.menu-open{overflow:hidden}
         <div class="del">
           <div class="del-day">−3 dager</div>
           <h3 class="del-name">Dagsplan</h3>
-          <p class="del-desc">Tidsestimat og rekkefølge for hver film — du vet nøyaktig hva som skjer på dagen.</p>
+          <p class="del-desc">Du vet nøyaktig hva som skjer på dagen.</p>
         </div>
         <div class="del-arrow del-arrow-shoot" aria-hidden="true">
           <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2756,7 +2767,7 @@ body.menu-open{overflow:hidden}
         <div class="del">
           <div class="del-day">Etter innspilling</div>
           <h3 class="del-name">Godkjenning</h3>
-          <p class="del-desc">Du godkjenner ferdige videoer før vi poster — kort tid etter innspilling.</p>
+          <p class="del-desc">Du godkjenner alt før det legges ut.</p>
         </div>
         <div class="del-arrow" aria-hidden="true">
           <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2774,7 +2785,7 @@ body.menu-open{overflow:hidden}
       <div class="reason">
         <div class="reason-num">01</div>
         <h3 class="reason-h">Levende, ekte film</h3>
-        <p class="reason-body">Vi spiller inn med ekte mennesker. Det skaper troverdighet som genererte videoer aldri kommer i nærheten av.</p>
+        <p class="reason-body">Ekte mennesker foran kamera.</p>
       </div>
       <div class="reason">
         <div class="reason-num">02</div>
@@ -2935,6 +2946,7 @@ body.menu-open{overflow:hidden}
   <div class="reveal">
     <div class="section-label">06 — Kontakt</div>
     <h2 class="contact-h">KONTAKT<br>OSS.</h2>
+    <a href="mailto:hei@nykla.no?subject=Foresp%C3%B8rsel%20fra%20nykla.no&amp;body=Hei%20Nykla!%0D%0A%0D%0ABedrift%3A%0D%0AKontaktperson%3A%0D%0A%0D%0AHva%20trenger%20dere%3F%0D%0A%0D%0A%0D%0AN%C3%A5r%20%C3%B8nsker%20dere%20%C3%A5%20starte%3F%0D%0A" class="contact-cta" data-attr="foresporsel-kontakt">Send forespørsel →</a>
   </div>
   <div>
     <div class="contact-cols">
@@ -3196,8 +3208,16 @@ function applyCalMode(mode){
 
 
 /* ─── FLOW: segmented volume control (15 ↔ 30) ─── */
+/* ─── FORESPØRSEL: fyll inn valgt volum ─── */
+function forespHref(behov){
+  const t=['Hei Nykla!','','Bedrift:','Kontaktperson:','','Hva trenger dere?',behov||'','','Når ønsker dere å starte?',''].join('\r\n');
+  return 'mailto:hei@nykla.no?subject='+encodeURIComponent('Forespørsel fra nykla.no')+'&body='+encodeURIComponent(t);
+}
+const volCta=document.getElementById('vol-cta');
+
 document.querySelectorAll('.vol-seg').forEach(btn=>{
   btn.addEventListener('click',()=>{
+    if(volCta) volCta.href=forespHref(btn.dataset.pkg+' filmer i måneden');
     document.querySelectorAll('.vol-seg').forEach(b=>{
       b.classList.remove('active');
       b.setAttribute('aria-checked','false');
