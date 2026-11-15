@@ -752,7 +752,7 @@ section.light{background:var(--white);color:var(--black)}
 /* ════════════════════════════════════
    SLIK JOBBER VI — kickoff, journey, output
 ════════════════════════════════════ */
-#flow{
+#tjenester{
   background:var(--black);
   color:var(--white);
   padding:7rem 2.5rem 6rem;
@@ -1385,8 +1385,27 @@ section.light{background:var(--white);color:var(--black)}
 /* ════════════════════════════════════
    PAKKER
 ════════════════════════════════════ */
-#services{overflow:hidden;background:var(--black);color:var(--white)}
+#prosess{overflow:hidden;background:var(--black);color:var(--white)}
 .services-inner{max-width:1200px;margin:0 auto}
+/* Tjenester: overskriften står alene etter at prosesskortene flyttet ut */
+.flow-grid-solo{grid-template-columns:1fr;margin-bottom:4rem}
+.flow-grid-solo .flow-intro{margin-bottom:0}
+/* Datapunkt-teller under tidslinja */
+.data-counter{
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:0.6rem 1.4rem;
+  padding-top:2.5rem;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+.data-counter-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.6rem,5vw,4rem);line-height:1;
+  color:var(--orange);
+}
+.data-counter-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+}
 .services-top{
   display:flex;justify-content:space-between;align-items:flex-end;
   margin-bottom:4rem;gap:2rem;
@@ -2254,7 +2273,7 @@ body.menu-open{overflow:hidden}
   .rost-tab-meta{display:none}
   .rost-tab-arrow{width:14px;height:14px}
   section{padding:4rem 1.2rem}
-  #flow{padding-top:2rem}
+  #tjenester{padding-top:2rem}
   #about{grid-template-columns:1fr;gap:2rem}
   .pakker-grid{grid-template-columns:1fr}
   .reasons-grid{grid-template-columns:1fr}
@@ -2383,9 +2402,9 @@ body.menu-open{overflow:hidden}
     <div class="mobile-menu-section-label">Navigasjon</div>
     <nav class="mobile-menu-nav">
       <a href="#about" data-menu-link>Om oss</a>
-      <a href="#flow" data-menu-link>Prosess</a>
+      <a href="#tjenester" data-menu-link>Tjenester</a>
+      <a href="#prosess" data-menu-link>Prosess</a>
       <a href="/portalen">Nyklaportalen</a>
-      <a href="#services" data-menu-link>Hvorfor oss</a>
       <a href="#team" data-menu-link>Team</a>
       <a href="#contact" data-menu-link>Kontakt</a>
       <a href="/jobb">Karriere</a>
@@ -2423,9 +2442,9 @@ body.menu-open{overflow:hidden}
     </div>
     <div class="topbar-nav">
       <a href="#about">Om oss</a>
-      <a href="#flow">Prosess</a>
+      <a href="#tjenester">Tjenester</a>
+      <a href="#prosess">Prosess</a>
       <a href="/portalen">Nyklaportalen</a>
-      <a href="#services">Hvorfor oss</a>
       <a href="#team">Team</a>
       <a href="#contact">Kontakt</a>
       <a href="/jobb">Karriere</a>
@@ -2482,9 +2501,9 @@ body.menu-open{overflow:hidden}
   <div class="hero-bottom">
     <div class="hb-left">
       <a href="#about">Om oss</a> &nbsp;·&nbsp;
-      <a href="#flow">Prosess</a> &nbsp;·&nbsp;
+      <a href="#tjenester">Tjenester</a> &nbsp;·&nbsp;
+      <a href="#prosess">Prosess</a> &nbsp;·&nbsp;
       <a href="/portalen">Nyklaportalen</a> &nbsp;·&nbsp;
-      <a href="#services">Hvorfor oss</a> &nbsp;·&nbsp;
       <a href="#team">Team</a> &nbsp;·&nbsp;
       <a href="#contact">Kontakt</a>
     </div>
@@ -2538,74 +2557,16 @@ body.menu-open{overflow:hidden}
 </div>
 
 <!-- SLIK JOBBER VI -->
-<section id="flow">
-  <div class="flow-grid reveal">
+<section id="tjenester">
+  <div class="flow-grid flow-grid-solo reveal">
     <aside class="flow-aside">
-      <div class="section-label" style="color:rgba(255,255,255,0.5)">02 — Slik jobber vi</div>
+      <div class="section-label" style="color:rgba(255,255,255,0.5)">02 — Tjenester</div>
       <h2 class="flow-h">Vi tar over deres<br>sosiale medier<span class="o">.</span></h2>
       <p class="flow-intro">
-        15 eller 30 ferdige filmer i måneden. Vi lager dem og legger dem ut.
+        15 eller 30 ferdige filmer i måneden, med ekte mennesker foran kamera. Vi lager dem og legger dem ut.
       </p>
     </aside>
 
-    <div class="flow-cards-wrap">
-      <div class="flow-loop-hint">
-        <svg class="journey-loop-icon" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-7.94-4.78M3 12a9 9 0 0 1 9-9 9 9 0 0 1 7.94 4.78M21 4v5h-5M3 20v-5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Et månedlig kretsløp</span>
-      </div>
-      <div class="flow-cards">
-      <article class="phase-card">
-        <div class="phase-head">
-          <span class="phase-num">01</span>
-          <span class="phase-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </div>
-        <h3 class="phase-name">Pre-produksjon</h3>
-        <p class="phase-desc">Planlegging og godkjenning før innspilling. Idéer blir til ferdige planer du har godkjent.</p>
-        <ul class="phase-list">
-          <li>Konseptplan</li>
-          <li>Dagsplan</li>
-          <li>Godkjenning</li>
-        </ul>
-      </article>
-
-      <article class="phase-card">
-        <div class="phase-head">
-          <span class="phase-num">02</span>
-          <span class="phase-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </div>
-        <h3 class="phase-name">Innspilling</h3>
-        <p class="phase-desc">Vi dekker hele månedens innhold på 1–2 innspillingsdager med erfarent filmteam.</p>
-        <ul class="phase-list">
-          <li>1–2 dager</li>
-          <li>Filmteam</li>
-          <li>Studio eller location</li>
-          <li>Hele månedens innhold</li>
-        </ul>
-      </article>
-
-      <article class="phase-card">
-        <div class="phase-head">
-          <span class="phase-num">03</span>
-        </div>
-        <h3 class="phase-name">Post-produksjon</h3>
-        <p class="phase-desc">Klipp, grafikk og publisering. Filmene ferdigstilles og legges ut på dine kanaler.</p>
-        <ul class="phase-list">
-          <li>Klipp, lyd & farge</li>
-          <li>Grafikk</li>
-          <li>Revidering<span class="phase-list-meta"> · om nødvendig</span></li>
-          <li>Publisering</li>
-        </ul>
-      </article>
-      </div>
-      <div class="flow-loop-hint flow-portal-hint">
-        <svg class="journey-loop-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M8 14h2M14 14h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Du har all oversikt i Nyklaportalen</span>
-      </div>
-    </div>
   </div>
 
   <!-- Calendar + Volume -->
@@ -2652,155 +2613,9 @@ body.menu-open{overflow:hidden}
   <div style="text-align:center;margin-top:3rem">
     <a href="mailto:hei@nykla.no?subject=Foresp%C3%B8rsel%20fra%20nykla.no&amp;body=Hei%20Nykla!%0D%0A%0D%0ABedrift%3A%0D%0AKontaktperson%3A%0D%0A%0D%0AHva%20trenger%20dere%3F%0D%0A15%20filmer%20i%20m%C3%A5neden%0D%0A%0D%0AN%C3%A5r%20%C3%B8nsker%20dere%20%C3%A5%20starte%3F%0D%0A" class="flow-side-cta" id="vol-cta" data-attr="foresporsel-volum">Send forespørsel →</a>
   </div>
-</section>
-
-<!-- NYKLA PORTALEN -->
-<section id="portalen" class="light">
-  <div class="portal-grid reveal">
-    <div class="portal-l">
-      <div class="section-label">03 — Nyklaportalen</div>
-      <h2 class="portal-h">Nyklaportalen<span class="o">.</span></h2>
-      <p class="portal-desc">Vår egen plattform. Du godkjenner, vi publiserer, alt måles. Ingen lenker som forsvinner i e-posten.</p>
-      <a href="/portalen" class="portal-cta">Se hvordan Nyklaportalen fungerer <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="portal-r" aria-hidden="true">
-      <div class="portal-mockup">
-        <div class="mockup-bar">
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-          <span class="mockup-dot"></span>
-          <span class="mockup-url">portal.nykla.no</span>
-        </div>
-        <div class="mockup-body">
-          <div class="mockup-sidebar">
-            <div class="mockup-logo">NYKLA<span>.</span></div>
-            <div class="mockup-nav">
-              <span class="mockup-nav-item active">Filmer</span>
-              <span class="mockup-nav-item">Innspillinger</span>
-              <span class="mockup-nav-item">Chat</span>
-              <span class="mockup-nav-item">Arkiv</span>
-            </div>
-          </div>
-          <div class="mockup-main">
-            <div class="mockup-main-h">Mai 2026 · 30 filmer</div>
-            <div class="mockup-row">
-              <div class="mockup-thumb"></div>
-              <div class="mockup-meta">
-                <div class="mockup-line"></div>
-                <div class="mockup-line short"></div>
-              </div>
-              <div class="mockup-status approved">Godkjent</div>
-            </div>
-            <div class="mockup-row">
-              <div class="mockup-thumb"></div>
-              <div class="mockup-meta">
-                <div class="mockup-line"></div>
-                <div class="mockup-line short"></div>
-              </div>
-              <div class="mockup-status pending">Venter</div>
-            </div>
-            <div class="mockup-row">
-              <div class="mockup-thumb"></div>
-              <div class="mockup-meta">
-                <div class="mockup-line"></div>
-                <div class="mockup-line short"></div>
-              </div>
-              <div class="mockup-status review">Til revidering</div>
-            </div>
-            <div class="mockup-row">
-              <div class="mockup-thumb"></div>
-              <div class="mockup-meta">
-                <div class="mockup-line"></div>
-                <div class="mockup-line short"></div>
-              </div>
-              <div class="mockup-status approved">Godkjent</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HVORFOR OSS -->
-<section id="services">
   <div class="services-inner">
-    <div class="services-top reveal">
-      <div>
-        <div class="section-label" style="color:rgba(255,255,255,0.5)">04 — Hvorfor oss</div>
-        <h2 class="services-h">SOSIALE MEDIER<br>SATT I SYSTEM<span class="o">.</span></h2>
-      </div>
-      <p class="services-desc"><strong>Ikke en frilanser.</strong> Et team med faste leveranser på faste datoer.</p>
-    </div>
-
-    <!-- Deliverables timeline -->
-    <div class="del-section reveal reveal-d1">
-      <div class="del-section-label">
-        <span class="del-bullet"></span>
-        Hva som ligger klart i innboksen din
-      </div>
-      <div class="del-track">
-        <div class="del">
-          <div class="del-day">−7 dager</div>
-          <h3 class="del-name">Konseptplan</h3>
-          <p class="del-desc">Hele månedens idéer, klare til godkjenning.</p>
-        </div>
-        <div class="del-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="del">
-          <div class="del-day">−3 dager</div>
-          <h3 class="del-name">Dagsplan</h3>
-          <p class="del-desc">Du vet nøyaktig hva som skjer på dagen.</p>
-        </div>
-        <div class="del-arrow del-arrow-shoot" aria-hidden="true">
-          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="del del-shoot">
-          <div class="del-day">DAG 0</div>
-          <h3 class="del-name">Innspilling</h3>
-          <p class="del-desc">Filmteam på plass. Alt klart — ingen overraskelser.</p>
-        </div>
-        <div class="del-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="del">
-          <div class="del-day">Etter innspilling</div>
-          <h3 class="del-name">Godkjenning</h3>
-          <p class="del-desc">Du godkjenner alt før det legges ut.</p>
-        </div>
-        <div class="del-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="del">
-          <div class="del-day">Etter publisering</div>
-          <h3 class="del-name">Publisering og måling</h3>
-          <p class="del-desc">Vi poster, og registrerer over 25 parametere per film. Neste måneds konsepter bygger på tallene.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Reasons (slim) -->
-    <div class="reasons-grid reveal reveal-d2">
-      <div class="reason">
-        <div class="reason-num">01</div>
-        <h3 class="reason-h">Levende, ekte film</h3>
-        <p class="reason-body">Ekte mennesker foran kamera.</p>
-      </div>
-      <div class="reason">
-        <div class="reason-num">02</div>
-        <h3 class="reason-h">Erfaring som teller</h3>
-        <p class="reason-body">Folkene bak Nykla har vært med å bygge GUTTA og jobbet tett med Oskar Westerlin — i stor skala.</p>
-      </div>
-      <div class="reason">
-        <div class="reason-num">03</div>
-        <h3 class="reason-h">Parallelle løp</h3>
-        <p class="reason-body">Flere produksjoner kjører samtidig hos oss. Det betyr forutsigbarhet og kapasitet, ikke ad-hoc-leveranser.</p>
-      </div>
-    </div>
-
     <div class="svc-rows reveal" style="margin-top:5rem">
-      <div class="section-label" style="color:rgba(255,255,255,0.5);margin-bottom:2rem">Hva vi ellers lager</div>
+      <div class="section-label" style="color:rgba(255,255,255,0.5);margin-bottom:2rem">Vi lager også</div>
       <button class="svc-row svc-row-trigger" id="svc-youtube-trigger" aria-expanded="false" aria-controls="svc-youtube-panel">
         <span class="svc-name">YouTube-serier</span>
         <span class="svc-row-meta">
@@ -2906,6 +2721,142 @@ body.menu-open{overflow:hidden}
     </div>
   </div>
 </section>
+
+<section id="prosess">
+  <div class="services-inner">
+    <div class="services-top reveal">
+      <div>
+        <div class="section-label" style="color:rgba(255,255,255,0.5)">03 — Slik jobber vi</div>
+        <h2 class="services-h">SOSIALE MEDIER<br>SATT I SYSTEM<span class="o">.</span></h2>
+      </div>
+      <p class="services-desc"><strong>Ikke en frilanser.</strong> Et team med faste leveranser på faste datoer.</p>
+    </div>
+
+    <!-- Deliverables timeline -->
+    <div class="del-section reveal reveal-d1">
+      <div class="del-section-label">
+        <span class="del-bullet"></span>
+        Hva som ligger klart i innboksen din
+      </div>
+      <div class="del-track">
+        <div class="del">
+          <div class="del-day">−7 dager</div>
+          <h3 class="del-name">Konseptplan</h3>
+          <p class="del-desc">Hele månedens idéer, klare til godkjenning.</p>
+        </div>
+        <div class="del-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="del">
+          <div class="del-day">−3 dager</div>
+          <h3 class="del-name">Dagsplan</h3>
+          <p class="del-desc">Du vet nøyaktig hva som skjer på dagen.</p>
+        </div>
+        <div class="del-arrow del-arrow-shoot" aria-hidden="true">
+          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="del del-shoot">
+          <div class="del-day">DAG 0</div>
+          <h3 class="del-name">Innspilling</h3>
+          <p class="del-desc">Hele måneden på 1–2 dager. Ingen overraskelser.</p>
+        </div>
+        <div class="del-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="del">
+          <div class="del-day">Etter innspilling</div>
+          <h3 class="del-name">Godkjenning</h3>
+          <p class="del-desc">Du godkjenner alt før det legges ut.</p>
+        </div>
+        <div class="del-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 12" fill="none"><path d="M1 6 H22 M16 1 L22 6 L16 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="del">
+          <div class="del-day">Etter publisering</div>
+          <h3 class="del-name">Publisering og måling</h3>
+          <p class="del-desc">Vi poster, og registrerer over 25 parametere per film. Neste måneds konsepter bygger på tallene.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reasons (slim) -->
+    <div class="data-counter reveal">
+      <div class="data-counter-num" id="data-counter">628 932</div>
+      <div class="data-counter-label">datapunkter registrert · rundt 2 900 nye hver dag</div>
+    </div>
+  </div>
+</section>
+
+<!-- NYKLA PORTALEN -->
+<section id="portalen" class="light">
+  <div class="portal-grid reveal">
+    <div class="portal-l">
+      <div class="section-label">04 — Nyklaportalen</div>
+      <h2 class="portal-h">Nyklaportalen<span class="o">.</span></h2>
+      <p class="portal-desc">Vår egen plattform. Du godkjenner, vi publiserer, alt måles. Ingen lenker som forsvinner i e-posten.</p>
+      <a href="/portalen" class="portal-cta">Se hvordan Nyklaportalen fungerer <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="portal-r" aria-hidden="true">
+      <div class="portal-mockup">
+        <div class="mockup-bar">
+          <span class="mockup-dot"></span>
+          <span class="mockup-dot"></span>
+          <span class="mockup-dot"></span>
+          <span class="mockup-url">portal.nykla.no</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-sidebar">
+            <div class="mockup-logo">NYKLA<span>.</span></div>
+            <div class="mockup-nav">
+              <span class="mockup-nav-item active">Filmer</span>
+              <span class="mockup-nav-item">Innspillinger</span>
+              <span class="mockup-nav-item">Chat</span>
+              <span class="mockup-nav-item">Arkiv</span>
+            </div>
+          </div>
+          <div class="mockup-main">
+            <div class="mockup-main-h">Mai 2026 · 30 filmer</div>
+            <div class="mockup-row">
+              <div class="mockup-thumb"></div>
+              <div class="mockup-meta">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+              </div>
+              <div class="mockup-status approved">Godkjent</div>
+            </div>
+            <div class="mockup-row">
+              <div class="mockup-thumb"></div>
+              <div class="mockup-meta">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+              </div>
+              <div class="mockup-status pending">Venter</div>
+            </div>
+            <div class="mockup-row">
+              <div class="mockup-thumb"></div>
+              <div class="mockup-meta">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+              </div>
+              <div class="mockup-status review">Til revidering</div>
+            </div>
+            <div class="mockup-row">
+              <div class="mockup-thumb"></div>
+              <div class="mockup-meta">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+              </div>
+              <div class="mockup-status approved">Godkjent</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HVORFOR OSS -->
+
 
 <!-- TEAM -->
 <section id="team" style="padding-top:5rem">
@@ -3208,6 +3159,16 @@ function applyCalMode(mode){
 
 
 /* ─── FLOW: segmented volume control (15 ↔ 30) ─── */
+/* ─── DATAPUNKTER: estimat i faktisk tempo ───
+   Startpunkt og tempo fra portalen 15.11.2026 (snitt siste 30 dager).
+   Oppdater BASE, BASE_TS og PER_DAG et par ganger i året. */
+(function(){
+  const el=document.getElementById('data-counter'); if(!el) return;
+  const BASE=628932, BASE_TS=Date.parse('2026-11-15T10:00:47Z'), PER_DAG=2893;
+  const tick=()=>{ el.textContent=Math.floor(BASE+(Date.now()-BASE_TS)/864e5*PER_DAG).toLocaleString('nb-NO'); };
+  tick(); setInterval(tick,1000);
+})();
+
 /* ─── FORESPØRSEL: fyll inn valgt volum ─── */
 function forespHref(behov){
   const t=['Hei Nykla!','','Bedrift:','Kontaktperson:','','Hva trenger dere?',behov||'','','Når ønsker dere å starte?',''].join('\r\n');
