@@ -11,7 +11,7 @@
 const crypto = require('node:crypto');
 
 const MOTTAKER = 'hei@nykla.no';
-const AVSENDER = 'Nykla nettside <varsel@nykla.no>';
+const AVSENDER = 'Skjema på Nykla.no <varsel@nykla.no>';
 const MIN_FYLLTID_MS = 3000;
 const MAKS_LENKER = 2;
 const DAGLIG_MAKS = 25;
@@ -133,14 +133,14 @@ module.exports = async (req, res) => {
   }
 
   const html = `
-    <p><strong>Ny forespørsel fra nykla.no</strong></p>
+    <p><strong>Skjema på Nykla.no</strong></p>
     <p><strong>Navn:</strong> ${esc(felt.navn)}<br>
        <strong>Bedrift:</strong> ${esc(felt.bedrift)}<br>
        <strong>E-post:</strong> ${esc(felt.epost)}</p>
     <p><strong>Hva trenger dere?</strong><br>${esc(felt.melding).replace(/\n/g, '<br>')}</p>
     <p style="color:#888">Svar direkte på denne e-posten for å svare ${esc(felt.navn)}.</p>`;
   const text =
-    `Ny forespørsel fra nykla.no\n\nNavn: ${felt.navn}\nBedrift: ${felt.bedrift}\nE-post: ${felt.epost}\n\n` +
+    `Skjema på Nykla.no\n\nNavn: ${felt.navn}\nBedrift: ${felt.bedrift}\nE-post: ${felt.epost}\n\n` +
     `Hva trenger dere?\n${felt.melding}\n`;
 
   try {
