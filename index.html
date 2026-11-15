@@ -760,10 +760,13 @@ section.light{background:var(--white);color:var(--black)}
 .about-l{
   /* Top of headline aligns with top of body text */
   margin-top:0;
+  container-type:inline-size;
 }
 .about-h{
   font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2.5rem,5vw,5rem);
+  /* Tak på 68 px, og aldri bredere enn kolonnen (13.5cqi), så den lengste
+     linja «Vi bygger mennesker» ikke brytes på brede skjermer */
+  font-size:min(clamp(2.5rem,5vw,4.25rem),13.5cqi);
   line-height:0.95;letter-spacing:0.005em;
   /* Bebas Neue has top space inside the line-box; pull headline up so its visual top
      matches the cap-line of the body text on the right */
