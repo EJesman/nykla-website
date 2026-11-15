@@ -7,6 +7,7 @@
     { "source": "/instagram", "destination": "/?utm_source=instagram&utm_medium=bio", "permanent": false },
     { "source": "/tiktok", "destination": "/?utm_source=tiktok&utm_medium=bio", "permanent": false },
     { "source": "/linkedin", "destination": "/?utm_source=linkedin&utm_medium=social", "permanent": false },
+    { "source": "/kontakt", "destination": "/#kontaktskjema", "permanent": false },
     { "source": "/youtube", "destination": "/rost?utm_source=youtube&utm_medium=video", "permanent": false }
   ]
 }

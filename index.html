@@ -1844,6 +1844,34 @@ section.light{background:var(--white);color:var(--black)}
 }
 .contact-cta:hover{background:var(--orange);border-color:var(--orange)}
 .contact-address{margin-top:3rem;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--gray)}
+/* Kontaktskjema */
+.contact-form{padding-top:2.5rem;max-width:760px;scroll-margin-top:7rem}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 2rem}
+.cf-full{grid-column:1 / -1}
+.cf-field{display:flex;flex-direction:column;gap:0.45rem}
+.cf-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray)}
+.cf-field input,.cf-field textarea{
+  font:inherit;font-size:1rem;color:var(--black);background:transparent;
+  border:0;border-bottom:1px solid rgba(8,8,8,.25);border-radius:0;
+  padding:0.55rem 0;outline:none;transition:border-color .2s;resize:vertical;
+}
+.cf-field textarea{min-height:6.5rem;line-height:1.5}
+.cf-field input:focus,.cf-field textarea:focus{border-bottom-color:var(--orange)}
+.cf-field.ugyldig input,.cf-field.ugyldig textarea{border-bottom-color:#c62828}
+.cf-err{font-style:normal;font-family:'Space Mono',monospace;font-size:0.6rem;color:#c62828;min-height:0.9em}
+.cf-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cf-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:0.6rem}
+.cf-actions .contact-cta{cursor:pointer;margin-top:0}
+.cf-actions .contact-cta[disabled]{opacity:.55;cursor:wait}
+.cf-note{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;color:var(--gray);max-width:30ch;line-height:1.5}
+.cf-status{font-family:'Space Mono',monospace;font-size:0.65rem;line-height:1.6;color:#c62828;margin-top:1rem}
+.cf-status:empty{display:none}
+.cf-status a{color:inherit;text-decoration:underline}
+.cf-takk{padding-top:2.5rem;max-width:760px;outline:none}
+.cf-takk-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1;color:var(--orange);margin-bottom:0.6rem}
+.cf-takk p{font-size:1rem;color:var(--black);opacity:.75}
+.contact-direct-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:4rem;padding-top:1.5rem;border-top:1px solid rgba(8,8,8,.12)}
+.contact-direct-label + .contact-cols{padding-top:1.5rem}
 
 /* Footer */
 footer{
@@ -2351,6 +2379,9 @@ body.menu-open{overflow:hidden}
   .team-stripe{top:82%;height:36px}
   #contact{grid-template-columns:1fr}
   .contact-cols{grid-template-columns:1fr}
+  .cf-grid{grid-template-columns:1fr}
+  .contact-form{padding-top:0}
+  .contact-direct-label{margin-top:3rem}
   .services-top{flex-direction:column;align-items:flex-start}
   .services-desc{text-align:left;max-width:100%;margin-right:0}
   #rost-page nav.rost-nav{
@@ -2655,7 +2686,7 @@ body.menu-open{overflow:hidden}
   </div>
 
   <div style="text-align:center;margin-top:3rem">
-    <a href="mailto:hei@nykla.no?subject=Foresp%C3%B8rsel%20fra%20nykla.no&amp;body=Hei%20Nykla!%0D%0A%0D%0ABedrift%3A%0D%0AKontaktperson%3A%0D%0A%0D%0AHva%20trenger%20dere%3F%0D%0A%0D%0A%0D%0AN%C3%A5r%20%C3%B8nsker%20dere%20%C3%A5%20starte%3F%0D%0A" class="flow-side-cta" data-attr="foresporsel-tjenester">Send forespørsel →</a>
+    <a href="#kontaktskjema" class="flow-side-cta" data-attr="foresporsel-tjenester">Send forespørsel →</a>
   </div>
   <div class="services-inner">
     <div class="svc-rows reveal" style="margin-top:5rem">
@@ -2942,9 +2973,27 @@ body.menu-open{overflow:hidden}
   <div class="reveal">
     <div class="section-label">06 — Kontakt</div>
     <h2 class="contact-h">KONTAKT<br>OSS.</h2>
-    <a href="mailto:hei@nykla.no?subject=Foresp%C3%B8rsel%20fra%20nykla.no&amp;body=Hei%20Nykla!%0D%0A%0D%0ABedrift%3A%0D%0AKontaktperson%3A%0D%0A%0D%0AHva%20trenger%20dere%3F%0D%0A%0D%0A%0D%0AN%C3%A5r%20%C3%B8nsker%20dere%20%C3%A5%20starte%3F%0D%0A" class="contact-cta" data-attr="foresporsel-kontakt">Send forespørsel →</a>
   </div>
   <div>
+    <form class="contact-form reveal" id="kontaktskjema" action="/api/foresporsel" method="post" novalidate>
+      <div class="cf-grid">
+        <label class="cf-field"><span class="cf-label">Navn</span><input name="navn" autocomplete="name" required minlength="2" maxlength="100"><em class="cf-err" data-for="navn"></em></label>
+        <label class="cf-field"><span class="cf-label">Bedrift</span><input name="bedrift" autocomplete="organization" required minlength="2" maxlength="120"><em class="cf-err" data-for="bedrift"></em></label>
+        <label class="cf-field cf-full"><span class="cf-label">E-post</span><input name="epost" type="email" inputmode="email" autocomplete="email" required maxlength="200"><em class="cf-err" data-for="epost"></em></label>
+        <label class="cf-field cf-full"><span class="cf-label">Hva trenger dere?</span><textarea name="melding" rows="4" required minlength="10" maxlength="3000"></textarea><em class="cf-err" data-for="melding"></em></label>
+      </div>
+      <div class="cf-hp" aria-hidden="true"><label>Nettside<input name="nettside" tabindex="-1" autocomplete="off"></label></div>
+      <div class="cf-actions">
+        <button type="submit" class="contact-cta" data-attr="foresporsel-send">Send forespørsel →</button>
+        <p class="cf-note">Alle felt må fylles ut. Vi bruker opplysningene bare til å svare deg.</p>
+      </div>
+      <p class="cf-status" role="status" aria-live="polite"></p>
+    </form>
+    <div class="cf-takk" id="kontakt-takk" tabindex="-1" hidden>
+      <div class="cf-takk-h">Takk! Forespørselen er sendt.</div>
+      <p>Vi svarer deg på e-post så snart vi kan, vanligvis innen én arbeidsdag.</p>
+    </div>
+    <div class="contact-direct-label reveal">Eller kontakt oss direkte</div>
     <div class="contact-cols">
       <div class="reveal reveal-d1">
         <div class="contact-col-label">Generelt & Samarbeid</div>
@@ -3296,6 +3345,76 @@ document.querySelectorAll('.vol-seg').forEach(btn=>{
   // ESC to close
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape' && menu.classList.contains('open')) closeMenu();
+  });
+})();
+</script>
+<script>
+// Kontaktskjema → /api/foresporsel
+(function(){
+  const form=document.getElementById('kontaktskjema');
+  if(!form) return;
+  const takk=document.getElementById('kontakt-takk');
+  const status=form.querySelector('.cf-status');
+  const knapp=form.querySelector('button[type="submit"]');
+  const start=Date.now();
+  const MAILTO='<a href="mailto:hei@nykla.no">hei@nykla.no</a>';
+  const MELDINGER={
+    navn:'Skriv navnet ditt.',
+    bedrift:'Skriv hvilken bedrift du er fra.',
+    epost:'Skriv en gyldig e-postadresse.',
+    melding:'Fortell kort hva dere trenger (minst 10 tegn).'
+  };
+  const felt=n=>form.elements[n];
+  const visFeil=(n,tekst)=>{
+    const el=felt(n); const lab=el.closest('.cf-field');
+    lab.classList.toggle('ugyldig',!!tekst);
+    el.setAttribute('aria-invalid',tekst?'true':'false');
+    form.querySelector('.cf-err[data-for="'+n+'"]').textContent=tekst||'';
+  };
+  const sjekk=n=>{
+    const el=felt(n); const v=el.value.trim();
+    let ok=v.length>=(n==='melding'?10:2);
+    if(n==='epost') ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    visFeil(n,ok?'':MELDINGER[n]);
+    return ok;
+  };
+  Object.keys(MELDINGER).forEach(n=>{
+    felt(n).addEventListener('blur',()=>{ if(felt(n).value.trim()) sjekk(n); });
+    felt(n).addEventListener('input',()=>{ if(felt(n).closest('.cf-field').classList.contains('ugyldig')) sjekk(n); });
+  });
+
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    status.textContent='';
+    const feilFelt=Object.keys(MELDINGER).filter(n=>!sjekk(n));
+    if(feilFelt.length){ felt(feilFelt[0]).focus(); return; }
+
+    knapp.disabled=true; knapp.textContent='Sender …';
+    const data={
+      navn:felt('navn').value, bedrift:felt('bedrift').value,
+      epost:felt('epost').value, melding:felt('melding').value,
+      nettside:felt('nettside').value, fylltid:Date.now()-start
+    };
+    try{
+      const r=await fetch('/api/foresporsel',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      const svar=await r.json().catch(()=>({}));
+      if(r.ok && svar.ok){
+        form.hidden=true; takk.hidden=false; takk.focus({preventScroll:true});
+        try{ window.posthog && window.posthog.capture && window.posthog.capture('foresporsel_sendt'); }catch(_){}
+        return;
+      }
+      if(svar.feil){
+        Object.keys(svar.feil).forEach(n=>{ if(felt(n)) visFeil(n,svar.feil[n]); });
+        const første=Object.keys(svar.feil)[0]; if(felt(første)) felt(første).focus();
+      }else if(r.status===429){
+        status.innerHTML='Vi har tatt imot mange forespørsler akkurat nå. Send oss gjerne en e-post på '+MAILTO+'.';
+      }else{
+        status.innerHTML='Noe gikk galt, og forespørselen ble ikke sendt. Send oss gjerne en e-post på '+MAILTO+'.';
+      }
+    }catch(_){
+      status.innerHTML='Fikk ikke kontakt. Sjekk nettet, eller send oss en e-post på '+MAILTO+'.';
+    }
+    knapp.disabled=false; knapp.textContent='Send forespørsel →';
   });
 })();
 </script>
