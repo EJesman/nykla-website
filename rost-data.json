@@ -1,7 +1,7 @@
 {
   "stats": {
     "subscribers": 15000,
-    "views": 1077222
+    "views": 1078417
   },
   "videos": [
     {
@@ -26,23 +26,23 @@
       "thumbnail": "https://i.ytimg.com/vi/lBCbNjDxpy4/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-11-16T01:17:43.924Z",
-  "videos_updated_at": "2026-11-15T16:31:25.421Z",
+  "stats_updated_at": "2026-11-18T09:52:17.121Z",
+  "videos_updated_at": "2026-11-17T19:44:43.991Z",
   "external_stats": {
     "instagram": {
-      "views": 448386,
+      "views": 448708,
       "posts": 113,
       "source": "Meta API",
-      "updated_at": "2026-11-16T06:18:46.868Z"
+      "updated_at": "2026-11-18T05:03:48.032Z"
     },
     "facebook": {
-      "views": 780422,
-      "posts": 117,
+      "views": 780772,
+      "posts": 118,
       "source": "Meta API",
-      "updated_at": "2026-11-16T06:18:46.868Z"
+      "updated_at": "2026-11-18T05:03:48.032Z"
     },
-    "total_views": 6000253,
-    "updated_at": "2026-11-16T06:18:46.868Z",
+    "total_views": 6000925,
+    "updated_at": "2026-11-18T05:03:48.032Z",
     "tiktok": {
       "views": 4771445,
       "posts": 115,
