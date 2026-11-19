@@ -5,6 +5,13 @@
   },
   "videos": [
     {
+      "videoId": "Ro9WceVnosQ",
+      "title": "Får betalt for å gjøre narr av Norges mektigste",
+      "publishedAt": "2026-11-18T15:01:00Z",
+      "durationSeconds": 869,
+      "thumbnail": "https://i.ytimg.com/vi/Ro9WceVnosQ/maxresdefault.jpg"
+    },
+    {
       "videoId": "hEFDBlHMRqw",
       "title": "Hvorfor blir ALT tyngre når det blir mørkt",
       "publishedAt": "2026-11-10T15:00:07Z",
@@ -17,17 +24,10 @@
       "publishedAt": "2026-10-21T15:08:09Z",
       "durationSeconds": 433,
       "thumbnail": "https://i.ytimg.com/vi/sUBX_DGc3no/maxresdefault.jpg"
-    },
-    {
-      "videoId": "lBCbNjDxpy4",
-      "title": "Myter om Dinosaurer med Paleontolog og Dinosaur-ekspert | Alt du lurer på",
-      "publishedAt": "2026-10-09T11:00:27Z",
-      "durationSeconds": 657,
-      "thumbnail": "https://i.ytimg.com/vi/lBCbNjDxpy4/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-11-18T18:42:52.250Z",
-  "videos_updated_at": "2026-11-17T19:44:43.991Z",
+  "stats_updated_at": "2026-11-19T00:44:40.257Z",
+  "videos_updated_at": "2026-11-19T00:44:40.257Z",
   "external_stats": {
     "instagram": {
       "views": 450503,
