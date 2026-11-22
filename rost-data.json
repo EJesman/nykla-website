@@ -30,19 +30,19 @@
   "videos_updated_at": "2026-11-22T10:20:10.760Z",
   "external_stats": {
     "instagram": {
-      "views": 483150,
-      "posts": 117,
+      "views": 483611,
+      "posts": 118,
       "source": "Meta API",
-      "updated_at": "2026-11-22T03:58:32.140Z"
+      "updated_at": "2026-11-22T12:17:03.456Z"
     },
     "facebook": {
-      "views": 805500,
-      "posts": 128,
+      "views": 805868,
+      "posts": 129,
       "source": "Meta API",
-      "updated_at": "2026-11-22T03:58:32.140Z"
+      "updated_at": "2026-11-22T12:17:03.456Z"
     },
-    "total_views": 6060095,
-    "updated_at": "2026-11-22T03:58:32.140Z",
+    "total_views": 6060924,
+    "updated_at": "2026-11-22T12:17:03.456Z",
     "tiktok": {
       "views": 4771445,
       "posts": 115,
