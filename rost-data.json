@@ -1,9 +1,16 @@
 {
   "stats": {
     "subscribers": 15000,
-    "views": 1091262
+    "views": 1091396
   },
   "videos": [
+    {
+      "videoId": "83KmMwTbbzQ",
+      "title": "Tidligere gissel forhandler svarer på spørsmål | Alt du lurer på",
+      "publishedAt": "2026-11-26T15:00:01Z",
+      "durationSeconds": 916,
+      "thumbnail": "https://i.ytimg.com/vi/83KmMwTbbzQ/maxresdefault.jpg"
+    },
     {
       "videoId": "Ro9WceVnosQ",
       "title": "Mannen alle mektige frykter",
@@ -17,17 +24,10 @@
       "publishedAt": "2026-11-10T15:00:07Z",
       "durationSeconds": 603,
       "thumbnail": "https://i.ytimg.com/vi/hEFDBlHMRqw/maxresdefault.jpg"
-    },
-    {
-      "videoId": "sUBX_DGc3no",
-      "title": "Knask eller knep var en trussel",
-      "publishedAt": "2026-10-21T15:08:09Z",
-      "durationSeconds": 433,
-      "thumbnail": "https://i.ytimg.com/vi/sUBX_DGc3no/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-11-26T15:48:43.245Z",
-  "videos_updated_at": "2026-11-25T23:44:41.572Z",
+  "stats_updated_at": "2026-11-27T00:22:45.625Z",
+  "videos_updated_at": "2026-11-27T00:22:45.625Z",
   "external_stats": {
     "instagram": {
       "views": 497097,
