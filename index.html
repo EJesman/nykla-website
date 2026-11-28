@@ -1792,7 +1792,7 @@ section.light{background:var(--white);color:var(--black)}
   font-size:clamp(3rem,7vw,7rem);
   color:var(--orange);margin-bottom:4rem;line-height:0.9;
 }
-.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.8rem;position:relative}
+.team-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1.4rem;position:relative}
 .team-stripe{
   position:absolute;top:50%;left:-3rem;right:-3rem;
   height:50px;background:var(--orange);
@@ -1823,6 +1823,12 @@ section.light{background:var(--white);color:var(--black)}
   letter-spacing:0.04em;margin-bottom:0.3rem;
 }
 .member-detail{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.6}
+/* Sju i én rad: litt tettere på mellomstore skjermer */
+@media (min-width:901px) and (max-width:1199px){
+  .team-grid{gap:1rem}
+  .member-name{font-size:0.6rem}
+  .member-detail{font-size:0.72rem;line-height:1.5}
+}
 
 /* Contact */
 #contact{display:grid;grid-template-columns:1fr 3fr;gap:4rem;align-items:start}
@@ -2964,6 +2970,14 @@ body.menu-open{overflow:hidden}
       <img class="member-photo" src="team-dina.webp" alt="Dina Loen Tabori"/>
       <div class="member-name">Dina Loen Tabori</div>
       <div class="member-detail">Cappuccino på havre<br>Oslo</div>
+    </div>
+    <div class="member">
+      <img class="member-photo" src="team-torjus.webp" alt="Torjus Vinjevoll, tegnet som strekmann med capsen bak frem"/>
+      <div class="member-name">Torjus Vinjevoll</div>
+    </div>
+    <div class="member">
+      <img class="member-photo" src="team-william.webp" alt="William Jakobsen, tegnet som strekmann med hockeykølle"/>
+      <div class="member-name">William Jakobsen</div>
     </div>
   </div>
 </section>
