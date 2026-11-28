@@ -1,53 +1,53 @@
 {
   "stats": {
-    "subscribers": 15000,
-    "views": 1078417
+    "subscribers": 15100,
+    "views": 1100162
   },
   "videos": [
+    {
+      "videoId": "83KmMwTbbzQ",
+      "title": "Tidligere gissel forhandler svarer på spørsmål | Alt du lurer på",
+      "publishedAt": "2026-11-26T15:00:01Z",
+      "durationSeconds": 916,
+      "thumbnail": "https://i.ytimg.com/vi/83KmMwTbbzQ/maxresdefault.jpg"
+    },
+    {
+      "videoId": "Ro9WceVnosQ",
+      "title": "Mannen alle mektige frykter",
+      "publishedAt": "2026-11-18T15:01:00Z",
+      "durationSeconds": 869,
+      "thumbnail": "https://i.ytimg.com/vi/Ro9WceVnosQ/maxresdefault.jpg"
+    },
     {
       "videoId": "hEFDBlHMRqw",
       "title": "Hvorfor blir ALT tyngre når det blir mørkt",
       "publishedAt": "2026-11-10T15:00:07Z",
       "durationSeconds": 603,
       "thumbnail": "https://i.ytimg.com/vi/hEFDBlHMRqw/maxresdefault.jpg"
-    },
-    {
-      "videoId": "sUBX_DGc3no",
-      "title": "Knask eller knep var en trussel",
-      "publishedAt": "2026-10-21T15:08:09Z",
-      "durationSeconds": 433,
-      "thumbnail": "https://i.ytimg.com/vi/sUBX_DGc3no/maxresdefault.jpg"
-    },
-    {
-      "videoId": "lBCbNjDxpy4",
-      "title": "Myter om Dinosaurer med Paleontolog og Dinosaur-ekspert | Alt du lurer på",
-      "publishedAt": "2026-10-09T11:00:27Z",
-      "durationSeconds": 657,
-      "thumbnail": "https://i.ytimg.com/vi/lBCbNjDxpy4/maxresdefault.jpg"
     }
   ],
-  "stats_updated_at": "2026-11-18T09:52:17.121Z",
-  "videos_updated_at": "2026-11-17T19:44:43.991Z",
+  "stats_updated_at": "2026-11-28T09:55:18.341Z",
+  "videos_updated_at": "2026-11-28T01:47:38.181Z",
   "external_stats": {
     "instagram": {
-      "views": 448716,
-      "posts": 113,
+      "views": 510824,
+      "posts": 123,
       "source": "Meta API",
-      "updated_at": "2026-11-18T13:53:38.977Z"
+      "updated_at": "2026-11-28T02:20:59.505Z"
     },
     "facebook": {
-      "views": 780780,
-      "posts": 119,
+      "views": 819190,
+      "posts": 138,
       "source": "Meta API",
-      "updated_at": "2026-11-18T13:53:38.977Z"
+      "updated_at": "2026-11-28T02:20:59.505Z"
     },
-    "total_views": 6000941,
-    "updated_at": "2026-11-18T13:53:38.977Z",
+    "total_views": 6482564,
+    "updated_at": "2026-11-28T02:20:59.505Z",
     "tiktok": {
-      "views": 4771445,
-      "posts": 115,
+      "views": 5152550,
+      "posts": 141,
       "source": "Apify",
-      "updated_at": "2026-11-05T14:14:41.402Z"
+      "updated_at": "2026-11-27T16:19:37.989Z"
     }
   }
 }
